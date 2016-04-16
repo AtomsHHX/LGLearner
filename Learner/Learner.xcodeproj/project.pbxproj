@@ -14,6 +14,10 @@
 		866DE7521CC21B4B00E3A6FA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866DE7511CC21B4B00E3A6FA /* AudioToolbox.framework */; };
 		866DE7541CC21B5D00E3A6FA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866DE7531CC21B5D00E3A6FA /* SystemConfiguration.framework */; };
 		866DE7561CC21B7500E3A6FA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 866DE7551CC21B7500E3A6FA /* libsqlite3.tbd */; };
+		866DE7591CC21D9F00E3A6FA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866DE7581CC21D9F00E3A6FA /* StoreKit.framework */; };
+		866DE75B1CC21DB400E3A6FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866DE75A1CC21DB400E3A6FA /* CoreLocation.framework */; };
+		866DE75D1CC21DC400E3A6FA /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866DE75C1CC21DC400E3A6FA /* Accounts.framework */; };
+		866DE75F1CC21DD300E3A6FA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866DE75E1CC21DD300E3A6FA /* Social.framework */; };
 		86E1E1451CC20F6C007741EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E1441CC20F6C007741EB /* main.m */; };
 		86E1E1481CC20F6C007741EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E1471CC20F6C007741EB /* AppDelegate.m */; };
 		86E1E14B1CC20F6C007741EB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E14A1CC20F6C007741EB /* ViewController.m */; };
@@ -55,6 +59,11 @@
 		866DE7511CC21B4B00E3A6FA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		866DE7531CC21B5D00E3A6FA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		866DE7551CC21B7500E3A6FA /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		866DE7571CC21CEE00E3A6FA /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		866DE7581CC21D9F00E3A6FA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		866DE75A1CC21DB400E3A6FA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		866DE75C1CC21DC400E3A6FA /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		866DE75E1CC21DD300E3A6FA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		86E1E1401CC20F6C007741EB /* Learner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Learner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86E1E1441CC20F6C007741EB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		86E1E1461CC20F6C007741EB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -81,6 +90,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				866DE75F1CC21DD300E3A6FA /* Social.framework in Frameworks */,
+				866DE75D1CC21DC400E3A6FA /* Accounts.framework in Frameworks */,
+				866DE75B1CC21DB400E3A6FA /* CoreLocation.framework in Frameworks */,
+				866DE7591CC21D9F00E3A6FA /* StoreKit.framework in Frameworks */,
 				866DE7561CC21B7500E3A6FA /* libsqlite3.tbd in Frameworks */,
 				866DE7541CC21B5D00E3A6FA /* SystemConfiguration.framework in Frameworks */,
 				866DE7521CC21B4B00E3A6FA /* AudioToolbox.framework in Frameworks */,
@@ -203,6 +216,7 @@
 				86E1E1471CC20F6C007741EB /* AppDelegate.m */,
 				86E1E1441CC20F6C007741EB /* main.m */,
 				86E1E1571CC20F6C007741EB /* Info.plist */,
+				866DE7571CC21CEE00E3A6FA /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -237,6 +251,10 @@
 		C10D23AD3A066A9F70AAB6BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				866DE75E1CC21DD300E3A6FA /* Social.framework */,
+				866DE75C1CC21DC400E3A6FA /* Accounts.framework */,
+				866DE75A1CC21DB400E3A6FA /* CoreLocation.framework */,
+				866DE7581CC21D9F00E3A6FA /* StoreKit.framework */,
 				866DE7551CC21B7500E3A6FA /* libsqlite3.tbd */,
 				866DE7531CC21B5D00E3A6FA /* SystemConfiguration.framework */,
 				866DE7511CC21B4B00E3A6FA /* AudioToolbox.framework */,
@@ -580,6 +598,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Learner",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Learner/PrefixHeader.pch;
 				INFOPLIST_FILE = Learner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lg.Learner;
@@ -596,6 +616,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Learner",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Learner/PrefixHeader.pch;
 				INFOPLIST_FILE = Learner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lg.Learner;
