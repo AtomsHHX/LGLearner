@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		866DE74A1CC21A8F00E3A6FA /* StorageMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 866DE7471CC21A8F00E3A6FA /* StorageMgr.m */; };
+		866DE74B1CC21A8F00E3A6FA /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 866DE7491CC21A8F00E3A6FA /* Utilities.m */; };
+		866DE74E1CC21AFC00E3A6FA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866DE74D1CC21AFC00E3A6FA /* Bolts.framework */; };
+		866DE7501CC21B0A00E3A6FA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866DE74F1CC21B0A00E3A6FA /* Parse.framework */; };
+		866DE7521CC21B4B00E3A6FA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866DE7511CC21B4B00E3A6FA /* AudioToolbox.framework */; };
+		866DE7541CC21B5D00E3A6FA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866DE7531CC21B5D00E3A6FA /* SystemConfiguration.framework */; };
+		866DE7561CC21B7500E3A6FA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 866DE7551CC21B7500E3A6FA /* libsqlite3.tbd */; };
 		86E1E1451CC20F6C007741EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E1441CC20F6C007741EB /* main.m */; };
 		86E1E1481CC20F6C007741EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E1471CC20F6C007741EB /* AppDelegate.m */; };
 		86E1E14B1CC20F6C007741EB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E14A1CC20F6C007741EB /* ViewController.m */; };
@@ -16,6 +23,7 @@
 		86E1E1561CC20F6C007741EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86E1E1541CC20F6C007741EB /* LaunchScreen.storyboard */; };
 		86E1E1611CC20F6C007741EB /* LearnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E1601CC20F6C007741EB /* LearnerTests.m */; };
 		86E1E16C1CC20F6C007741EB /* LearnerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E16B1CC20F6C007741EB /* LearnerUITests.m */; };
+		DA061FFF8E562637A5662AE7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF382AC1A64A93EDC5B27703 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +44,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1881CA5DE8EC92B35D7D1111 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		866DE7461CC21A8F00E3A6FA /* StorageMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageMgr.h; sourceTree = "<group>"; };
+		866DE7471CC21A8F00E3A6FA /* StorageMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageMgr.m; sourceTree = "<group>"; };
+		866DE7481CC21A8F00E3A6FA /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		866DE7491CC21A8F00E3A6FA /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
+		866DE74C1CC21AA000E3A6FA /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		866DE74D1CC21AFC00E3A6FA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Learner/Bolts.framework; sourceTree = "<group>"; };
+		866DE74F1CC21B0A00E3A6FA /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Learner/Parse.framework; sourceTree = "<group>"; };
+		866DE7511CC21B4B00E3A6FA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		866DE7531CC21B5D00E3A6FA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		866DE7551CC21B7500E3A6FA /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		86E1E1401CC20F6C007741EB /* Learner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Learner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86E1E1441CC20F6C007741EB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		86E1E1461CC20F6C007741EB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -53,6 +72,8 @@
 		86E1E1671CC20F6C007741EB /* LearnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86E1E16B1CC20F6C007741EB /* LearnerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearnerUITests.m; sourceTree = "<group>"; };
 		86E1E16D1CC20F6C007741EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF382AC1A64A93EDC5B27703 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB1523B65CD51C8DAED3FA24 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +81,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				866DE7561CC21B7500E3A6FA /* libsqlite3.tbd in Frameworks */,
+				866DE7541CC21B5D00E3A6FA /* SystemConfiguration.framework in Frameworks */,
+				866DE7521CC21B4B00E3A6FA /* AudioToolbox.framework in Frameworks */,
+				866DE7501CC21B0A00E3A6FA /* Parse.framework in Frameworks */,
+				866DE74E1CC21AFC00E3A6FA /* Bolts.framework in Frameworks */,
+				DA061FFF8E562637A5662AE7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +107,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		866DE7401CC2194B00E3A6FA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				86E1E14F1CC20F6C007741EB /* Learner.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		866DE7411CC2195A00E3A6FA /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				866DE7461CC21A8F00E3A6FA /* StorageMgr.h */,
+				866DE7471CC21A8F00E3A6FA /* StorageMgr.m */,
+				866DE7481CC21A8F00E3A6FA /* Utilities.h */,
+				866DE7491CC21A8F00E3A6FA /* Utilities.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		866DE7421CC2198F00E3A6FA /* Contants */ = {
+			isa = PBXGroup;
+			children = (
+				866DE74C1CC21AA000E3A6FA /* Constants.h */,
+			);
+			name = Contants;
+			sourceTree = "<group>";
+		};
+		866DE7431CC2199D00E3A6FA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				86E1E1541CC20F6C007741EB /* LaunchScreen.storyboard */,
+				86E1E14C1CC20F6C007741EB /* Main.storyboard */,
+				86E1E1521CC20F6C007741EB /* Assets.xcassets */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		866DE7441CC219A700E3A6FA /* 3rd */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = 3rd;
+			sourceTree = "<group>";
+		};
+		866DE7451CC219C000E3A6FA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				86E1E1491CC20F6C007741EB /* ViewController.h */,
+				86E1E14A1CC20F6C007741EB /* ViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		86E1E1371CC20F6B007741EB = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +167,8 @@
 				86E1E15F1CC20F6C007741EB /* LearnerTests */,
 				86E1E16A1CC20F6C007741EB /* LearnerUITests */,
 				86E1E1411CC20F6C007741EB /* Products */,
+				B1AAACAAC693D935C48374D4 /* Pods */,
+				C10D23AD3A066A9F70AAB6BA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,15 +185,12 @@
 		86E1E1421CC20F6C007741EB /* Learner */ = {
 			isa = PBXGroup;
 			children = (
-				86E1E1461CC20F6C007741EB /* AppDelegate.h */,
-				86E1E1471CC20F6C007741EB /* AppDelegate.m */,
-				86E1E1491CC20F6C007741EB /* ViewController.h */,
-				86E1E14A1CC20F6C007741EB /* ViewController.m */,
-				86E1E14C1CC20F6C007741EB /* Main.storyboard */,
-				86E1E1521CC20F6C007741EB /* Assets.xcassets */,
-				86E1E1541CC20F6C007741EB /* LaunchScreen.storyboard */,
-				86E1E1571CC20F6C007741EB /* Info.plist */,
-				86E1E14F1CC20F6C007741EB /* Learner.xcdatamodeld */,
+				866DE7451CC219C000E3A6FA /* Controller */,
+				866DE7441CC219A700E3A6FA /* 3rd */,
+				866DE7431CC2199D00E3A6FA /* View */,
+				866DE7421CC2198F00E3A6FA /* Contants */,
+				866DE7411CC2195A00E3A6FA /* Utilities */,
+				866DE7401CC2194B00E3A6FA /* Model */,
 				86E1E1431CC20F6C007741EB /* Supporting Files */,
 			);
 			path = Learner;
@@ -120,7 +199,10 @@
 		86E1E1431CC20F6C007741EB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				86E1E1461CC20F6C007741EB /* AppDelegate.h */,
+				86E1E1471CC20F6C007741EB /* AppDelegate.m */,
 				86E1E1441CC20F6C007741EB /* main.m */,
+				86E1E1571CC20F6C007741EB /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -143,6 +225,28 @@
 			path = LearnerUITests;
 			sourceTree = "<group>";
 		};
+		B1AAACAAC693D935C48374D4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EB1523B65CD51C8DAED3FA24 /* Pods.debug.xcconfig */,
+				1881CA5DE8EC92B35D7D1111 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C10D23AD3A066A9F70AAB6BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				866DE7551CC21B7500E3A6FA /* libsqlite3.tbd */,
+				866DE7531CC21B5D00E3A6FA /* SystemConfiguration.framework */,
+				866DE7511CC21B4B00E3A6FA /* AudioToolbox.framework */,
+				866DE74F1CC21B0A00E3A6FA /* Parse.framework */,
+				866DE74D1CC21AFC00E3A6FA /* Bolts.framework */,
+				BF382AC1A64A93EDC5B27703 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -150,9 +254,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 86E1E1701CC20F6C007741EB /* Build configuration list for PBXNativeTarget "Learner" */;
 			buildPhases = (
+				F82229D362FFA5CC06B46102 /* Check Pods Manifest.lock */,
 				86E1E13C1CC20F6B007741EB /* Sources */,
 				86E1E13D1CC20F6B007741EB /* Frameworks */,
 				86E1E13E1CC20F6B007741EB /* Resources */,
+				7A49634C766721293C90D856 /* Embed Pods Frameworks */,
+				8A95E4C654992EEDCC5B0ED0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -271,15 +378,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7A49634C766721293C90D856 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8A95E4C654992EEDCC5B0ED0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F82229D362FFA5CC06B46102 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		86E1E13C1CC20F6B007741EB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				866DE74B1CC21A8F00E3A6FA /* Utilities.m in Sources */,
 				86E1E14B1CC20F6C007741EB /* ViewController.m in Sources */,
 				86E1E1511CC20F6C007741EB /* Learner.xcdatamodeld in Sources */,
 				86E1E1481CC20F6C007741EB /* AppDelegate.m in Sources */,
 				86E1E1451CC20F6C007741EB /* main.m in Sources */,
+				866DE74A1CC21A8F00E3A6FA /* StorageMgr.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,8 +573,13 @@
 		};
 		86E1E1711CC20F6C007741EB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB1523B65CD51C8DAED3FA24 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Learner",
+				);
 				INFOPLIST_FILE = Learner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lg.Learner;
@@ -427,8 +589,13 @@
 		};
 		86E1E1721CC20F6C007741EB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1881CA5DE8EC92B35D7D1111 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Learner",
+				);
 				INFOPLIST_FILE = Learner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lg.Learner;
@@ -503,6 +670,7 @@
 				86E1E1721CC20F6C007741EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		86E1E1731CC20F6C007741EB /* Build configuration list for PBXNativeTarget "LearnerTests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +679,7 @@
 				86E1E1751CC20F6C007741EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		86E1E1761CC20F6C007741EB /* Build configuration list for PBXNativeTarget "LearnerUITests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +688,7 @@
 				86E1E1781CC20F6C007741EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

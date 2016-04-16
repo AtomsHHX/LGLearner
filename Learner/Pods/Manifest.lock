@@ -1,0 +1,15 @@
+PODS:
+  - ECSlidingViewController (2.0.3)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
+
+DEPENDENCIES:
+  - ECSlidingViewController (~> 2.0.3)
+  - SDWebImage (~> 3.7)
+
+SPEC CHECKSUMS:
+  ECSlidingViewController: 6485c14f23b4487e9946535421ca8f111f86cc53
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+
+COCOAPODS: 0.39.0
