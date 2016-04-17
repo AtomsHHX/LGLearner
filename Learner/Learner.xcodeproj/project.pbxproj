@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2812704D1CC34CC600D347E4 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2812704C1CC34CC600D347E4 /* HomeViewController.m */; };
+		841998281CC3948B00CF1DCA /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841998271CC3948B00CF1DCA /* SignInViewController.m */; };
+		8419982B1CC3973D00CF1DCA /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8419982A1CC3973D00CF1DCA /* SignUpViewController.m */; };
+		8419982E1CC39AE900CF1DCA /* TabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8419982D1CC39AE900CF1DCA /* TabViewController.m */; };
 		866DE74A1CC21A8F00E3A6FA /* StorageMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 866DE7471CC21A8F00E3A6FA /* StorageMgr.m */; };
 		866DE74B1CC21A8F00E3A6FA /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 866DE7491CC21A8F00E3A6FA /* Utilities.m */; };
 		866DE74E1CC21AFC00E3A6FA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866DE74D1CC21AFC00E3A6FA /* Bolts.framework */; };
@@ -52,6 +55,12 @@
 		1881CA5DE8EC92B35D7D1111 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		2812704B1CC34CC600D347E4 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		2812704C1CC34CC600D347E4 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		841998261CC3948B00CF1DCA /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
+		841998271CC3948B00CF1DCA /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
+		841998291CC3973D00CF1DCA /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		8419982A1CC3973D00CF1DCA /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		8419982C1CC39AE900CF1DCA /* TabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabViewController.h; sourceTree = "<group>"; };
+		8419982D1CC39AE900CF1DCA /* TabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabViewController.m; sourceTree = "<group>"; };
 		866DE7461CC21A8F00E3A6FA /* StorageMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageMgr.h; sourceTree = "<group>"; };
 		866DE7471CC21A8F00E3A6FA /* StorageMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageMgr.m; sourceTree = "<group>"; };
 		866DE7481CC21A8F00E3A6FA /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
@@ -174,6 +183,12 @@
 				86E1E14A1CC20F6C007741EB /* ViewController.m */,
 				2812704B1CC34CC600D347E4 /* HomeViewController.h */,
 				2812704C1CC34CC600D347E4 /* HomeViewController.m */,
+				841998261CC3948B00CF1DCA /* SignInViewController.h */,
+				841998271CC3948B00CF1DCA /* SignInViewController.m */,
+				841998291CC3973D00CF1DCA /* SignUpViewController.h */,
+				8419982A1CC3973D00CF1DCA /* SignUpViewController.m */,
+				8419982C1CC39AE900CF1DCA /* TabViewController.h */,
+				8419982D1CC39AE900CF1DCA /* TabViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -454,13 +469,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841998281CC3948B00CF1DCA /* SignInViewController.m in Sources */,
 				866DE74B1CC21A8F00E3A6FA /* Utilities.m in Sources */,
 				86E1E14B1CC20F6C007741EB /* ViewController.m in Sources */,
 				86E1E1511CC20F6C007741EB /* Learner.xcdatamodeld in Sources */,
+				8419982E1CC39AE900CF1DCA /* TabViewController.m in Sources */,
 				86E1E1481CC20F6C007741EB /* AppDelegate.m in Sources */,
 				86E1E1451CC20F6C007741EB /* main.m in Sources */,
 				2812704D1CC34CC600D347E4 /* HomeViewController.m in Sources */,
 				866DE74A1CC21A8F00E3A6FA /* StorageMgr.m in Sources */,
+				8419982B1CC3973D00CF1DCA /* SignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
