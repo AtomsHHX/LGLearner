@@ -21,12 +21,17 @@
     [self uiConfigration];
     _nicknameTF.delegate = self;
     [NSNotificationCenter defaultCenter];
-    
+    [_segment addTarget:self action:@selector(choice:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:YES];
+    //[self didUpdateFocusInContext:UIControlEventValueChanged withAnimationCoordinator:nil];
+    
 }
 -(void)uiConfigration{
     
@@ -50,6 +55,15 @@
     _emailLbl.text = currentUser.email;
    
 }
+-(void)choice:(UISegmentedControl *)segmentControl{
+    NSInteger segmentIndex = segmentControl.selectedSegmentIndex;
+    //NSNumber *genderNum = [NSNumber numberWithInteger:segmentIndex];
+    if (segmentIndex == 0) {
+        [self saveGender:@NO];
+    } else {
+        [self saveGender:@YES];
+    }
+}
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     NSString *nickname = _nicknameTF.text;
     NSLog(@"nickname = %@",nickname);
@@ -61,6 +75,18 @@
 - (void)saveNickname:(NSString *)nickname {
     PFUser *currentUser = [PFUser currentUser];
     currentUser[@"nickname"] = nickname;
+    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            NSLog(@"chenggong");
+        } else {
+            NSLog(@"error = %@",error.userInfo);
+        }
+    }];
+}
+
+- (void)saveGender:(NSNumber *)genderNum {
+    PFUser *currentUser = [PFUser currentUser];
+    currentUser[@"gender"] = genderNum;
     [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
             NSLog(@"chenggong");
