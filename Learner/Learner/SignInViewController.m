@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //[self toHome];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,7 +60,7 @@
             
             
             //跳转到首页
-            //[self popUpHome];
+            [self toHome];
         }else{
             switch (error.code) {
                 case 101:
