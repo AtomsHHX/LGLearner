@@ -8,8 +8,12 @@
 
 #import "SignInViewController.h"
 #import "TabViewController.h"
-@interface SignInViewController ()
+#import "leftViewController.h"
+#import <ECSlidingViewController/ECSlidingViewController.h>
 
+@interface SignInViewController ()<UIViewControllerAnimatedTransitioning,ECSlidingViewControllerDelegate,ECSlidingViewControllerLayout>
+@property (strong, nonatomic) ECSlidingViewController *slidingVC;
+@property (assign, nonatomic) ECSlidingViewControllerOperation operation;
 @end
 
 @implementation SignInViewController
@@ -26,7 +30,41 @@
 }
 -(void)toHome{
     TabViewController *tab = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"tab"];
-    [self presentViewController:tab animated:YES completion:nil];
+    _slidingVC.delegate = self;
+    
+    _slidingVC = [ECSlidingViewController slidingWithTopViewController:tab];
+    _slidingVC.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
+    [tab.view addGestureRecognizer:_slidingVC.panGesture];
+    leftViewController *leftVC = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"left"];
+    _slidingVC.underLeftViewController = leftVC;
+    //设置侧滑的范围（长度）anchorRightPeekAmount：表示中间的宽度 anchorRightRevealAmount:表示   (设置左侧页面当呗显示时，宽度能够显示1/4)
+    _slidingVC.anchorRightPeekAmount = UI_SCREEN_W / 4;
+    
+    //创建一个当菜单按钮呗按时，要执行的侧滑方法的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(menuOutAction) name:@"MenuSwich" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enableGestureAction) name:@"EnableGesture" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disableGestureAction) name:@"DisableGesture" object:nil];
+    
+    //modal方式跳转到上述页面 跳转到哪里 动画效果 跳转之后要执行的内容
+    [self presentViewController:_slidingVC animated:YES completion:nil];
+}
+-(void)menuOutAction{
+    NSLog(@"out");
+    if (_slidingVC.currentTopViewPosition == ECSlidingViewControllerTopViewPositionAnchoredRight) {
+        
+        [_slidingVC resetTopViewAnimated:YES];
+    } else {
+        
+        [_slidingVC anchorTopViewToRightAnimated:YES];
+    }
+}
+- (void)enableGestureAction{
+    _slidingVC.panGesture.enabled = YES;
+}
+- (void)disableGestureAction{
+    _slidingVC.panGesture.enabled = NO;
+    
 }
 /*
 #pragma mark - Navigation
