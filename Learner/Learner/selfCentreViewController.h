@@ -13,7 +13,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *nicknameTF;
 @property (weak, nonatomic) IBOutlet UILabel *emailLbl;
 @property (weak, nonatomic) IBOutlet UITextField *ageTF;
-- (IBAction)genderSeg:(UISegmentedControl *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
+
 - (IBAction)LogOutACtion:(UIButton *)sender forEvent:(UIEvent *)event;
 
 @end

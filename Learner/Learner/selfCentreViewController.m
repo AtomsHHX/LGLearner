@@ -83,9 +83,7 @@
     
     
 }
-- (IBAction)genderSeg:(UISegmentedControl *)sender forEvent:(UIEvent *)event {
-    
-}
+
 
 - (IBAction)LogOutACtion:(UIButton *)sender forEvent:(UIEvent *)event {
     //退出登录

@@ -332,9 +332,6 @@
                                     <segment title="男"/>
                                     <segment title="女"/>
                                 </segments>
-                                <connections>
-                                    <action selector="genderSeg:forEvent:" destination="F99-HL-rgz" eventType="valueChanged" id="THP-49-07t"/>
-                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBs-Pk-dDv">
                                 <rect key="frame" x="135" y="74" width="50" height="50"/>
@@ -389,6 +386,7 @@
                         <outlet property="ageTF" destination="dm7-SZ-Ohy" id="aH5-RU-tlb"/>
                         <outlet property="emailLbl" destination="ttu-vA-lUg" id="ySk-g1-20i"/>
                         <outlet property="nicknameTF" destination="p40-Pt-sJD" id="RZW-et-Lg0"/>
+                        <outlet property="segment" destination="D9I-la-Voe" id="lKo-LE-BZI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hdu-oJ-r5P" userLabel="First Responder" sceneMemberID="firstResponder"/>
