@@ -11,6 +11,7 @@
 		841998281CC3948B00CF1DCA /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841998271CC3948B00CF1DCA /* SignInViewController.m */; };
 		8419982B1CC3973D00CF1DCA /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8419982A1CC3973D00CF1DCA /* SignUpViewController.m */; };
 		8419982E1CC39AE900CF1DCA /* TabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8419982D1CC39AE900CF1DCA /* TabViewController.m */; };
+		84DCEA881CC4863A009FE977 /* selfCentreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DCEA871CC4863A009FE977 /* selfCentreViewController.m */; };
 		866DE74A1CC21A8F00E3A6FA /* StorageMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 866DE7471CC21A8F00E3A6FA /* StorageMgr.m */; };
 		866DE74B1CC21A8F00E3A6FA /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 866DE7491CC21A8F00E3A6FA /* Utilities.m */; };
 		866DE74E1CC21AFC00E3A6FA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866DE74D1CC21AFC00E3A6FA /* Bolts.framework */; };
@@ -61,6 +62,8 @@
 		8419982A1CC3973D00CF1DCA /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		8419982C1CC39AE900CF1DCA /* TabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabViewController.h; sourceTree = "<group>"; };
 		8419982D1CC39AE900CF1DCA /* TabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabViewController.m; sourceTree = "<group>"; };
+		84DCEA861CC4863A009FE977 /* selfCentreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = selfCentreViewController.h; sourceTree = "<group>"; };
+		84DCEA871CC4863A009FE977 /* selfCentreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = selfCentreViewController.m; sourceTree = "<group>"; };
 		866DE7461CC21A8F00E3A6FA /* StorageMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageMgr.h; sourceTree = "<group>"; };
 		866DE7471CC21A8F00E3A6FA /* StorageMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageMgr.m; sourceTree = "<group>"; };
 		866DE7481CC21A8F00E3A6FA /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
@@ -189,6 +192,8 @@
 				8419982A1CC3973D00CF1DCA /* SignUpViewController.m */,
 				8419982C1CC39AE900CF1DCA /* TabViewController.h */,
 				8419982D1CC39AE900CF1DCA /* TabViewController.m */,
+				84DCEA861CC4863A009FE977 /* selfCentreViewController.h */,
+				84DCEA871CC4863A009FE977 /* selfCentreViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -478,6 +483,7 @@
 				86E1E1451CC20F6C007741EB /* main.m in Sources */,
 				2812704D1CC34CC600D347E4 /* HomeViewController.m in Sources */,
 				866DE74A1CC21A8F00E3A6FA /* StorageMgr.m in Sources */,
+				84DCEA881CC4863A009FE977 /* selfCentreViewController.m in Sources */,
 				8419982B1CC3973D00CF1DCA /* SignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
