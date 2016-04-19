@@ -10,6 +10,7 @@
 #import "TabViewController.h"
 #import "leftViewController.h"
 #import <ECSlidingViewController/ECSlidingViewController.h>
+#import "KSGuideManager.h"
 
 @interface SignInViewController ()<UIViewControllerAnimatedTransitioning,ECSlidingViewControllerDelegate,ECSlidingViewControllerLayout>
 @property (strong, nonatomic) ECSlidingViewController *slidingVC;
@@ -22,6 +23,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //[self toHome];
+    
+    NSMutableArray *paths = [NSMutableArray new];
+    
+    [paths addObject:[[NSBundle mainBundle] pathForResource:@"1" ofType:@"png"]];
+    [paths addObject:[[NSBundle mainBundle] pathForResource:@"2" ofType:@"png"]];
+    [paths addObject:[[NSBundle mainBundle] pathForResource:@"3" ofType:@"jpeg"]];
+    [paths addObject:[[NSBundle mainBundle] pathForResource:@"4" ofType:@"tiff"]];
+    
+    [[KSGuideManager shared] showGuideViewWithImages:paths];
 }
 
 - (void)didReceiveMemoryWarning {
