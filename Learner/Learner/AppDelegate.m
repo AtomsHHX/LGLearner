@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "KSGuideManager.h"
+//#import "KSGuideManager.h"
 @interface AppDelegate ()
 
 @end
