@@ -8,6 +8,7 @@
 
 #import "QuestionsViewController.h"
 #import "DOPDropDownMenu.h"
+#import "QuestionsDetailViewController.h"
 @interface QuestionsViewController () <DOPDropDownMenuDataSource,DOPDropDownMenuDelegate>
 @property (nonatomic, copy) NSArray *subjectArr;
 @property (nonatomic, copy) NSArray *yearArr;
@@ -24,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _objectForShow = [NSMutableArray new];
     //菜单筛选
     _subjectArr = @[@"语文",@"数学(文)",@"数学(理)",@"英语",@"物理",@"化学",@"生物",@"历史",@"政治",@"地理"];
     _yearArr = @[@"年份",@"2013",@"2014",@"2015"];
@@ -63,6 +65,7 @@
                 [subQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable subObjects, NSError * _Nullable error) {
                     if (!error) {
                         _objectForShow = [NSMutableArray arrayWithArray:subObjects];
+                        NSLog(@"");
                         [_tableView reloadData];
                         
                     } else {
@@ -75,6 +78,7 @@
         }
     }];
 }
+
 
 - (NSInteger)numberOfColumnsInMenu:(DOPDropDownMenu *)menu
 {
@@ -144,6 +148,13 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    //取消选中
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    QuestionsDetailViewController *QDView = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"QuestionsDetail"];
+    
+    [self.navigationController pushViewController:QDView animated:YES];
+}
 /*
 #pragma mark - Navigation
 
