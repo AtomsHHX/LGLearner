@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "KSGuideManager.h"
 @interface AppDelegate ()
 
 @end
@@ -19,9 +19,19 @@
     // Override point for customization after application launch.
     [Parse setApplicationId:@"GmKorX30VxHOKDHQkW7NWnhXrOkCZwBWLGmSNz04" clientKey:@"uXWRuE5cv0TdfJ8LwNRSEhONg9Myuxj6uw6TxpF9"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+//    [self showImage];
     return YES;
+    
 }
-
+//- (void)showImage{
+//    NSMutableArray *paths = [NSMutableArray new];
+//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"1" ofType:@"png"]];
+//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"2" ofType:@"png"]];
+//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"3" ofType:@"jpeg"]];
+//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"4" ofType:@"tiff"]];
+//    
+//    [[KSGuideManager shared] showGuideViewWithImages:paths];
+//}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
