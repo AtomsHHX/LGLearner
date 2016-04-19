@@ -37,6 +37,11 @@
 		86E1E1611CC20F6C007741EB /* LearnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E1601CC20F6C007741EB /* LearnerTests.m */; };
 		86E1E16C1CC20F6C007741EB /* LearnerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E16B1CC20F6C007741EB /* LearnerUITests.m */; };
 		DA061FFF8E562637A5662AE7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF382AC1A64A93EDC5B27703 /* libPods.a */; };
+		EB5C71931CC5E76300F7F219 /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5C71921CC5E76300F7F219 /* QuestionsViewController.m */; };
+		EB5C719A1CC5E7FA00F7F219 /* DOPDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5C71961CC5E7FA00F7F219 /* DOPDropDownMenu.m */; };
+		EB5C719B1CC5E7FA00F7F219 /* icon_chose_arrow_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5C71971CC5E7FA00F7F219 /* icon_chose_arrow_nor@2x.png */; };
+		EB5C719C1CC5E7FA00F7F219 /* icon_chose_arrow_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5C71981CC5E7FA00F7F219 /* icon_chose_arrow_sel@2x.png */; };
+		EB5C719D1CC5E7FA00F7F219 /* icon_chose_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5C71991CC5E7FA00F7F219 /* icon_chose_bottom@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +115,13 @@
 		86E1E16D1CC20F6C007741EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF382AC1A64A93EDC5B27703 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB1523B65CD51C8DAED3FA24 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EB5C71911CC5E76300F7F219 /* QuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsViewController.h; sourceTree = "<group>"; };
+		EB5C71921CC5E76300F7F219 /* QuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionsViewController.m; sourceTree = "<group>"; };
+		EB5C71951CC5E7FA00F7F219 /* DOPDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOPDropDownMenu.h; sourceTree = "<group>"; };
+		EB5C71961CC5E7FA00F7F219 /* DOPDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPDropDownMenu.m; sourceTree = "<group>"; };
+		EB5C71971CC5E7FA00F7F219 /* icon_chose_arrow_nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chose_arrow_nor@2x.png"; sourceTree = "<group>"; };
+		EB5C71981CC5E7FA00F7F219 /* icon_chose_arrow_sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chose_arrow_sel@2x.png"; sourceTree = "<group>"; };
+		EB5C71991CC5E7FA00F7F219 /* icon_chose_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chose_bottom@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +199,7 @@
 		866DE7441CC219A700E3A6FA /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				EB5C71941CC5E7CB00F7F219 /* DOPDropDownMenu - Enhanced */,
 			);
 			name = 3rd;
 			sourceTree = "<group>";
@@ -214,6 +227,8 @@
 				84D601681CC5D2EA0014D3B5 /* ContentTableViewCell.m */,
 				84D6016A1CC5D54E0014D3B5 /* detailMessageViewController.h */,
 				84D6016B1CC5D54E0014D3B5 /* detailMessageViewController.m */,
+				EB5C71911CC5E76300F7F219 /* QuestionsViewController.h */,
+				EB5C71921CC5E76300F7F219 /* QuestionsViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -308,6 +323,18 @@
 				BF382AC1A64A93EDC5B27703 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EB5C71941CC5E7CB00F7F219 /* DOPDropDownMenu - Enhanced */ = {
+			isa = PBXGroup;
+			children = (
+				EB5C71951CC5E7FA00F7F219 /* DOPDropDownMenu.h */,
+				EB5C71961CC5E7FA00F7F219 /* DOPDropDownMenu.m */,
+				EB5C71971CC5E7FA00F7F219 /* icon_chose_arrow_nor@2x.png */,
+				EB5C71981CC5E7FA00F7F219 /* icon_chose_arrow_sel@2x.png */,
+				EB5C71991CC5E7FA00F7F219 /* icon_chose_bottom@2x.png */,
+			);
+			name = "DOPDropDownMenu - Enhanced";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,7 +447,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				86E1E1561CC20F6C007741EB /* LaunchScreen.storyboard in Resources */,
+				EB5C719C1CC5E7FA00F7F219 /* icon_chose_arrow_sel@2x.png in Resources */,
 				86E1E1531CC20F6C007741EB /* Assets.xcassets in Resources */,
+				EB5C719D1CC5E7FA00F7F219 /* icon_chose_bottom@2x.png in Resources */,
+				EB5C719B1CC5E7FA00F7F219 /* icon_chose_arrow_nor@2x.png in Resources */,
 				86E1E14E1CC20F6C007741EB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -499,6 +529,7 @@
 				866DE74B1CC21A8F00E3A6FA /* Utilities.m in Sources */,
 				86E1E14B1CC20F6C007741EB /* ViewController.m in Sources */,
 				86E1E1511CC20F6C007741EB /* Learner.xcdatamodeld in Sources */,
+				EB5C719A1CC5E7FA00F7F219 /* DOPDropDownMenu.m in Sources */,
 				8419982E1CC39AE900CF1DCA /* TabViewController.m in Sources */,
 				84D601661CC5D1CB0014D3B5 /* MyMessageViewController.m in Sources */,
 				86E1E1481CC20F6C007741EB /* AppDelegate.m in Sources */,
@@ -508,6 +539,7 @@
 				84DCEA8B1CC4F89B009FE977 /* leftViewController.m in Sources */,
 				84D6016C1CC5D54E0014D3B5 /* detailMessageViewController.m in Sources */,
 				84DCEA881CC4863A009FE977 /* selfCentreViewController.m in Sources */,
+				EB5C71931CC5E76300F7F219 /* QuestionsViewController.m in Sources */,
 				8419982B1CC3973D00CF1DCA /* SignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

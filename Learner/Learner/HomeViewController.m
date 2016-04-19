@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 
+
 @interface HomeViewController ()
 
 @end
@@ -16,7 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _headView.backgroundColor = [UIColor blueColor];
     // Do any additional setup after loading the view.
+   
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,5 +36,22 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 8;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    
+    return cell;
+}
+
+-(void)MJBannnerPlayer:(UIView *)bannerPlayer didSelectedIndex:(NSInteger)index{
+    
+    NSLog(@"%ld",index);
+    
+}
 
 @end

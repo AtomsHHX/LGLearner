@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIView *headView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
