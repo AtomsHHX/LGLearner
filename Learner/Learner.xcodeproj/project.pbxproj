@@ -36,6 +36,7 @@
 		86E1E1561CC20F6C007741EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86E1E1541CC20F6C007741EB /* LaunchScreen.storyboard */; };
 		86E1E1611CC20F6C007741EB /* LearnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E1601CC20F6C007741EB /* LearnerTests.m */; };
 		86E1E16C1CC20F6C007741EB /* LearnerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E16B1CC20F6C007741EB /* LearnerUITests.m */; };
+		A3838D0A1CC6002700D5185B /* QuestionsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3838D091CC6002700D5185B /* QuestionsDetailViewController.m */; };
 		DA061FFF8E562637A5662AE7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF382AC1A64A93EDC5B27703 /* libPods.a */; };
 		EB5C71931CC5E76300F7F219 /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5C71921CC5E76300F7F219 /* QuestionsViewController.m */; };
 		EB5C719A1CC5E7FA00F7F219 /* DOPDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5C71961CC5E7FA00F7F219 /* DOPDropDownMenu.m */; };
@@ -113,6 +114,8 @@
 		86E1E1671CC20F6C007741EB /* LearnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86E1E16B1CC20F6C007741EB /* LearnerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearnerUITests.m; sourceTree = "<group>"; };
 		86E1E16D1CC20F6C007741EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3838D081CC6002700D5185B /* QuestionsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsDetailViewController.h; sourceTree = "<group>"; };
+		A3838D091CC6002700D5185B /* QuestionsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionsDetailViewController.m; sourceTree = "<group>"; };
 		BF382AC1A64A93EDC5B27703 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB1523B65CD51C8DAED3FA24 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EB5C71911CC5E76300F7F219 /* QuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsViewController.h; sourceTree = "<group>"; };
@@ -229,6 +232,8 @@
 				84D6016B1CC5D54E0014D3B5 /* detailMessageViewController.m */,
 				EB5C71911CC5E76300F7F219 /* QuestionsViewController.h */,
 				EB5C71921CC5E76300F7F219 /* QuestionsViewController.m */,
+				A3838D081CC6002700D5185B /* QuestionsDetailViewController.h */,
+				A3838D091CC6002700D5185B /* QuestionsDetailViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -531,6 +536,7 @@
 				86E1E1511CC20F6C007741EB /* Learner.xcdatamodeld in Sources */,
 				EB5C719A1CC5E7FA00F7F219 /* DOPDropDownMenu.m in Sources */,
 				8419982E1CC39AE900CF1DCA /* TabViewController.m in Sources */,
+				A3838D0A1CC6002700D5185B /* QuestionsDetailViewController.m in Sources */,
 				84D601661CC5D1CB0014D3B5 /* MyMessageViewController.m in Sources */,
 				86E1E1481CC20F6C007741EB /* AppDelegate.m in Sources */,
 				86E1E1451CC20F6C007741EB /* main.m in Sources */,

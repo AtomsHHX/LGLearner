@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DPZ-IA-Kpr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DPZ-IA-Kpr">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -79,7 +79,7 @@
         <!--Questions View Controller-->
         <scene sceneID="lUy-TB-bIg">
             <objects>
-                <viewController id="hOl-XG-olY" customClass="QuestionsViewController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="hOl-XG-olY" customClass="QuestionsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9bw-yV-ZIB"/>
                         <viewControllerLayoutGuide type="bottom" id="6jE-ha-xCp"/>
@@ -89,7 +89,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bei-kc-uXX">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="ipl-kB-gIm">
@@ -116,6 +116,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jvR-zB-rEt"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="tableView" destination="Bei-kc-uXX" id="jTq-eB-rx0"/>
@@ -941,7 +942,7 @@
         <!--Title-->
         <scene sceneID="OT8-SP-Rvi">
             <objects>
-                <viewController id="bN4-3U-eUq" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuestionsDetail" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bN4-3U-eUq" customClass="QuestionsDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4LF-56-HOx"/>
                         <viewControllerLayoutGuide type="bottom" id="Zw2-KZ-7K7"/>
@@ -996,6 +997,20 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEG-bi-df8">
+                                <rect key="frame" x="0.0" y="538" width="45" height="30"/>
+                                <state key="normal" title="上一题"/>
+                                <connections>
+                                    <action selector="upAction:forEvent:" destination="bN4-3U-eUq" eventType="touchUpInside" id="ei4-EW-pvw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NyW-Fe-uGE">
+                                <rect key="frame" x="275" y="538" width="45" height="30"/>
+                                <state key="normal" title="下一题"/>
+                                <connections>
+                                    <action selector="downAction:forEvent:" destination="bN4-3U-eUq" eventType="touchUpInside" id="oAc-sd-6au"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1014,6 +1029,9 @@
                             <constraint firstItem="qf7-C6-kEt" firstAttribute="leading" secondItem="T37-8M-I0C" secondAttribute="leading" constant="5" id="PMo-Zd-GJa"/>
                             <constraint firstAttribute="trailing" secondItem="csS-Kf-Zav" secondAttribute="trailing" constant="5" id="Qrn-4a-gbf"/>
                             <constraint firstItem="iv9-Rh-vPL" firstAttribute="top" secondItem="csS-Kf-Zav" secondAttribute="bottom" constant="10" id="T8l-1d-eei"/>
+                            <constraint firstItem="Zw2-KZ-7K7" firstAttribute="top" secondItem="NEG-bi-df8" secondAttribute="bottom" id="U7v-Xo-I5U"/>
+                            <constraint firstAttribute="trailing" secondItem="NyW-Fe-uGE" secondAttribute="trailing" id="UGP-gW-m41"/>
+                            <constraint firstItem="Zw2-KZ-7K7" firstAttribute="top" secondItem="NyW-Fe-uGE" secondAttribute="bottom" id="WQA-8C-qFB"/>
                             <constraint firstAttribute="trailing" secondItem="GxA-Ac-eil" secondAttribute="trailing" constant="100" id="Ws0-AJ-F5k"/>
                             <constraint firstItem="Dzi-pP-fay" firstAttribute="top" secondItem="qf7-C6-kEt" secondAttribute="bottom" constant="10" id="YFr-Ua-es8"/>
                             <constraint firstItem="iv9-Rh-vPL" firstAttribute="leading" secondItem="T37-8M-I0C" secondAttribute="leading" constant="5" id="dNa-rp-vE4"/>
@@ -1022,17 +1040,25 @@
                             <constraint firstItem="IcS-E4-5n3" firstAttribute="top" secondItem="iv9-Rh-vPL" secondAttribute="bottom" constant="10" id="fjg-ee-Rub"/>
                             <constraint firstItem="h8n-ft-LJB" firstAttribute="top" secondItem="IcS-E4-5n3" secondAttribute="bottom" constant="10" id="kJo-uf-tFV"/>
                             <constraint firstAttribute="trailing" secondItem="h8n-ft-LJB" secondAttribute="trailing" constant="5" id="nPs-CQ-DEp"/>
+                            <constraint firstItem="NEG-bi-df8" firstAttribute="leading" secondItem="T37-8M-I0C" secondAttribute="leading" id="vL0-Z7-CkA"/>
                             <constraint firstAttribute="trailing" secondItem="iv9-Rh-vPL" secondAttribute="trailing" constant="5" id="vho-PQ-D72"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="sC5-Rn-gf1"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="optionALb" destination="Dzi-pP-fay" id="wcV-F3-5in"/>
+                        <outlet property="optionBLb" destination="csS-Kf-Zav" id="wB5-Gm-XGC"/>
+                        <outlet property="optionCLb" destination="iv9-Rh-vPL" id="UWV-7g-sL2"/>
+                        <outlet property="optionDLb" destination="IcS-E4-5n3" id="iXy-Bx-uUv"/>
+                        <outlet property="problemLb" destination="qf7-C6-kEt" id="M36-87-jSw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgy-da-Hc3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3923" y="296"/>
+            <point key="canvasLocation" x="3152" y="-519"/>
         </scene>
     </scenes>
     <resources>
