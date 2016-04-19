@@ -11,6 +11,9 @@
 		841998281CC3948B00CF1DCA /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841998271CC3948B00CF1DCA /* SignInViewController.m */; };
 		8419982B1CC3973D00CF1DCA /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8419982A1CC3973D00CF1DCA /* SignUpViewController.m */; };
 		8419982E1CC39AE900CF1DCA /* TabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8419982D1CC39AE900CF1DCA /* TabViewController.m */; };
+		84D601661CC5D1CB0014D3B5 /* MyMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D601651CC5D1CB0014D3B5 /* MyMessageViewController.m */; };
+		84D601691CC5D2EA0014D3B5 /* ContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D601681CC5D2EA0014D3B5 /* ContentTableViewCell.m */; };
+		84D6016C1CC5D54E0014D3B5 /* detailMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6016B1CC5D54E0014D3B5 /* detailMessageViewController.m */; };
 		84DCEA881CC4863A009FE977 /* selfCentreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DCEA871CC4863A009FE977 /* selfCentreViewController.m */; };
 		84DCEA8B1CC4F89B009FE977 /* leftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DCEA8A1CC4F89B009FE977 /* leftViewController.m */; };
 		866DE74A1CC21A8F00E3A6FA /* StorageMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 866DE7471CC21A8F00E3A6FA /* StorageMgr.m */; };
@@ -63,6 +66,12 @@
 		8419982A1CC3973D00CF1DCA /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		8419982C1CC39AE900CF1DCA /* TabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabViewController.h; sourceTree = "<group>"; };
 		8419982D1CC39AE900CF1DCA /* TabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabViewController.m; sourceTree = "<group>"; };
+		84D601641CC5D1CB0014D3B5 /* MyMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMessageViewController.h; sourceTree = "<group>"; };
+		84D601651CC5D1CB0014D3B5 /* MyMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMessageViewController.m; sourceTree = "<group>"; };
+		84D601671CC5D2EA0014D3B5 /* ContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentTableViewCell.h; sourceTree = "<group>"; };
+		84D601681CC5D2EA0014D3B5 /* ContentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentTableViewCell.m; sourceTree = "<group>"; };
+		84D6016A1CC5D54E0014D3B5 /* detailMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailMessageViewController.h; sourceTree = "<group>"; };
+		84D6016B1CC5D54E0014D3B5 /* detailMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailMessageViewController.m; sourceTree = "<group>"; };
 		84DCEA861CC4863A009FE977 /* selfCentreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = selfCentreViewController.h; sourceTree = "<group>"; };
 		84DCEA871CC4863A009FE977 /* selfCentreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = selfCentreViewController.m; sourceTree = "<group>"; };
 		84DCEA891CC4F89B009FE977 /* leftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = leftViewController.h; sourceTree = "<group>"; };
@@ -199,6 +208,12 @@
 				84DCEA871CC4863A009FE977 /* selfCentreViewController.m */,
 				84DCEA891CC4F89B009FE977 /* leftViewController.h */,
 				84DCEA8A1CC4F89B009FE977 /* leftViewController.m */,
+				84D601641CC5D1CB0014D3B5 /* MyMessageViewController.h */,
+				84D601651CC5D1CB0014D3B5 /* MyMessageViewController.m */,
+				84D601671CC5D2EA0014D3B5 /* ContentTableViewCell.h */,
+				84D601681CC5D2EA0014D3B5 /* ContentTableViewCell.m */,
+				84D6016A1CC5D54E0014D3B5 /* detailMessageViewController.h */,
+				84D6016B1CC5D54E0014D3B5 /* detailMessageViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -480,15 +495,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				841998281CC3948B00CF1DCA /* SignInViewController.m in Sources */,
+				84D601691CC5D2EA0014D3B5 /* ContentTableViewCell.m in Sources */,
 				866DE74B1CC21A8F00E3A6FA /* Utilities.m in Sources */,
 				86E1E14B1CC20F6C007741EB /* ViewController.m in Sources */,
 				86E1E1511CC20F6C007741EB /* Learner.xcdatamodeld in Sources */,
 				8419982E1CC39AE900CF1DCA /* TabViewController.m in Sources */,
+				84D601661CC5D1CB0014D3B5 /* MyMessageViewController.m in Sources */,
 				86E1E1481CC20F6C007741EB /* AppDelegate.m in Sources */,
 				86E1E1451CC20F6C007741EB /* main.m in Sources */,
 				2812704D1CC34CC600D347E4 /* HomeViewController.m in Sources */,
 				866DE74A1CC21A8F00E3A6FA /* StorageMgr.m in Sources */,
 				84DCEA8B1CC4F89B009FE977 /* leftViewController.m in Sources */,
+				84D6016C1CC5D54E0014D3B5 /* detailMessageViewController.m in Sources */,
 				84DCEA881CC4863A009FE977 /* selfCentreViewController.m in Sources */,
 				8419982B1CC3973D00CF1DCA /* SignUpViewController.m in Sources */,
 			);
