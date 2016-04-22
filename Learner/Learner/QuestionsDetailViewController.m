@@ -20,6 +20,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"选择题";
+    if (_itemObjects == nil) {
+        _problemLb.text = @"暂无内容";
+    } else {
+    count = 0;
+    [self showItem];
+    }
 
 }
 
@@ -38,9 +44,29 @@
 }
 */
 
+- (void)showItem {
+        PFObject *itemObj = _itemObjects[count];
+        _problemLb.text = itemObj[@"problem"];
+}
+
 - (IBAction)upAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    if (count <= 0) {
+        NSLog(@"到头上了%d",count);
+    } else {
+        count --;
+        [self showItem];
+    }
+    
 }
 
 - (IBAction)downAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    if (count >= _itemObjects.count) {
+        NSLog(@"itemcount = %lu",(unsigned long)_itemObjects.count);
+        NSLog(@"到尾巴了%d",count);
+    } else {
+         count ++;
+        [self showItem];
+    }
+   
 }
 @end

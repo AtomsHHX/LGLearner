@@ -23,7 +23,7 @@ static CGFloat h = 120;
     self.view.backgroundColor = [UIColor whiteColor];
     
     
-    [self demo1];
+    //[self demo1];
 }
 
 -(void)demo1 {

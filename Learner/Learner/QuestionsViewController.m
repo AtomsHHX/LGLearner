@@ -26,6 +26,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _objectForShow = [NSMutableArray new];
+    _itemObjectForShow = [[NSMutableArray alloc] init];
     //菜单筛选
     _subjectArr = @[@"语文",@"数学(文)",@"数学(理)",@"英语",@"物理",@"化学",@"生物",@"历史",@"政治",@"地理"];
     _yearArr = @[@"年份",@"2013",@"2014",@"2015"];
@@ -47,6 +48,7 @@
 
 - (void)requestData:(NSNumber *)subject year:(NSNumber *)year region:(NSString *)region {
     [_objectForShow removeAllObjects];
+    //[_itemObjectForShow removeAllObjects];
     //NSLog(@" %@ %@ %@",subject,year,region);
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type = %@ ",subject];
     PFQuery *query = [PFQuery queryWithClassName:@"Subject" predicate:predicate];
@@ -65,9 +67,20 @@
                 [subQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable subObjects, NSError * _Nullable error) {
                     if (!error) {
                         _objectForShow = [NSMutableArray arrayWithArray:subObjects];
-                        NSLog(@"");
                         [_tableView reloadData];
-                        
+                        for (PFObject *testObj in subObjects) {
+                            PFRelation *relationItem = [testObj relationForKey:@"relationItem"];
+                            PFQuery *testQuery = [relationItem query];
+                            
+                            [testQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable itemObjects, NSError * _Nullable error) {
+                                if (!error) {
+                                    NSLog(@"item = %lu",itemObjects.count);
+                                   // _itemObjectForShow = [NSMutableArray arrayWithArray:itemObjects];
+                                } else {
+                                     NSLog(@"%@",error.description);
+                                }
+                            }];
+                        }
                     } else {
                         NSLog(@"%@",error.description);
                     }
@@ -77,6 +90,51 @@
             NSLog(@"%@",error.description);
         }
     }];
+}
+
+
+//查询题目
+- (void)item:(NSInteger)indexPath {
+    [_itemObjectForShow removeAllObjects];
+    //获取前面筛选后的数据
+    PFObject *testObj = _objectForShow[indexPath];
+        PFRelation *relationItem = [testObj relationForKey:@"relationItem"];
+        PFQuery *testQuery = [relationItem query];
+        
+        [testQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable itemObjects, NSError * _Nullable error) {
+            if (!error) {
+                _itemObjectForShow = [NSMutableArray arrayWithArray:itemObjects];
+                //此处itemObjects可以拿到题目表的数据
+                for (PFObject *itemObj in itemObjects) {
+                    PFRelation *relationOptiion = [itemObj relationForKey:@"relationOption"];
+                    PFQuery *itemQuery1 = [relationOptiion query];
+                    
+                    [itemQuery1 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable optionObjects, NSError * _Nullable error) {
+                        if (!error) {
+                            //此处optionObjects为选择题的选项
+                        } else {
+                            NSLog(@"optionError = %@",error.userInfo);
+                        }
+                        
+                    }];
+                    
+                    //这里是根据relationAnswer字段查到对应的Answer表里的内容
+                    PFRelation *relationAnswer = [itemObj relationForKey:@"relationAnswer"];
+                    PFQuery *itemQuery2 = [relationAnswer query];
+                    [itemQuery2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable answerObjects, NSError * _Nullable error) {
+                        if (!error) {
+                            //此处optionObjects为选择题的选项
+                        } else {
+                            NSLog(@"answerError = %@",error.userInfo);
+                        }
+                        
+                    }];
+                    
+                }
+            } else {
+                NSLog(@"itemError = %@",error.userInfo);
+            }
+        }];
 }
 
 
@@ -152,6 +210,11 @@
     //取消选中
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     QuestionsDetailViewController *QDView = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"QuestionsDetail"];
+    NSLog(@"%@",_itemObjectForShow);
+    if ([_itemObjectForShow isEqual:nil]) {
+        NSLog(@"%@",_itemObjectForShow);
+        QDView.itemObjects = _itemObjectForShow;
+    }
     
     [self.navigationController pushViewController:QDView animated:YES];
 }

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface QuestionsDetailViewController : UIViewController
-//@property (strong, nonatomic) NSArray *itemObjects;
+@property (strong, nonatomic) NSArray *itemObjects;
 //@property (strong, nonatomic) NSArray *optionObjects;
 //@property (strong, nonatomic) NSArray *answerObjects;
 @property (weak, nonatomic) IBOutlet UILabel *problemLb;
