@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>EAIntroView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>EARestrictedScrollView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>ECSlidingViewController.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -27,7 +37,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4C9E99CC2B5F0FA4FC11C2E24D4EF986</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6C9029A2321C9B2F7C691E8F15A0406C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8303FFE08040829E60D1AF3B57F13C95</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D1EC2572C5166CE2498C72FAF128EABE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F56BD389AECEDE0FD45C082899168145</key>
 		<dict>
 			<key>primary</key>
 			<true/>
