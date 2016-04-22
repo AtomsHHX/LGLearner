@@ -30,6 +30,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 -(void)toHome{
     TabViewController *tab = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"tab"];
     _slidingVC.delegate = self;
@@ -77,6 +78,22 @@
     // Pass the selected object to the new view controller.
 }
 */
+//- (void)createRelation {
+//    PFUser *currentUser = [PFUser currentUser];
+//    PFRelation *relationProblem = [currentUser relationForKey:@"relationComment"];
+//    
+//    PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+//        if (!error) {
+//            for (PFObject *obj in objects) {
+//                [relationProblem addObject:obj];
+//                [currentUser saveInBackground];
+//            }
+//        } else {
+//            NSLog(@"%@",error.description);
+//        }
+//    }];
+//}
 //封装登录操作（将重复对代码打包）  //相同的写好 不同的东西以参数对形式传递
 -(void)signInWithUsername:(NSString *)username andPassword:(NSString *)password{
     UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
@@ -85,7 +102,7 @@
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * _Nullable user, NSError * _Nullable error) {
         //登录完成的回调
         //
-        
+        //self.navigationController.view.userInteractionEnabled = NO;
         [avi stopAnimating];
         //判读登录是否成功
         if (user) {
@@ -97,9 +114,9 @@
             //                [Utilities setUserDefaults:@"Password" content:password];
             //            }
             //将密码文本输入框中的内容清除
-            //_passwordTF.text = nil;
+            _passwordTF.text = nil;
             
-            
+            //[self createRelation];
             //跳转到首页
             [self toHome];
         }else{

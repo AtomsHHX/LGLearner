@@ -34,14 +34,14 @@
 }
 */
 
-- (IBAction)VCodeAction:(UIButton *)sender forEvent:(UIEvent *)event {
-}
+
 
 - (IBAction)SignUpAction:(UIButton *)sender forEvent:(UIEvent *)event {
     NSString *username = _username.text;
     NSString *password = _password.text;
+    NSString *email = _Vcode.text;
     NSString *confirmPwd = _conformpassword.text;
-    if (username.length == 0 || password.length == 0 || confirmPwd.length == 0) {
+    if (username.length == 0 || email.length == 0 || password.length == 0 || confirmPwd.length == 0) {
         [Utilities popUpAlertViewWithMsg:@"请补充完整所有信息" andTitle:nil onView:self];
         //阻止后面的代码执行
         return;
@@ -51,9 +51,8 @@
         return;
     }
     PFObject *info = [PFObject objectWithClassName:@"Info"];
-    //初始化贪婪币和出售限制
-    info[@"greedCoin"] = @10000;
-    info[@"saleLimtation"] = @5;
+    
+    
     
     
     //在parse自带的User表中新建一行
@@ -61,6 +60,7 @@
     //设置用户名和邮箱和密码
     user.username = username;
     user.password = password;
+    user.email  = email;
     user[@"info"] = info;
     
     //让导航条失去交互能力
@@ -88,7 +88,7 @@
             _password.text = nil;
             _password.text = nil;
             _conformpassword.text = nil;
-            
+            _Vcode.text = nil;
             //回到登陆页面
             
             [self.navigationController popToRootViewControllerAnimated:YES];

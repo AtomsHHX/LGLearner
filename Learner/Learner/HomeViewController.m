@@ -21,7 +21,7 @@ static CGFloat h = 120;
     _headView.backgroundColor = [UIColor blueColor];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    _tableView.tableFooterView = [UIView new];
     
     //[self demo1];
 }

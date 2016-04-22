@@ -8,8 +8,11 @@
 
 #import "selfCentreViewController.h"
 
-@interface selfCentreViewController ()<UITextFieldDelegate>
+@interface selfCentreViewController ()<UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (strong, nonatomic) NSString *Name;
+@property (weak, nonatomic) IBOutlet UIButton *imageBtn;
+
+@property (strong, nonatomic) UIImagePickerController *imagePicker;
 @end
 
 @implementation selfCentreViewController
@@ -22,6 +25,7 @@
     _nicknameTF.delegate = self;
     [NSNotificationCenter defaultCenter];
     [_segment addTarget:self action:@selector(choice:) forControlEvents:UIControlEventValueChanged];
+    [_imageBtn addTarget:self action:@selector(headPhoto:forEvent:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -104,8 +108,48 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(nonnull NSDictionary<NSString *,id> *)info{
+    UIImage *image = info[UIImagePickerControllerEditedImage];
+    //设置前景图和背景图
+    //[_imageButton setBackgroundImage:image forState:UIControlStateNormal];
+    [_imageBtn setImage:image forState:UIControlStateNormal];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)pickImage:(UIImagePickerControllerSourceType)sourceType{
+    NSLog(@"拿到了");
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        _imagePicker = nil;
+        _imagePicker = [UIImagePickerController new];
+        _imagePicker.delegate =self;
+        _imagePicker.sourceType = sourceType;
+        _imagePicker.allowsEditing = YES;
+        //_imagePicker.mediaTypes = @[(NSString *)kUnknownType];
+        [self presentViewController:_imagePicker animated:YES completion:nil];
+        
+    }else{
+        UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:sourceType == UIImagePickerControllerSourceTypeCamera ? @"当前设备没有照相功能" : @"当前设备无法打开相册 " preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleCancel handler:nil];
+        [alertView addAction:confirmAction];
+        [self presentViewController:alertView animated:YES completion:nil];
+    }
+    
+}
 - (IBAction)headPhoto:(UIButton *)sender forEvent:(UIEvent *)event {
+    NSLog(@"选到图片了");
+    
+    UIAlertController *actionsheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *takephoto = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self pickImage:UIImagePickerControllerSourceTypeCamera];
+    }];
+    
+    UIAlertAction *choosePhoto = [UIAlertAction actionWithTitle:@"选择图片" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self pickImage:UIImagePickerControllerSourceTypePhotoLibrary];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [actionsheet addAction:takephoto];
+    [actionsheet addAction:choosePhoto];
+    [actionsheet addAction:cancelAction];
+    [self presentViewController:actionsheet animated:YES completion:nil];
     
     
 }

@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UITextField *conformpassword;
 @property (weak, nonatomic) IBOutlet UITextField *Vcode;
-- (IBAction)VCodeAction:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)SignUpAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
 @end

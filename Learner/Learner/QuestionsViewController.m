@@ -9,7 +9,9 @@
 #import "QuestionsViewController.h"
 #import "DOPDropDownMenu.h"
 #import "QuestionsDetailViewController.h"
-@interface QuestionsViewController () <DOPDropDownMenuDataSource,DOPDropDownMenuDelegate>
+@interface QuestionsViewController () <DOPDropDownMenuDataSource,DOPDropDownMenuDelegate> {
+    BOOL flag;
+}
 @property (nonatomic, copy) NSArray *subjectArr;
 @property (nonatomic, copy) NSArray *yearArr;
 @property (nonatomic, copy) NSArray *regionArr;
@@ -26,7 +28,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _objectForShow = [NSMutableArray new];
-    _itemObjectForShow = [[NSMutableArray alloc] init];
+    flag = NO;
+    //_itemObjectForShow = [[NSMutableArray alloc] init];
     //菜单筛选
     _subjectArr = @[@"语文",@"数学(文)",@"数学(理)",@"英语",@"物理",@"化学",@"生物",@"历史",@"政治",@"地理"];
     _yearArr = @[@"年份",@"2013",@"2014",@"2015"];
@@ -47,55 +50,31 @@
 }
 
 - (void)requestData:(NSNumber *)subject year:(NSNumber *)year region:(NSString *)region {
-    [_objectForShow removeAllObjects];
-    //[_itemObjectForShow removeAllObjects];
-    //NSLog(@" %@ %@ %@",subject,year,region);
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type = %@ ",subject];
-    PFQuery *query = [PFQuery queryWithClassName:@"Subject" predicate:predicate];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+    PFQuery *query1 = [PFQuery queryWithClassName:@"Test"];
+    if (subject != nil) {
+        [query1 whereKey:@"subject" equalTo:subject];
+    }
+    if (year != nil) {
+        [query1 whereKey:@"year" equalTo:year];
+    }
+    if (region != nil) {
+        [query1 whereKey:@"region" equalTo:region];
+    }
+    [query1 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (!error) {
-            for (PFObject *object in objects) {
-                PFRelation *relation = [object relationForKey:@"relationTest"];
-                PFQuery *subQuery = [relation query];
-                if (year != nil) {
-                    [subQuery whereKey:@"year" equalTo:year];
-                }
-                if (region != nil) {
-
-                    [subQuery whereKey:@"region" equalTo:region];
-                }
-                [subQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable subObjects, NSError * _Nullable error) {
-                    if (!error) {
-                        _objectForShow = [NSMutableArray arrayWithArray:subObjects];
-                        [_tableView reloadData];
-                        for (PFObject *testObj in subObjects) {
-                            PFRelation *relationItem = [testObj relationForKey:@"relationItem"];
-                            PFQuery *testQuery = [relationItem query];
-                            
-                            [testQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable itemObjects, NSError * _Nullable error) {
-                                if (!error) {
-                                    NSLog(@"item = %lu",itemObjects.count);
-                                   // _itemObjectForShow = [NSMutableArray arrayWithArray:itemObjects];
-                                } else {
-                                     NSLog(@"%@",error.description);
-                                }
-                            }];
-                        }
-                    } else {
-                        NSLog(@"%@",error.description);
-                    }
-                }];
-            }
+            _objectForShow = [NSMutableArray arrayWithArray:objects];
+            NSLog(@"%@",_objectForShow);
+            [_tableView reloadData];
+            
         } else {
             NSLog(@"%@",error.description);
         }
     }];
 }
 
-
 //查询题目
 - (void)item:(NSInteger)indexPath {
-    [_itemObjectForShow removeAllObjects];
+    //[_itemObjectForShow removeAllObjects];
     //获取前面筛选后的数据
     PFObject *testObj = _objectForShow[indexPath];
         PFRelation *relationItem = [testObj relationForKey:@"relationItem"];
@@ -103,7 +82,9 @@
         
         [testQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable itemObjects, NSError * _Nullable error) {
             if (!error) {
-                _itemObjectForShow = [NSMutableArray arrayWithArray:itemObjects];
+                _itemObjectForShow = itemObjects;
+                 flag = YES;
+                NSLog(@"item  = %@",itemObjects);
                 //此处itemObjects可以拿到题目表的数据
                 for (PFObject *itemObj in itemObjects) {
                     PFRelation *relationOptiion = [itemObj relationForKey:@"relationOption"];
@@ -135,6 +116,8 @@
                 NSLog(@"itemError = %@",error.userInfo);
             }
         }];
+   
+    
 }
 
 
@@ -210,13 +193,16 @@
     //取消选中
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     QuestionsDetailViewController *QDView = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"QuestionsDetail"];
-    NSLog(@"%@",_itemObjectForShow);
-    if ([_itemObjectForShow isEqual:nil]) {
-        NSLog(@"%@",_itemObjectForShow);
-        QDView.itemObjects = _itemObjectForShow;
-    }
+          NSLog(@"%@",_itemObjectForShow);
+    [self item:indexPath.row];
     
-    [self.navigationController pushViewController:QDView animated:YES];
+    if (flag) {
+        if (_itemObjectForShow.count != 0) {
+            QDView.itemObjects = _itemObjectForShow;
+        }
+         [self.navigationController pushViewController:QDView animated:YES];
+    }
+   
 }
 /*
 #pragma mark - Navigation

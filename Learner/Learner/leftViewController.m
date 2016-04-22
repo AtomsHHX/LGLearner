@@ -7,9 +7,11 @@
 //
 
 #import "leftViewController.h"
-
+#import "AppDelegate.h"
 @interface leftViewController ()
+@property (strong ,nonatomic) NSMutableArray *objectForShow;
 
+@property(nonatomic,strong)UIView *darkView;
 @end
 
 @implementation leftViewController
@@ -17,6 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _objectForShow = [NSMutableArray new];
+    [self.objectForShow addObjectsFromArray: @[@"夜间模式"]];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,7 +38,27 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+- (void)changeValue:(UISwitch *)swi
+{
+    if (swi.on) {
+        //添加半透明view到window上
+        UIApplication * app = [UIApplication sharedApplication];
+        AppDelegate *delegate = (AppDelegate *) app.delegate;
+        _darkView = [[UIView alloc]initWithFrame:self.view.frame];
+        //设置view的背景色
+        _darkView.backgroundColor = [UIColor blackColor];
+        _darkView.alpha = 0.3;
+        //关闭view的用户交互(响应者链)
+        _darkView.userInteractionEnabled = NO;
+        [delegate.window addSubview:_darkView];
+        
+    }
+    else
+    {
+        [_darkView removeFromSuperview];
+    }
+    
+}
 - (IBAction)clearAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 
