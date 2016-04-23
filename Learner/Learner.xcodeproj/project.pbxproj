@@ -38,6 +38,11 @@
 		86E1E16C1CC20F6C007741EB /* LearnerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E16B1CC20F6C007741EB /* LearnerUITests.m */; };
 		A3838D0A1CC6002700D5185B /* QuestionsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3838D091CC6002700D5185B /* QuestionsDetailViewController.m */; };
 		DA061FFF8E562637A5662AE7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF382AC1A64A93EDC5B27703 /* libPods.a */; };
+		EB54E5FE1CCB722E00CEE4D2 /* KSGuideManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB54E5FD1CCB722E00CEE4D2 /* KSGuideManager.m */; };
+		EB54E6031CCB728400CEE4D2 /* 001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB54E5FF1CCB728400CEE4D2 /* 001.jpg */; };
+		EB54E6041CCB728400CEE4D2 /* 002.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB54E6001CCB728400CEE4D2 /* 002.jpg */; };
+		EB54E6051CCB728400CEE4D2 /* 003.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB54E6011CCB728400CEE4D2 /* 003.jpg */; };
+		EB54E6061CCB728400CEE4D2 /* 004.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB54E6021CCB728400CEE4D2 /* 004.jpg */; };
 		EB5C71931CC5E76300F7F219 /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5C71921CC5E76300F7F219 /* QuestionsViewController.m */; };
 		EB5C719A1CC5E7FA00F7F219 /* DOPDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5C71961CC5E7FA00F7F219 /* DOPDropDownMenu.m */; };
 		EB5C719B1CC5E7FA00F7F219 /* icon_chose_arrow_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5C71971CC5E7FA00F7F219 /* icon_chose_arrow_nor@2x.png */; };
@@ -120,6 +125,12 @@
 		A3838D091CC6002700D5185B /* QuestionsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionsDetailViewController.m; sourceTree = "<group>"; };
 		BF382AC1A64A93EDC5B27703 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB1523B65CD51C8DAED3FA24 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EB54E5FC1CCB722E00CEE4D2 /* KSGuideManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSGuideManager.h; sourceTree = "<group>"; };
+		EB54E5FD1CCB722E00CEE4D2 /* KSGuideManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSGuideManager.m; sourceTree = "<group>"; };
+		EB54E5FF1CCB728400CEE4D2 /* 001.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 001.jpg; sourceTree = "<group>"; };
+		EB54E6001CCB728400CEE4D2 /* 002.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 002.jpg; sourceTree = "<group>"; };
+		EB54E6011CCB728400CEE4D2 /* 003.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 003.jpg; sourceTree = "<group>"; };
+		EB54E6021CCB728400CEE4D2 /* 004.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 004.jpg; sourceTree = "<group>"; };
 		EB5C71911CC5E76300F7F219 /* QuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsViewController.h; sourceTree = "<group>"; };
 		EB5C71921CC5E76300F7F219 /* QuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionsViewController.m; sourceTree = "<group>"; };
 		EB5C71951CC5E7FA00F7F219 /* DOPDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOPDropDownMenu.h; sourceTree = "<group>"; };
@@ -208,6 +219,7 @@
 		866DE7441CC219A700E3A6FA /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				EB54E5FB1CCB71FD00CEE4D2 /* KSGuide */,
 				EB5C71B41CC6256000F7F219 /* DCPicscrollView */,
 				EB5C71941CC5E7CB00F7F219 /* DOPDropDownMenu - Enhanced */,
 			);
@@ -335,6 +347,19 @@
 				BF382AC1A64A93EDC5B27703 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EB54E5FB1CCB71FD00CEE4D2 /* KSGuide */ = {
+			isa = PBXGroup;
+			children = (
+				EB54E5FF1CCB728400CEE4D2 /* 001.jpg */,
+				EB54E6001CCB728400CEE4D2 /* 002.jpg */,
+				EB54E6011CCB728400CEE4D2 /* 003.jpg */,
+				EB54E6021CCB728400CEE4D2 /* 004.jpg */,
+				EB54E5FC1CCB722E00CEE4D2 /* KSGuideManager.h */,
+				EB54E5FD1CCB722E00CEE4D2 /* KSGuideManager.m */,
+			);
+			name = KSGuide;
 			sourceTree = "<group>";
 		};
 		EB5C71941CC5E7CB00F7F219 /* DOPDropDownMenu - Enhanced */ = {
@@ -469,9 +494,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB54E6051CCB728400CEE4D2 /* 003.jpg in Resources */,
+				EB54E6041CCB728400CEE4D2 /* 002.jpg in Resources */,
 				86E1E1561CC20F6C007741EB /* LaunchScreen.storyboard in Resources */,
 				EB5C719C1CC5E7FA00F7F219 /* icon_chose_arrow_sel@2x.png in Resources */,
 				86E1E1531CC20F6C007741EB /* Assets.xcassets in Resources */,
+				EB54E6031CCB728400CEE4D2 /* 001.jpg in Resources */,
+				EB54E6061CCB728400CEE4D2 /* 004.jpg in Resources */,
 				EB5C719D1CC5E7FA00F7F219 /* icon_chose_bottom@2x.png in Resources */,
 				EB5C719B1CC5E7FA00F7F219 /* icon_chose_arrow_nor@2x.png in Resources */,
 				86E1E14E1CC20F6C007741EB /* Main.storyboard in Resources */,
@@ -556,6 +585,7 @@
 				8419982E1CC39AE900CF1DCA /* TabViewController.m in Sources */,
 				A3838D0A1CC6002700D5185B /* QuestionsDetailViewController.m in Sources */,
 				84D601661CC5D1CB0014D3B5 /* MyMessageViewController.m in Sources */,
+				EB54E5FE1CCB722E00CEE4D2 /* KSGuideManager.m in Sources */,
 				86E1E1481CC20F6C007741EB /* AppDelegate.m in Sources */,
 				86E1E1451CC20F6C007741EB /* main.m in Sources */,
 				2812704D1CC34CC600D347E4 /* HomeViewController.m in Sources */,
