@@ -9,9 +9,7 @@
 #import "QuestionsViewController.h"
 #import "DOPDropDownMenu.h"
 #import "QuestionsDetailViewController.h"
-@interface QuestionsViewController () <DOPDropDownMenuDataSource,DOPDropDownMenuDelegate> {
-    BOOL flag;
-}
+@interface QuestionsViewController () <DOPDropDownMenuDataSource,DOPDropDownMenuDelegate>
 @property (nonatomic, copy) NSArray *subjectArr;
 @property (nonatomic, copy) NSArray *yearArr;
 @property (nonatomic, copy) NSArray *regionArr;
@@ -28,7 +26,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _objectForShow = [NSMutableArray new];
-    flag = NO;
     //_itemObjectForShow = [[NSMutableArray alloc] init];
     //菜单筛选
     _subjectArr = @[@"语文",@"数学(文)",@"数学(理)",@"英语",@"物理",@"化学",@"生物",@"历史",@"政治",@"地理"];
@@ -83,8 +80,12 @@
         [testQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable itemObjects, NSError * _Nullable error) {
             if (!error) {
                 _itemObjectForShow = itemObjects;
-                 flag = YES;
-                NSLog(@"item  = %@",itemObjects);
+                 QuestionsDetailViewController *QDView = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"QuestionsDetail"];
+                if (_itemObjectForShow.count != 0) {
+                    QDView.itemObjects = _itemObjectForShow;
+                }
+                [self.navigationController pushViewController:QDView animated:YES];
+               // NSLog(@"item  = %@",itemObjects);
                 //此处itemObjects可以拿到题目表的数据
                 for (PFObject *itemObj in itemObjects) {
                     PFRelation *relationOptiion = [itemObj relationForKey:@"relationOption"];
@@ -192,16 +193,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     //取消选中
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    QuestionsDetailViewController *QDView = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"QuestionsDetail"];
-          NSLog(@"%@",_itemObjectForShow);
-    [self item:indexPath.row];
+    //QuestionsDetailViewController *QDView = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"QuestionsDetail"];
+          //NSLog(@"%@",_itemObjectForShow);
+      [self item:indexPath.row];
     
-    if (flag) {
-        if (_itemObjectForShow.count != 0) {
-            QDView.itemObjects = _itemObjectForShow;
-        }
-         [self.navigationController pushViewController:QDView animated:YES];
-    }
+   
+//        if (_itemObjectForShow.count != 0) {
+//            QDView.itemObjects = _itemObjectForShow;
+//        }
+//         [self.navigationController pushViewController:QDView animated:YES];
+
    
 }
 /*
