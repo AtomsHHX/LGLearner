@@ -4,20 +4,41 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>EAIntroView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>EARestrictedScrollView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>ECSlidingViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>SDCycleScrollView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -27,7 +48,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>22B2D116147242D13C24219BA0969708</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4C9E99CC2B5F0FA4FC11C2E24D4EF986</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6C9029A2321C9B2F7C691E8F15A0406C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8E3FF148E509C7AC0686E8F327BCF8FA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9711DD16545C4DF0E08CFDF3E2A60BB7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D1EC2572C5166CE2498C72FAF128EABE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

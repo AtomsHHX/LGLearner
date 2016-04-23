@@ -16,6 +16,9 @@
 		84D6016C1CC5D54E0014D3B5 /* detailMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6016B1CC5D54E0014D3B5 /* detailMessageViewController.m */; };
 		84DCEA881CC4863A009FE977 /* selfCentreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DCEA871CC4863A009FE977 /* selfCentreViewController.m */; };
 		84DCEA8B1CC4F89B009FE977 /* leftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DCEA8A1CC4F89B009FE977 /* leftViewController.m */; };
+		862A644A1CCB64C900935E77 /* ProblemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 862A64491CCB64C900935E77 /* ProblemViewController.m */; };
+		862A644D1CCB660000935E77 /* ProblemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 862A644C1CCB660000935E77 /* ProblemTableViewCell.m */; };
+		862A64501CCB701200935E77 /* AskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 862A644F1CCB701200935E77 /* AskViewController.m */; };
 		866DE74A1CC21A8F00E3A6FA /* StorageMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 866DE7471CC21A8F00E3A6FA /* StorageMgr.m */; };
 		866DE74B1CC21A8F00E3A6FA /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 866DE7491CC21A8F00E3A6FA /* Utilities.m */; };
 		866DE74E1CC21AFC00E3A6FA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866DE74D1CC21AFC00E3A6FA /* Bolts.framework */; };
@@ -84,6 +87,12 @@
 		84DCEA871CC4863A009FE977 /* selfCentreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = selfCentreViewController.m; sourceTree = "<group>"; };
 		84DCEA891CC4F89B009FE977 /* leftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = leftViewController.h; sourceTree = "<group>"; };
 		84DCEA8A1CC4F89B009FE977 /* leftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = leftViewController.m; sourceTree = "<group>"; };
+		862A64481CCB64C900935E77 /* ProblemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProblemViewController.h; sourceTree = "<group>"; };
+		862A64491CCB64C900935E77 /* ProblemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProblemViewController.m; sourceTree = "<group>"; };
+		862A644B1CCB660000935E77 /* ProblemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProblemTableViewCell.h; sourceTree = "<group>"; };
+		862A644C1CCB660000935E77 /* ProblemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProblemTableViewCell.m; sourceTree = "<group>"; };
+		862A644E1CCB701200935E77 /* AskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskViewController.h; sourceTree = "<group>"; };
+		862A644F1CCB701200935E77 /* AskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskViewController.m; sourceTree = "<group>"; };
 		866DE7461CC21A8F00E3A6FA /* StorageMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageMgr.h; sourceTree = "<group>"; };
 		866DE7471CC21A8F00E3A6FA /* StorageMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageMgr.m; sourceTree = "<group>"; };
 		866DE7481CC21A8F00E3A6FA /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
@@ -241,6 +250,12 @@
 				EB5C71921CC5E76300F7F219 /* QuestionsViewController.m */,
 				A3838D081CC6002700D5185B /* QuestionsDetailViewController.h */,
 				A3838D091CC6002700D5185B /* QuestionsDetailViewController.m */,
+				862A64481CCB64C900935E77 /* ProblemViewController.h */,
+				862A64491CCB64C900935E77 /* ProblemViewController.m */,
+				862A644B1CCB660000935E77 /* ProblemTableViewCell.h */,
+				862A644C1CCB660000935E77 /* ProblemTableViewCell.m */,
+				862A644E1CCB701200935E77 /* AskViewController.h */,
+				862A644F1CCB701200935E77 /* AskViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -553,6 +568,7 @@
 				86E1E14B1CC20F6C007741EB /* ViewController.m in Sources */,
 				86E1E1511CC20F6C007741EB /* Learner.xcdatamodeld in Sources */,
 				EB5C719A1CC5E7FA00F7F219 /* DOPDropDownMenu.m in Sources */,
+				862A644A1CCB64C900935E77 /* ProblemViewController.m in Sources */,
 				8419982E1CC39AE900CF1DCA /* TabViewController.m in Sources */,
 				A3838D0A1CC6002700D5185B /* QuestionsDetailViewController.m in Sources */,
 				84D601661CC5D1CB0014D3B5 /* MyMessageViewController.m in Sources */,
@@ -562,7 +578,9 @@
 				866DE74A1CC21A8F00E3A6FA /* StorageMgr.m in Sources */,
 				EB5C71BA1CC6257D00F7F219 /* DCWebImageManager.m in Sources */,
 				84DCEA8B1CC4F89B009FE977 /* leftViewController.m in Sources */,
+				862A64501CCB701200935E77 /* AskViewController.m in Sources */,
 				84D6016C1CC5D54E0014D3B5 /* detailMessageViewController.m in Sources */,
+				862A644D1CCB660000935E77 /* ProblemTableViewCell.m in Sources */,
 				84DCEA881CC4863A009FE977 /* selfCentreViewController.m in Sources */,
 				EB5C71931CC5E76300F7F219 /* QuestionsViewController.m in Sources */,
 				8419982B1CC3973D00CF1DCA /* SignUpViewController.m in Sources */,
