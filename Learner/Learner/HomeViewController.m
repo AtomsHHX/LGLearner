@@ -7,55 +7,35 @@
 //
 
 #import "HomeViewController.h"
-#import "DCPicScrollView.h"
-#import "DCWebImageManager.h"
+#import "SDCycleScrollView.h"
 
-@interface HomeViewController ()
+@interface HomeViewController ()<SDCycleScrollViewDelegate>
 
 @end
-static CGFloat h = 120;
 @implementation HomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _headView.backgroundColor = [UIColor blueColor];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
+    //self.view.backgroundColor = [UIColor whiteColor];
     _tableView.tableFooterView = [UIView new];
-    
-    //[self demo1];
-}
+    // 情景一：采用本地图片实现
+    NSArray *imageNames = @[@"1.jpg",
+                            @"2.jpg",
+                            @"3.jpg",
+                            @"4.jpg",
+                            ];
+   // CGFloat w = self.view.bounds.size.width;
+    // 本地加载 --- 创建不带标题的图片轮播器
+    SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, UI_SCREEN_W, 180) shouldInfiniteLoop:YES imageNamesGroup:imageNames];
+    cycleScrollView.delegate = self;
+    cycleScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
+    [_scrollView addSubview:cycleScrollView];
+    cycleScrollView.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    //         --- 轮播时间间隔，默认1.0秒，可自定义
+    //cycleScrollView.autoScrollTimeInterval = 4.0;
 
--(void)demo1 {
     
-    NSMutableArray *arr2 = [[NSMutableArray alloc] init];
-    
-    NSMutableArray *arr3 = [[NSMutableArray alloc] init];
-    
-    for (int i = 1; i < 8; i++) {
-        [arr2 addObject:[NSString stringWithFormat:@"%d.jpg",i]];
-        [arr3 addObject:[NSString stringWithFormat:@"我是第%d张图片啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊",i]];
-    };
-    
-    
-    /*
-     靠下坐标
-     DCPicScrollView  *picView1 = [DCPicScrollView picScrollViewWithFrame:CGRectMake(0,self.view.frame.size.height - h*2,self.view.frame.size.width, h) WithImageUrls:arr2];
-     */
-    //置顶坐标
-    
-    DCPicScrollView  *picView1 = [DCPicScrollView picScrollViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, h * 2) WithImageUrls:arr2];
-    
-    picView1.titleData = arr3;
-    
-    picView1.backgroundColor = [UIColor clearColor];
-    [picView1 setImageViewDidTapAtIndex:^(NSInteger index) {
-        printf("你点到我了😳index:%zd\n",index);
-    }];
-    
-    picView1.AutoScrollDelay = 2.0f;
-    
-    [self.view addSubview:picView1];
 }
 
 

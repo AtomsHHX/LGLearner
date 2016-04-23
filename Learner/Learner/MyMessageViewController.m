@@ -26,26 +26,29 @@
     _objectsForShow = [NSMutableArray new];
     _oneShow = [NSMutableArray new];
     _twoShow = [NSMutableArray new];
-    [self selectProblem];
+    [self getProblem];
     [_messageSegment addTarget:self action:@selector(change:) forControlEvents:UIControlEventValueChanged];
 }
 - (void)change:(UISegmentedControl *)segmentedControl {
-    [self selectProblem];
-    //    if (segmentedControl.selectedSegmentIndex == 0) {
-    //        _forShow = _oneShow;
-    //    } else {
-    //        _forShow = _twoShow;
-    //    }
+        if (segmentedControl.selectedSegmentIndex == 0) {
+            [self getProblem];
+        } else {
+            [self getAnwser];
+        }
     
 }
 //根据用户名获取到当前用户有关的问题和回答
 - (void)getProblem{
+   // [_oneShow removeAllObjects];
     //拿到当前登录的用户
     PFUser *currentUser = [PFUser currentUser];
     PFRelation *relationProblem = [currentUser relationForKey:@"relationProblem"];
     PFQuery *query = [relationProblem query];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myProblemObjects, NSError * _Nullable error) {
         if (!error) {
+            _forShow = myProblemObjects;
+           // NSLog(@"%@",_forShow);
+            [_tableView reloadData];
             //可拿到该用户所有的问题，对每条问题遍历（如果每条问题对应的relationComment字段里面有数据(或者数据更新了)，说明有人回复了）
             for (PFObject *myProblemObj in myProblemObjects) {
                 PFRelation *relationComment = myProblemObj[@"relationComment"];
@@ -64,12 +67,15 @@
     }];
 }
 - (void)getAnwser{
+    //[_twoShow removeAllObjects];
     //拿到当前登录的用户
     PFUser *currentUser = [PFUser currentUser];
     PFRelation *relationComment = [currentUser relationForKey:@"relationComment"];
     PFQuery *query = [relationComment query];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myCommentObjects, NSError * _Nullable error) {
         if (!error) {
+            _forShow = myCommentObjects;
+            [_tableView reloadData];
             //可拿到该用户所有的评论，对每条评论遍历（如果每条评论对应的relationAdditionalComment字段里面有数据，说明有人回复了）
             for (PFObject *myCommentObj in myCommentObjects) {
                 PFRelation *relationAdditionalComment = myCommentObj[@"relationAdditionalComment"];
@@ -122,26 +128,16 @@
     // Dispose of any resources that can be recreated.
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return _forShow.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-   // PFObject *obj = _objectsForShow[indexPath.row];
-//    NSString *name = obj[@"name"];
-//    cell.textLabel.text = name;
-//    PFUser *currentUser = [PFUser currentUser];
-//    NSString *imageString = [NSString stringWithFormat:@"%@",currentUser.username];//用户头像
-//    NSURL *url = [[NSURL alloc] initWithString:imageString];
-//    NSData *data =[[NSData alloc] initWithContentsOfURL:url];
-//    UIImage *image = [[UIImage alloc] initWithData:data];
-           PFObject *obj = _oneShow[indexPath.row];
-        cell.textLabel.text =  obj[@"title"];
-        NSLog(@"%@",obj[@"title"]);
-   
-//        PFObject *obj = _twoShow[indexPath.row];
-//        cell.textLabel.text =  obj[@"content"];
-//        NSLog(@"%@",obj[@"content"]);
-  
+     PFObject *obj = _forShow[indexPath.row];
+    if (_messageSegment.selectedSegmentIndex == 0) {
+        cell.textLabel.text = obj[@"title"];
+    } else {
+        cell.textLabel.text = obj[@"content"];
+    }
     
     return cell;
 }
