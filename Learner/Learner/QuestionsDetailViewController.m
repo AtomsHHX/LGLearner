@@ -7,11 +7,13 @@
 //
 
 #import "QuestionsDetailViewController.h"
+#import "UIView+SDAutoLayout.h"
 
 @interface QuestionsDetailViewController () {
     int count;
 }
-
+//@property (strong , nonatomic) UILabel *problemLb;
+//@property (strong , nonatomic) UIView *headerView;
 @end
 
 @implementation QuestionsDetailViewController
@@ -19,25 +21,84 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _optionObjectForShow = [NSMutableArray new];
     self.navigationItem.title = @"选择题";
-    [_tableView beginUpdates];
-    _problemLb.text = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@",@"ad",@"aa",@"ad",@"ad",@"ad",@"ad",@"ad",@"ad"];
-    CGRect newFrame = _problemLb.frame;
-    NSLog(@"%f",newFrame.size.height);
-    _headerView.frame = newFrame;
-    [_tableView setTableHeaderView:_headerView];
-    [_tableView endUpdates];
-    //    if (_itemObjects == nil) {
-//        _problemLb.text = @"暂无内容";
-//    } else {
-//    count = 0;
-//    [self showItem];
-//    }
+    [self item];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+//查询题目
+- (void)item {
+    PFRelation *relationItem = [_testObj relationForKey:@"relationItem"];
+    PFQuery *testQuery = [relationItem query];
+    //[testQuery includeKey:@"pointerItemType"];
+    //[testQuery whereKey:@"type" equalTo:_itemType];
+    
+    [testQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable itemObjects, NSError * _Nullable error) {
+        if (!error) {
+           // NSLog(@"itob = %@",itemObjects);
+            _itemObjectForShow = itemObjects;
+            [self showOption];
+            if (_itemObjectForShow == nil) {
+                _problemLb.text = @"暂无内容";
+            } else {
+                count = 0;
+                [self showItem];
+            }
+        } else {
+            NSLog(@"itemError = %@",error.userInfo);
+        }
+    }];
+}
+
+- (void)showItem {
+    
+    PFObject *itemObj = _itemObjectForShow[count];
+    NSString *itemStr = itemObj[@"problem"];
+    NSLog(@"%@",itemStr);
+    CGSize maxSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width - 30, 1000);
+    CGSize contentLabelSize = [itemStr boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:_problemLb.font} context:nil].size;
+    _headerView.height = contentLabelSize.height ;
+    _tableView.tableHeaderView = _headerView;
+    _problemLb.text = itemStr;
+    //_problemLb.sd_layout.autoHeightRatio(0);
+}
+
+- (void)showOption {
+    [_optionObjectForShow removeAllObjects];
+    //此处itemObjects可以拿到题目表的数据
+    PFObject *itemObj = _itemObjectForShow[count];
+    PFRelation *relationOptiion = [itemObj relationForKey:@"relationOption"];
+    PFQuery *itemQuery1 = [relationOptiion query];
+    [itemQuery1 orderByAscending:@"content"];
+    [itemQuery1 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable optionObjects, NSError * _Nullable error) {
+        if (!error) {
+            _optionObjectForShow = [NSMutableArray arrayWithArray:optionObjects];;
+            [_tableView reloadData];
+                //此处optionObjects为选择题的选项
+        } else {
+                NSLog(@"optionError = %@",error.userInfo);
+        }
+            
+    }];
+        
+    //这里是根据relationAnswer字段查到对应的Answer表里的内容
+    PFRelation *relationAnswer = [itemObj relationForKey:@"relationAnswer"];
+    PFQuery *itemQuery2 = [relationAnswer query];
+    [itemQuery2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable answerObjects, NSError * _Nullable error) {
+        if (!error) {
+                //此处optionObjects为选择题的答案
+        } else {
+                NSLog(@"answerError = %@",error.userInfo);
+        }
+            
+    }];
 }
 
 /*
@@ -50,17 +111,6 @@
 }
 */
 
-//- (void)showItem {
-//    PFObject *itemObj = _itemObjects[count];
-//    _problemLb.text = itemObj[@"problem"];
-//    if (_optionObjects == nil) {
-//        _optionALb.text = @"暂无内容";
-//    } else {
-//        [self showOption];
-//    }
-//
-//
-//}
 //
 //- (void)showOption {
 //   // NSLog(@"%@",_optionObjects);
@@ -94,4 +144,27 @@
 //    }
 //   
 //}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _optionObjectForShow.count;
+}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    
+//    return 10;
+//}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    PFObject * obj = _optionObjectForShow[indexPath.row];
+    cell.textLabel.text = obj[@"content"];
+    NSLog(@"%@",obj[@"content"]);
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    //取消选中
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
+
+
 @end

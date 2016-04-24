@@ -1218,28 +1218,28 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="67q-i9-aQa">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="q0B-QX-qOZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="hLO-hP-9TO">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IE0-sg-CN0">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v92-LX-C8f">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.65206121240000003" green="1" blue="0.25448115609999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="IE0-sg-CN0" secondAttribute="trailing" id="Mze-vo-gwd"/>
-                                        <constraint firstAttribute="bottom" secondItem="IE0-sg-CN0" secondAttribute="bottom" id="Pm3-2c-m2z"/>
-                                        <constraint firstItem="IE0-sg-CN0" firstAttribute="top" secondItem="q0B-QX-qOZ" secondAttribute="top" id="bql-EX-ZCo"/>
-                                        <constraint firstItem="IE0-sg-CN0" firstAttribute="leading" secondItem="q0B-QX-qOZ" secondAttribute="leading" id="zfv-sj-TwQ"/>
+                                        <constraint firstItem="v92-LX-C8f" firstAttribute="leading" secondItem="hLO-hP-9TO" secondAttribute="leading" id="XD8-yp-Spw"/>
+                                        <constraint firstAttribute="bottom" secondItem="v92-LX-C8f" secondAttribute="bottom" id="eRD-2k-MO8"/>
+                                        <constraint firstAttribute="trailing" secondItem="v92-LX-C8f" secondAttribute="trailing" id="h1i-g3-DRb"/>
+                                        <constraint firstItem="v92-LX-C8f" firstAttribute="top" secondItem="hLO-hP-9TO" secondAttribute="top" id="jg9-MP-2mH"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="qdl-If-Ny4">
-                                        <rect key="frame" x="0.0" y="112" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="qdl-If-Ny4">
+                                        <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qdl-If-Ny4" id="PBE-Nz-ft0">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1247,6 +1247,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="OYw-8N-6q8" id="xRd-7B-0og"/>
+                                    <outlet property="delegate" destination="OYw-8N-6q8" id="Cew-nk-8sN"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1259,8 +1263,8 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="headerView" destination="q0B-QX-qOZ" id="1w7-Ns-5Ih"/>
-                        <outlet property="problemLb" destination="IE0-sg-CN0" id="GG3-UK-AHk"/>
+                        <outlet property="headerView" destination="hLO-hP-9TO" id="fz6-vU-gaC"/>
+                        <outlet property="problemLb" destination="v92-LX-C8f" id="ZWa-5s-0Fa"/>
                         <outlet property="tableView" destination="67q-i9-aQa" id="wuQ-PZ-YvA"/>
                     </connections>
                 </viewController>

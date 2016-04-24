@@ -67,7 +67,7 @@
         }
     }];
 }
-
+/*
 //查询题目
 - (void)item:(NSInteger)indexPath {
     //[_itemObjectForShow removeAllObjects];
@@ -122,7 +122,7 @@
         }];
    
     
-}
+}*/
 
 
 - (NSInteger)numberOfColumnsInMenu:(DOPDropDownMenu *)menu
@@ -178,7 +178,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _objectForShow.count;
 }
-
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    return  30;
+//}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     PFObject *obj = _objectForShow[indexPath.row];
@@ -198,6 +200,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
       //[self item:indexPath.row];
     ItemTypeViewController *ITVC = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"ITVC"];
+    ITVC.testObj = _objectForShow[indexPath.row];
     [self.navigationController pushViewController:ITVC animated:YES];
 
    

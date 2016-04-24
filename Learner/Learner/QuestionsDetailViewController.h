@@ -11,6 +11,10 @@
 @interface QuestionsDetailViewController : UIViewController
 @property (strong, nonatomic) NSArray *itemObjects;
 @property (strong, nonatomic) NSArray *optionObjects;
+@property (strong, nonatomic) NSArray *itemObjectForShow;
+@property (strong, nonatomic) NSMutableArray *optionObjectForShow;
+@property (strong, nonatomic) PFObject *testObj;
+@property (strong, nonatomic) NSString *itemType;
 //@property (weak, nonatomic) IBOutlet UILabel *problemLb;
 //@property (weak, nonatomic) IBOutlet UILabel *optionALb;
 //@property (weak, nonatomic) IBOutlet UILabel *optionBLb;

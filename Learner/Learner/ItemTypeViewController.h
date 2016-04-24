@@ -11,4 +11,5 @@
 @interface ItemTypeViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *objectForShow;
+@property (strong, nonatomic) PFObject *testObj;
 @end
