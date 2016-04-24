@@ -12,8 +12,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *objectForShow;
 @property (strong, nonatomic) NSArray *itemObjectForShow;
-//@property (strong, nonatomic) NSMutableArray *optionObjectForShow;
-//@property (strong, nonatomic) NSMutableArray *answerObjectForShow;
+@property (strong, nonatomic) NSArray *optionObjectForShow;
 
 
 @end

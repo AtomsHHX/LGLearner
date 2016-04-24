@@ -39,6 +39,7 @@
 		86E1E1561CC20F6C007741EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86E1E1541CC20F6C007741EB /* LaunchScreen.storyboard */; };
 		86E1E1611CC20F6C007741EB /* LearnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E1601CC20F6C007741EB /* LearnerTests.m */; };
 		86E1E16C1CC20F6C007741EB /* LearnerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E16B1CC20F6C007741EB /* LearnerUITests.m */; };
+		A31E1E5C1CCC59C700B9C925 /* ItemTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A31E1E5B1CCC59C700B9C925 /* ItemTypeViewController.m */; };
 		A3838D0A1CC6002700D5185B /* QuestionsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3838D091CC6002700D5185B /* QuestionsDetailViewController.m */; };
 		DA061FFF8E562637A5662AE7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF382AC1A64A93EDC5B27703 /* libPods.a */; };
 		EB54E5FE1CCB722E00CEE4D2 /* KSGuideManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB54E5FD1CCB722E00CEE4D2 /* KSGuideManager.m */; };
@@ -130,6 +131,8 @@
 		86E1E1671CC20F6C007741EB /* LearnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86E1E16B1CC20F6C007741EB /* LearnerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearnerUITests.m; sourceTree = "<group>"; };
 		86E1E16D1CC20F6C007741EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A31E1E5A1CCC59C700B9C925 /* ItemTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTypeViewController.h; sourceTree = "<group>"; };
+		A31E1E5B1CCC59C700B9C925 /* ItemTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTypeViewController.m; sourceTree = "<group>"; };
 		A3838D081CC6002700D5185B /* QuestionsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsDetailViewController.h; sourceTree = "<group>"; };
 		A3838D091CC6002700D5185B /* QuestionsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionsDetailViewController.m; sourceTree = "<group>"; };
 		BF382AC1A64A93EDC5B27703 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -240,12 +243,18 @@
 			children = (
 				86E1E1491CC20F6C007741EB /* ViewController.h */,
 				86E1E14A1CC20F6C007741EB /* ViewController.m */,
-				2812704B1CC34CC600D347E4 /* HomeViewController.h */,
-				2812704C1CC34CC600D347E4 /* HomeViewController.m */,
 				841998261CC3948B00CF1DCA /* SignInViewController.h */,
 				841998271CC3948B00CF1DCA /* SignInViewController.m */,
 				841998291CC3973D00CF1DCA /* SignUpViewController.h */,
 				8419982A1CC3973D00CF1DCA /* SignUpViewController.m */,
+				2812704B1CC34CC600D347E4 /* HomeViewController.h */,
+				2812704C1CC34CC600D347E4 /* HomeViewController.m */,
+				EB5C71911CC5E76300F7F219 /* QuestionsViewController.h */,
+				EB5C71921CC5E76300F7F219 /* QuestionsViewController.m */,
+				A31E1E5A1CCC59C700B9C925 /* ItemTypeViewController.h */,
+				A31E1E5B1CCC59C700B9C925 /* ItemTypeViewController.m */,
+				A3838D081CC6002700D5185B /* QuestionsDetailViewController.h */,
+				A3838D091CC6002700D5185B /* QuestionsDetailViewController.m */,
 				8419982C1CC39AE900CF1DCA /* TabViewController.h */,
 				8419982D1CC39AE900CF1DCA /* TabViewController.m */,
 				84DCEA861CC4863A009FE977 /* selfCentreViewController.h */,
@@ -258,10 +267,6 @@
 				84D601681CC5D2EA0014D3B5 /* ContentTableViewCell.m */,
 				84D6016A1CC5D54E0014D3B5 /* detailMessageViewController.h */,
 				84D6016B1CC5D54E0014D3B5 /* detailMessageViewController.m */,
-				EB5C71911CC5E76300F7F219 /* QuestionsViewController.h */,
-				EB5C71921CC5E76300F7F219 /* QuestionsViewController.m */,
-				A3838D081CC6002700D5185B /* QuestionsDetailViewController.h */,
-				A3838D091CC6002700D5185B /* QuestionsDetailViewController.m */,
 				862A64481CCB64C900935E77 /* ProblemViewController.h */,
 				862A64491CCB64C900935E77 /* ProblemViewController.m */,
 				862A644B1CCB660000935E77 /* ProblemTableViewCell.h */,
@@ -610,6 +615,7 @@
 				84DCEA8B1CC4F89B009FE977 /* leftViewController.m in Sources */,
 				862A64501CCB701200935E77 /* AskViewController.m in Sources */,
 				84D6016C1CC5D54E0014D3B5 /* detailMessageViewController.m in Sources */,
+				A31E1E5C1CCC59C700B9C925 /* ItemTypeViewController.m in Sources */,
 				862A644D1CCB660000935E77 /* ProblemTableViewCell.m in Sources */,
 				84DCEA881CC4863A009FE977 /* selfCentreViewController.m in Sources */,
 				EB5C71931CC5E76300F7F219 /* QuestionsViewController.m in Sources */,

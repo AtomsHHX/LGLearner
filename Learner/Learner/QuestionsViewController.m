@@ -9,6 +9,7 @@
 #import "QuestionsViewController.h"
 #import "DOPDropDownMenu.h"
 #import "QuestionsDetailViewController.h"
+#import "ItemTypeViewController.h"
 @interface QuestionsViewController () <DOPDropDownMenuDataSource,DOPDropDownMenuDelegate>
 @property (nonatomic, copy) NSArray *subjectArr;
 @property (nonatomic, copy) NSArray *yearArr;
@@ -48,9 +49,7 @@
 
 - (void)requestData:(NSNumber *)subject year:(NSNumber *)year region:(NSString *)region {
     PFQuery *query1 = [PFQuery queryWithClassName:@"Test"];
-    if (subject != nil) {
-        [query1 whereKey:@"subject" equalTo:subject];
-    }
+    [query1 whereKey:@"subject" equalTo:subject];
     if (year != nil) {
         [query1 whereKey:@"year" equalTo:year];
     }
@@ -60,7 +59,7 @@
     [query1 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (!error) {
             _objectForShow = [NSMutableArray arrayWithArray:objects];
-            NSLog(@"%@",_objectForShow);
+            //NSLog(@"%@",_objectForShow);
             [_tableView reloadData];
             
         } else {
@@ -84,7 +83,6 @@
                 if (_itemObjectForShow.count != 0) {
                     QDView.itemObjects = _itemObjectForShow;
                 }
-                [self.navigationController pushViewController:QDView animated:YES];
                // NSLog(@"item  = %@",itemObjects);
                 //此处itemObjects可以拿到题目表的数据
                 for (PFObject *itemObj in itemObjects) {
@@ -93,6 +91,11 @@
                     
                     [itemQuery1 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable optionObjects, NSError * _Nullable error) {
                         if (!error) {
+                            _optionObjectForShow = optionObjects;
+                            if (_optionObjectForShow.count != 0) {
+                                QDView.optionObjects = _optionObjectForShow;
+                            }
+                            [self.navigationController pushViewController:QDView animated:YES];
                             //此处optionObjects为选择题的选项
                         } else {
                             NSLog(@"optionError = %@",error.userInfo);
@@ -193,15 +196,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     //取消选中
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //QuestionsDetailViewController *QDView = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"QuestionsDetail"];
-          //NSLog(@"%@",_itemObjectForShow);
-      [self item:indexPath.row];
-    
-   
-//        if (_itemObjectForShow.count != 0) {
-//            QDView.itemObjects = _itemObjectForShow;
-//        }
-//         [self.navigationController pushViewController:QDView animated:YES];
+      //[self item:indexPath.row];
+    ItemTypeViewController *ITVC = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"ITVC"];
+    [self.navigationController pushViewController:ITVC animated:YES];
 
    
 }
