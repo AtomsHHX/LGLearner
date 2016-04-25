@@ -11,6 +11,7 @@
 		841998281CC3948B00CF1DCA /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841998271CC3948B00CF1DCA /* SignInViewController.m */; };
 		8419982B1CC3973D00CF1DCA /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8419982A1CC3973D00CF1DCA /* SignUpViewController.m */; };
 		8419982E1CC39AE900CF1DCA /* TabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8419982D1CC39AE900CF1DCA /* TabViewController.m */; };
+		8492D7B91CCDF0060044304A /* detailMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8492D7B81CCDF0060044304A /* detailMessageTableViewController.m */; };
 		84D601661CC5D1CB0014D3B5 /* MyMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D601651CC5D1CB0014D3B5 /* MyMessageViewController.m */; };
 		84D601691CC5D2EA0014D3B5 /* ContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D601681CC5D2EA0014D3B5 /* ContentTableViewCell.m */; };
 		84D6016C1CC5D54E0014D3B5 /* detailMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6016B1CC5D54E0014D3B5 /* detailMessageViewController.m */; };
@@ -83,6 +84,8 @@
 		8419982A1CC3973D00CF1DCA /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		8419982C1CC39AE900CF1DCA /* TabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabViewController.h; sourceTree = "<group>"; };
 		8419982D1CC39AE900CF1DCA /* TabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabViewController.m; sourceTree = "<group>"; };
+		8492D7B71CCDF0060044304A /* detailMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailMessageTableViewController.h; sourceTree = "<group>"; };
+		8492D7B81CCDF0060044304A /* detailMessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailMessageTableViewController.m; sourceTree = "<group>"; };
 		84D601641CC5D1CB0014D3B5 /* MyMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMessageViewController.h; sourceTree = "<group>"; };
 		84D601651CC5D1CB0014D3B5 /* MyMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMessageViewController.m; sourceTree = "<group>"; };
 		84D601671CC5D2EA0014D3B5 /* ContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentTableViewCell.h; sourceTree = "<group>"; };
@@ -263,10 +266,12 @@
 				84DCEA8A1CC4F89B009FE977 /* leftViewController.m */,
 				84D601641CC5D1CB0014D3B5 /* MyMessageViewController.h */,
 				84D601651CC5D1CB0014D3B5 /* MyMessageViewController.m */,
-				84D601671CC5D2EA0014D3B5 /* ContentTableViewCell.h */,
-				84D601681CC5D2EA0014D3B5 /* ContentTableViewCell.m */,
+				8492D7B71CCDF0060044304A /* detailMessageTableViewController.h */,
+				8492D7B81CCDF0060044304A /* detailMessageTableViewController.m */,
 				84D6016A1CC5D54E0014D3B5 /* detailMessageViewController.h */,
 				84D6016B1CC5D54E0014D3B5 /* detailMessageViewController.m */,
+				84D601671CC5D2EA0014D3B5 /* ContentTableViewCell.h */,
+				84D601681CC5D2EA0014D3B5 /* ContentTableViewCell.m */,
 				862A64481CCB64C900935E77 /* ProblemViewController.h */,
 				862A64491CCB64C900935E77 /* ProblemViewController.m */,
 				862A644B1CCB660000935E77 /* ProblemTableViewCell.h */,
@@ -598,6 +603,7 @@
 			files = (
 				841998281CC3948B00CF1DCA /* SignInViewController.m in Sources */,
 				84D601691CC5D2EA0014D3B5 /* ContentTableViewCell.m in Sources */,
+				8492D7B91CCDF0060044304A /* detailMessageTableViewController.m in Sources */,
 				866DE74B1CC21A8F00E3A6FA /* Utilities.m in Sources */,
 				86E1E14B1CC20F6C007741EB /* ViewController.m in Sources */,
 				86E1E1511CC20F6C007741EB /* Learner.xcdatamodeld in Sources */,

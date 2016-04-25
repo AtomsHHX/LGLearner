@@ -47,15 +47,15 @@
 //    }];
     NSLog(@"邮箱和用户名：%@ & %@",currentUser.email,currentUser.username);
     NSString *nickname = currentUser[@"nickname"];
+    //NSString *email = currentUser[@"email"];
     NSLog(@"%@",nickname);
     if (nickname == nil) {
         _nicknameTF.text = currentUser.username;
+        
     }else{
         _nicknameTF.text = currentUser[@"nickname"];
     }
     
-//    _Name =_nicknameTF.text;
-//    _Name = currentUser.username;
     _emailLbl.text = currentUser.email;
    
 }

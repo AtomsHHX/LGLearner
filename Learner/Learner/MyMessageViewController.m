@@ -12,7 +12,7 @@
 @property (strong , nonatomic) NSMutableArray *objectsForShow;
 @property (strong , nonatomic) NSMutableArray *oneShow;
 @property (strong, nonatomic) NSMutableArray *twoShow;
-
+@property (strong ,nonatomic) NSMutableArray *Logs;
 @property (strong, nonatomic) NSArray *forShow;
 
 @end
@@ -28,7 +28,24 @@
     _twoShow = [NSMutableArray new];
     [self getProblem];
     [_messageSegment addTarget:self action:@selector(change:) forControlEvents:UIControlEventValueChanged];
+    
+    self.Logs = [NSMutableArray new];
+    NSDate *date = [NSDate new];
+    [_Logs addObject:date];
+    
+    UIRefreshControl *rc = [UIRefreshControl new];
+    rc.tag = 1001;
+   // rc.attributedTitle = [[NSAttributedString alloc] initWithString:@"⬇️下拉刷新"];
+    //[rc addTarget:self action:@selector(getAnwser) forControlEvents:UIControlEventEditingChanged];
+    //[rc addTarget:self action:@selector(getProblem) forControlEvents:UIControlEventEditingChanged];
+    //[rc addTarget:self action:@selector(selectProblem) forControlEvents:UIControlEventEditingChanged];
+    [_tableView addSubview:rc];
 }
+//- (void)refreshDate{
+//    [self getProblem];
+//    [self getAnwser];
+//    [self selectProblem];
+//}
 - (void)change:(UISegmentedControl *)segmentedControl {
         if (segmentedControl.selectedSegmentIndex == 0) {
             [self getProblem];
@@ -45,6 +62,8 @@
     PFRelation *relationProblem = [currentUser relationForKey:@"relationProblem"];
     PFQuery *query = [relationProblem query];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myProblemObjects, NSError * _Nullable error) {
+        UIRefreshControl *rc = (UIRefreshControl *)[_tableView viewWithTag:1001];
+        [rc endRefreshing];
         if (!error) {
             _forShow = myProblemObjects;
            // NSLog(@"%@",_forShow);
@@ -73,6 +92,8 @@
     PFRelation *relationComment = [currentUser relationForKey:@"relationComment"];
     PFQuery *query = [relationComment query];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myCommentObjects, NSError * _Nullable error) {
+        UIRefreshControl *rc = (UIRefreshControl *)[_tableView viewWithTag:1001];
+        [rc endRefreshing];
         if (!error) {
             _forShow = myCommentObjects;
             [_tableView reloadData];
@@ -99,6 +120,8 @@
     [_twoShow removeAllObjects];
     PFQuery *problemQuery = [PFQuery queryWithClassName:@"Problem"];
     [problemQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable problemObjects, NSError * _Nullable error) {
+        UIRefreshControl *rc = (UIRefreshControl *)[_tableView viewWithTag:1001];
+        [rc endRefreshing];
         if (!error) {
             //查询到所有问题
             _oneShow = [NSMutableArray arrayWithArray:problemObjects];

@@ -12,7 +12,7 @@
 #import <ECSlidingViewController/ECSlidingViewController.h>
 #import "KSGuideManager.h"
 
-@interface SignInViewController ()<UIViewControllerAnimatedTransitioning,ECSlidingViewControllerDelegate,ECSlidingViewControllerLayout>
+@interface SignInViewController ()<ECSlidingViewControllerDelegate,ECSlidingViewControllerLayout>
 @property (strong, nonatomic) ECSlidingViewController *slidingVC;
 @property (assign, nonatomic) ECSlidingViewControllerOperation operation;
 @end
@@ -32,9 +32,36 @@
     
     [[KSGuideManager shared] showGuideViewWithImages:paths];
     
-    
+    [[StorageMgr singletonStorageMgr] addKey:@"SignUpSuccessfully" andValue:@NO];
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    //判断是否记忆了用户名
+    if (![[Utilities getUserDefaults:@"Username"] isKindOfClass:[NSNull class]]) {
+        //如果有记忆，就显示在用户名文本输入框中
+        _usernameTF.text = [Utilities getUserDefaults:@"Username"];
+    }
+}
+//每一次这个页面出现的时候都会调用这个方法，并且时机点是页面已经出现以后
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    //判断是否是从注册页面注册成功后回到的这个登录页面
+    if ([[[StorageMgr singletonStorageMgr] objectForKey:@"SignUpSuccessfully"] boolValue]) {
+        //在自动登录前将SignUpSuccessfully这个在单例化全局变量中的flag恢复为NO
+        [[StorageMgr singletonStorageMgr] removeObjectForKey:@"SignUpSuccessfully"];
+        [[StorageMgr singletonStorageMgr] addKey:@"SignUpSuccessfully" andValue:@NO];
+        
+        //从单例化全局变量中提取用户名和密码
+        NSString *username = [[StorageMgr singletonStorageMgr] objectForKey:@"Username"];
+        NSString *password = [[StorageMgr singletonStorageMgr] objectForKey:@"Password"];
+        //清除用完的用户名和密码
+        [[StorageMgr singletonStorageMgr] removeObjectForKey:@"Username"];
+        [[StorageMgr singletonStorageMgr] removeObjectForKey:@"Password"];
+        //执行自动登录
+        [self signInWithUsername:username andPassword:password];
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -50,7 +77,7 @@
     leftViewController *leftVC = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"left"];
     _slidingVC.underLeftViewController = leftVC;
     //设置侧滑的范围（长度）anchorRightPeekAmount：表示中间的宽度 anchorRightRevealAmount:表示   (设置左侧页面当呗显示时，宽度能够显示1/4)
-    _slidingVC.anchorRightPeekAmount = UI_SCREEN_W / 4;
+    _slidingVC.anchorRightPeekAmount = UI_SCREEN_W * 2 / 5;
     
     //创建一个当菜单按钮呗按时，要执行的侧滑方法的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(menuOutAction) name:@"MenuSwich" object:nil];
@@ -87,22 +114,7 @@
     // Pass the selected object to the new view controller.
 }
 */
-//- (void)createRelation {
-//    PFUser *currentUser = [PFUser currentUser];
-//    PFRelation *relationProblem = [currentUser relationForKey:@"relationComment"];
-//    
-//    PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
-//    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-//        if (!error) {
-//            for (PFObject *obj in objects) {
-//                [relationProblem addObject:obj];
-//                [currentUser saveInBackground];
-//            }
-//        } else {
-//            NSLog(@"%@",error.description);
-//        }
-//    }];
-//}
+
 //封装登录操作（将重复对代码打包）  //相同的写好 不同的东西以参数对形式传递
 -(void)signInWithUsername:(NSString *)username andPassword:(NSString *)password{
     UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];

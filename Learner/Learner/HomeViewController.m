@@ -35,9 +35,16 @@
     //         --- 轮播时间间隔，默认1.0秒，可自定义
     //cycleScrollView.autoScrollTimeInterval = 4.0;
 
+    UIRefreshControl *rc = [UIRefreshControl new];
+    rc.tag = 1001;
+    rc.attributedTitle = [[NSAttributedString alloc] initWithString:@"⬇️下拉刷新"];
+   // [rc addTarget:self action:@selector(refresh) forControlEvents:UIControlEventEditingChanged];
     
 }
-
+- (void)refresh{
+    NSLog(@"下拉了");
+   
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -60,7 +67,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
+    cell.textLabel.text = @"这里有很多新的消息，快点来看看吧😊…^_^";
     
     return cell;
 }

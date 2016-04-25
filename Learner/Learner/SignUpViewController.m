@@ -50,9 +50,6 @@
         [Utilities popUpAlertViewWithMsg:@"前后密码请保持一致" andTitle:nil onView:self];
         return;
     }
-    PFObject *info = [PFObject objectWithClassName:@"Info"];
-    
-    
     
     
     //在parse自带的User表中新建一行
@@ -61,8 +58,7 @@
     user.username = username;
     user.password = password;
     user.email  = email;
-    user[@"info"] = info;
-    
+
     //让导航条失去交互能力
     self.navigationController.view.userInteractionEnabled = NO;
     
@@ -86,11 +82,10 @@
             [[StorageMgr singletonStorageMgr] addKey:@"Password" andValue:password];
             //将文本输入框的内容清除
             _password.text = nil;
-            _password.text = nil;
             _conformpassword.text = nil;
             _Vcode.text = nil;
-            //回到登陆页面
-            
+            _username.text = nil;
+                        //回到登陆页面
             [self.navigationController popToRootViewControllerAnimated:YES];
             
         }else{
