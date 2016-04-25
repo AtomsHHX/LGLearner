@@ -8,6 +8,7 @@
 
 #import "ItemTypeViewController.h"
 #import "QuestionsDetailViewController.h"
+#import "CalculationViewController.h"
 
 @interface ItemTypeViewController ()
 
@@ -63,10 +64,20 @@
     //取消选中
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     QuestionsDetailViewController *QDVC = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"QuestionsDetail"];
+    CalculationViewController *CVC = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"CalculationVC"];
     PFObject *obj = _objectForShow[indexPath.row];
-    QDVC.itemTypeObj = obj;
-    QDVC.testObj = _testObj;
-    [self.navigationController pushViewController:QDVC animated:YES];
+    if ([obj[@"type"] isEqualToString:@"选择题"]) {
+        QDVC.itemTypeObj = obj;
+        QDVC.testObj = _testObj;
+        [self.navigationController pushViewController:QDVC animated:YES];
+    } else if ([obj[@"type"] isEqualToString:@"计算题"]) {
+        CVC.itemTypeObj = obj;
+        CVC.testObj = _testObj;
+        [self.navigationController pushViewController:CVC animated:YES];
+    } else {
+        NSLog(@"不跳");
+    }
+    
     
 }
 

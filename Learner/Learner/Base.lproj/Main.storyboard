@@ -503,7 +503,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dsg-eD-5EE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3523" y="292"/>
+            <point key="canvasLocation" x="3505" y="296"/>
         </scene>
         <!--Detail Message View Controller-->
         <scene sceneID="GyD-Fb-fmZ">
@@ -522,7 +522,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Ky-Yz-rGi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3915" y="292"/>
+            <point key="canvasLocation" x="3955" y="367"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="f0l-gH-YBB">
@@ -1462,6 +1462,60 @@
             </objects>
             <point key="canvasLocation" x="3475" y="-451"/>
         </scene>
+        <!--Blank View Controller-->
+        <scene sceneID="wbB-0b-3GT">
+            <objects>
+                <viewController id="SIP-LJ-06I" customClass="BlankViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fBE-QG-2bf"/>
+                        <viewControllerLayoutGuide type="bottom" id="DJF-pj-h4m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kye-ga-led">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g60-ms-nvq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3831" y="-276"/>
+        </scene>
+        <!--Calculation View Controller-->
+        <scene sceneID="HAD-Ki-adY">
+            <objects>
+                <viewController storyboardIdentifier="CalculationVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bhw-0N-mO9" customClass="CalculationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xcB-SI-kGr"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zo6-Bw-d20"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WuX-uC-G6T">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8iZ-ug-E8d">
+                                <rect key="frame" x="0.0" y="20" width="320" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8iZ-ug-E8d" firstAttribute="top" secondItem="xcB-SI-kGr" secondAttribute="bottom" id="Gn1-7v-U3j"/>
+                            <constraint firstAttribute="trailing" secondItem="8iZ-ug-E8d" secondAttribute="trailing" id="LlP-AC-ILw"/>
+                            <constraint firstItem="8iZ-ug-E8d" firstAttribute="leading" secondItem="WuX-uC-G6T" secondAttribute="leading" id="Mzp-aX-0jD"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="contentLb" destination="8iZ-ug-E8d" id="5cK-Ic-Bdl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gkb-Yy-ePp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3831" y="-881"/>
+        </scene>
         <!--Title-->
         <scene sceneID="OT8-SP-Rvi">
             <objects>
@@ -1581,7 +1635,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgy-da-Hc3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3894" y="-451"/>
+            <point key="canvasLocation" x="4203" y="-451"/>
         </scene>
     </scenes>
     <resources>

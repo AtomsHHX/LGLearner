@@ -42,6 +42,8 @@
 		86E1E16C1CC20F6C007741EB /* LearnerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E16B1CC20F6C007741EB /* LearnerUITests.m */; };
 		A31E1E5C1CCC59C700B9C925 /* ItemTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A31E1E5B1CCC59C700B9C925 /* ItemTypeViewController.m */; };
 		A3838D0A1CC6002700D5185B /* QuestionsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3838D091CC6002700D5185B /* QuestionsDetailViewController.m */; };
+		A3BB25F71CCE2A8F0071ECDB /* BlankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BB25F61CCE2A8F0071ECDB /* BlankViewController.m */; };
+		A3BB25FA1CCE2B250071ECDB /* CalculationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BB25F91CCE2B250071ECDB /* CalculationViewController.m */; };
 		DA061FFF8E562637A5662AE7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF382AC1A64A93EDC5B27703 /* libPods.a */; };
 		EB54E5FE1CCB722E00CEE4D2 /* KSGuideManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB54E5FD1CCB722E00CEE4D2 /* KSGuideManager.m */; };
 		EB54E6031CCB728400CEE4D2 /* 001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB54E5FF1CCB728400CEE4D2 /* 001.jpg */; };
@@ -138,6 +140,10 @@
 		A31E1E5B1CCC59C700B9C925 /* ItemTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTypeViewController.m; sourceTree = "<group>"; };
 		A3838D081CC6002700D5185B /* QuestionsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsDetailViewController.h; sourceTree = "<group>"; };
 		A3838D091CC6002700D5185B /* QuestionsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionsDetailViewController.m; sourceTree = "<group>"; };
+		A3BB25F51CCE2A8F0071ECDB /* BlankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlankViewController.h; sourceTree = "<group>"; };
+		A3BB25F61CCE2A8F0071ECDB /* BlankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlankViewController.m; sourceTree = "<group>"; };
+		A3BB25F81CCE2B250071ECDB /* CalculationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculationViewController.h; sourceTree = "<group>"; };
+		A3BB25F91CCE2B250071ECDB /* CalculationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculationViewController.m; sourceTree = "<group>"; };
 		BF382AC1A64A93EDC5B27703 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB1523B65CD51C8DAED3FA24 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EB54E5FC1CCB722E00CEE4D2 /* KSGuideManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSGuideManager.h; sourceTree = "<group>"; };
@@ -258,6 +264,10 @@
 				A31E1E5B1CCC59C700B9C925 /* ItemTypeViewController.m */,
 				A3838D081CC6002700D5185B /* QuestionsDetailViewController.h */,
 				A3838D091CC6002700D5185B /* QuestionsDetailViewController.m */,
+				A3BB25F81CCE2B250071ECDB /* CalculationViewController.h */,
+				A3BB25F91CCE2B250071ECDB /* CalculationViewController.m */,
+				A3BB25F51CCE2A8F0071ECDB /* BlankViewController.h */,
+				A3BB25F61CCE2A8F0071ECDB /* BlankViewController.m */,
 				8419982C1CC39AE900CF1DCA /* TabViewController.h */,
 				8419982D1CC39AE900CF1DCA /* TabViewController.m */,
 				84DCEA861CC4863A009FE977 /* selfCentreViewController.h */,
@@ -618,8 +628,10 @@
 				2812704D1CC34CC600D347E4 /* HomeViewController.m in Sources */,
 				866DE74A1CC21A8F00E3A6FA /* StorageMgr.m in Sources */,
 				EB5C71BA1CC6257D00F7F219 /* DCWebImageManager.m in Sources */,
+				A3BB25F71CCE2A8F0071ECDB /* BlankViewController.m in Sources */,
 				84DCEA8B1CC4F89B009FE977 /* leftViewController.m in Sources */,
 				862A64501CCB701200935E77 /* AskViewController.m in Sources */,
+				A3BB25FA1CCE2B250071ECDB /* CalculationViewController.m in Sources */,
 				84D6016C1CC5D54E0014D3B5 /* detailMessageViewController.m in Sources */,
 				A31E1E5C1CCC59C700B9C925 /* ItemTypeViewController.m in Sources */,
 				862A644D1CCB660000935E77 /* ProblemTableViewCell.m in Sources */,
