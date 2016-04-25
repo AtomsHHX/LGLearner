@@ -22,7 +22,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _optionObjectForShow = [NSMutableArray new];
-    self.navigationItem.title = @"选择题";
     _tableView.tableFooterView = [[UIView alloc] init];
     [self item];
     
@@ -59,6 +58,7 @@
 
 - (void)showItem {
     [self showOption];
+    self.navigationItem.title =  [NSString stringWithFormat:@"%d/%lu",count+1,(unsigned long)_itemObjectForShow.count];
     PFObject *itemObj = _itemObjectForShow[count];
     NSString *itemStr = itemObj[@"problem"];
    // NSLog(@"%@",itemStr);
