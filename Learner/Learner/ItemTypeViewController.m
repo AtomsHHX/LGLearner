@@ -64,7 +64,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     QuestionsDetailViewController *QDVC = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"QuestionsDetail"];
     PFObject *obj = _objectForShow[indexPath.row];
-    QDVC.itemType = obj[@"type"];
+    QDVC.itemTypeObj = obj;
     QDVC.testObj = _testObj;
     [self.navigationController pushViewController:QDVC animated:YES];
     

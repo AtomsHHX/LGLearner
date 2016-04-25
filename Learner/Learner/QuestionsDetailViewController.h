@@ -9,21 +9,23 @@
 #import <UIKit/UIKit.h>
 
 @interface QuestionsDetailViewController : UIViewController
-@property (strong, nonatomic) NSArray *itemObjects;
-@property (strong, nonatomic) NSArray *optionObjects;
+//@property (strong, nonatomic) NSArray *itemObjects;
+//@property (strong, nonatomic) NSArray *optionObjects;
 @property (strong, nonatomic) NSArray *itemObjectForShow;
 @property (strong, nonatomic) NSMutableArray *optionObjectForShow;
 @property (strong, nonatomic) PFObject *testObj;
-@property (strong, nonatomic) NSString *itemType;
-//@property (weak, nonatomic) IBOutlet UILabel *problemLb;
-//@property (weak, nonatomic) IBOutlet UILabel *optionALb;
-//@property (weak, nonatomic) IBOutlet UILabel *optionBLb;
-//@property (weak, nonatomic) IBOutlet UILabel *optionCLb;
-//@property (weak, nonatomic) IBOutlet UILabel *optionDLb;
+@property (strong, nonatomic) PFObject *itemTypeObj;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
-//- (IBAction)upAction:(UIButton *)sender forEvent:(UIEvent *)event;
-//- (IBAction)downAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UILabel *problemLb;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *upBarBI;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *downBarBI;
+
+- (IBAction)upAction:(UIBarButtonItem *)sender;
+- (IBAction)downAction:(UIBarButtonItem *)sender;
+
+
+//- (IBAction)upAction:(UIButton *)sender forEvent:(UIEvent *)event;
+//- (IBAction)downAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
 @end

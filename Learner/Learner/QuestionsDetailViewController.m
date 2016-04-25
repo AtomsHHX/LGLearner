@@ -23,6 +23,7 @@
     // Do any additional setup after loading the view.
     _optionObjectForShow = [NSMutableArray new];
     self.navigationItem.title = @"选择题";
+    _tableView.tableFooterView = [[UIView alloc] init];
     [self item];
     
 }
@@ -38,16 +39,15 @@
     PFRelation *relationItem = [_testObj relationForKey:@"relationItem"];
     PFQuery *testQuery = [relationItem query];
     //[testQuery includeKey:@"pointerItemType"];
-    //[testQuery whereKey:@"type" equalTo:_itemType];
+    [testQuery whereKey:@"pointerItemType" equalTo:_itemTypeObj];
     
     [testQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable itemObjects, NSError * _Nullable error) {
         if (!error) {
-           // NSLog(@"itob = %@",itemObjects);
-            _itemObjectForShow = itemObjects;
-            [self showOption];
-            if (_itemObjectForShow == nil) {
+            NSLog(@"ite = %lu",itemObjects.count);
+            if (itemObjects.count == 0) {
                 _problemLb.text = @"暂无内容";
             } else {
+                 _itemObjectForShow = itemObjects;
                 count = 0;
                 [self showItem];
             }
@@ -58,16 +58,15 @@
 }
 
 - (void)showItem {
-    
+    [self showOption];
     PFObject *itemObj = _itemObjectForShow[count];
     NSString *itemStr = itemObj[@"problem"];
-    NSLog(@"%@",itemStr);
+   // NSLog(@"%@",itemStr);
     CGSize maxSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width - 30, 1000);
     CGSize contentLabelSize = [itemStr boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:_problemLb.font} context:nil].size;
-    _headerView.height = contentLabelSize.height ;
+    _headerView.height = contentLabelSize.height + 11;
     _tableView.tableHeaderView = _headerView;
     _problemLb.text = itemStr;
-    //_problemLb.sd_layout.autoHeightRatio(0);
 }
 
 - (void)showOption {
@@ -111,52 +110,15 @@
 }
 */
 
-//
-//- (void)showOption {
-//   // NSLog(@"%@",_optionObjects);
-//    PFObject *optionObjA = _optionObjects[0];
-//    _optionALb.text = [NSString stringWithFormat:@"A. %@",optionObjA[@"content"]];
-//    PFObject *optionObjB = _optionObjects[1];
-//    _optionBLb.text = [NSString stringWithFormat:@"B. %@",optionObjB[@"content"]];
-//    PFObject *optionObjC = _optionObjects[2];
-//    _optionCLb.text = [NSString stringWithFormat:@"C. %@",optionObjC[@"content"]];
-//    PFObject *optionObjD = _optionObjects[3];
-//    _optionDLb.text = [NSString stringWithFormat:@"D. %@",optionObjD[@"content"]];
-//}
-
-//- (IBAction)upAction:(UIButton *)sender forEvent:(UIEvent *)event {
-//    if (count <= 0) {
-//        NSLog(@"到头上了%d",count);
-//    } else {
-//        count --;
-//        [self showItem];
-//    }
-//    
-//}
-//
-//- (IBAction)downAction:(UIButton *)sender forEvent:(UIEvent *)event {
-//    if (count > _itemObjects.count -1) {
-//        NSLog(@"itemcount = %lu",(unsigned long)_itemObjects.count);
-//        NSLog(@"到尾巴了%d",count);
-//    } else {
-//         count ++;
-//        [self showItem];
-//    }
-//   
-//}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _optionObjectForShow.count;
 }
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    
-//    return 10;
-//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     PFObject * obj = _optionObjectForShow[indexPath.row];
     cell.textLabel.text = obj[@"content"];
-    NSLog(@"%@",obj[@"content"]);
+    
     return cell;
 }
 
@@ -164,6 +126,31 @@
     //取消选中
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+}
+
+
+- (IBAction)upAction:(UIBarButtonItem *)sender {
+    _downBarBI.enabled = YES;
+    if (count <= 0) {
+        _upBarBI.enabled = NO;
+        [Utilities popUpAlertViewWithMsg:@"已到第一页,不能再往前了！" andTitle:nil onView:self];
+        
+    } else {
+        count --;
+        [self showItem];
+}
+
+}
+
+- (IBAction)downAction:(UIBarButtonItem *)sender {
+    _upBarBI.enabled = YES;
+    if (count >= _itemObjectForShow.count -1 ) {
+        _downBarBI.enabled = NO;
+        [Utilities popUpAlertViewWithMsg:@"已到最后一页，不能再往后了！" andTitle:nil onView:self];
+    } else {
+        count ++;
+        [self showItem];
+    }
 }
 
 
