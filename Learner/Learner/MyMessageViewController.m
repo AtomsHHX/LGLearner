@@ -30,22 +30,34 @@
     [_messageSegment addTarget:self action:@selector(change:) forControlEvents:UIControlEventValueChanged];
     
     self.Logs = [NSMutableArray new];
-    NSDate *date = [NSDate new];
+    NSDate *date = [NSDate date];
     [_Logs addObject:date];
-    
+   
     UIRefreshControl *rc = [UIRefreshControl new];
     rc.tag = 1001;
-   // rc.attributedTitle = [[NSAttributedString alloc] initWithString:@"⬇️下拉刷新"];
-    //[rc addTarget:self action:@selector(getAnwser) forControlEvents:UIControlEventEditingChanged];
-    //[rc addTarget:self action:@selector(getProblem) forControlEvents:UIControlEventEditingChanged];
+   NSDateFormatter *dateF = [[NSDateFormatter alloc] init];
+   //dateF.dateFormat = @"YYYY-MM-dd HH:mm:ss";
+   NSString *timeF = [dateF stringFromDate:date];
+    NSString *time = [NSString stringWithFormat:@"⬇️下拉刷新%@",timeF];
+   NSLog(@"shij:%@",timeF);
+    rc.attributedTitle = [[NSAttributedString alloc] initWithString:time];
+   
+    [rc addTarget:self action:@selector(refreshDate) forControlEvents:UIControlEventValueChanged];
+   UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(130.0f, 0.0f, 60.0f, 60.0f)];
+   [activity startAnimating];
+    //[rc addTarget:self action:@selector(getAnwser) forControlEvents:UIControlEventValueChanged];
     //[rc addTarget:self action:@selector(selectProblem) forControlEvents:UIControlEventEditingChanged];
-    [_tableView addSubview:rc];
+    //[self setre];
+   [_tableView addSubview:rc];
 }
-//- (void)refreshDate{
-//    [self getProblem];
-//    [self getAnwser];
-//    [self selectProblem];
-//}
+- (void)refreshDate{
+   if (_messageSegment.selectedSegmentIndex == 0) {
+      
+      [self getProblem];
+   }else{
+      [self getAnwser];
+   }
+}
 - (void)change:(UISegmentedControl *)segmentedControl {
         if (segmentedControl.selectedSegmentIndex == 0) {
             [self getProblem];
@@ -74,7 +86,7 @@
                 PFQuery *query2 = [relationComment query];
                 [query2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myCommentobjects, NSError * _Nullable error) {
                     if (!error) {
-                        NSLog(@"myCommentobjects = %@",myCommentobjects);
+                       // NSLog(@"myCommentobjects = %@",myCommentobjects);
                     } else {
                         
                     }

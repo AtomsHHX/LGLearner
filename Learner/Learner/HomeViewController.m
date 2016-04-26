@@ -71,7 +71,9 @@
     
     return cell;
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    [tableView  deselectRowAtIndexPath:indexPath animated:YES];
+}
 -(void)MJBannnerPlayer:(UIView *)bannerPlayer didSelectedIndex:(NSInteger)index{
     
     NSLog(@"%ld",index);

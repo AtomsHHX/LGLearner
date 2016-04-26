@@ -9,7 +9,7 @@
 #import "QuestionsDetailViewController.h"
 #import "UIView+SDAutoLayout.h"
 
-@interface QuestionsDetailViewController () {
+@interface QuestionsDetailViewController ()<UITabBarControllerDelegate> {
     int count;
 }
 //@property (strong , nonatomic) UILabel *problemLb;
@@ -22,8 +22,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _optionObjectForShow = [NSMutableArray new];
-    _tableView.tableFooterView = [[UIView alloc] init];
+    _tableView.tableFooterView = [UIView new];
     [self item];
+    
+    //self.tabBarController = [UITabBarController new];;
+    self.tabBarController.edgesForExtendedLayout = UIRectEdgeNone;
     
 }
 
