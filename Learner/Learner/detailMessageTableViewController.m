@@ -7,10 +7,10 @@
 //
 
 #import "detailMessageTableViewController.h"
-
+#import <SDWebImage/UIButton+WebCache.h>
 @interface detailMessageTableViewController ()
 @property (strong ,nonatomic) NSArray *connentArr;
-@property (strong , nonatomic) NSMutableArray *rowObj;
+
 @end
 
 @implementation detailMessageTableViewController
@@ -19,7 +19,13 @@
     [super viewDidLoad];
     
     _rowObj = [NSMutableArray new];
+    PFObject *problemObj = _proObj[@"pointerUser"];
+    PFFile *photoFile = problemObj[@"headPhoto"];
+    NSString *strURL = photoFile.url;
+    NSURL *photoURL = [NSURL URLWithString:strURL];
+    [_userImage sd_setBackgroundImageWithURL:photoURL forState:UIControlStateNormal];
     
+    // PFFile *file = [];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -99,9 +105,7 @@
 */
 
 - (IBAction)HeaderImage:(UIButton *)sender forEvent:(UIEvent *)event {
-    PFUser *currentuser = [PFUser currentUser];
-    UIImage *image = [UIImage imageNamed:@"headPhoto"];
-    _username.text = currentuser[@"nickname"];
+
     
 }
 @end

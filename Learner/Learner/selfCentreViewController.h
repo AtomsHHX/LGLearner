@@ -11,9 +11,10 @@
 @interface selfCentreViewController : UIViewController
 - (IBAction)headPhoto:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UITextField *nicknameTF;
-@property (weak, nonatomic) IBOutlet UILabel *emailLbl;
+@property (weak, nonatomic) IBOutlet UITextField *emailTF;
 @property (weak, nonatomic) IBOutlet UITextField *ageTF;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
+- (IBAction)saveAction:(UIBarButtonItem *)sender;
 
 - (IBAction)LogOutACtion:(UIButton *)sender forEvent:(UIEvent *)event;
 

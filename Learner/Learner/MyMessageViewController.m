@@ -7,7 +7,7 @@
 //
 
 #import "MyMessageViewController.h"
-#import "detailMessageViewController.h"
+#import "detailMessageTableViewController.h"
 @interface MyMessageViewController ()<UIScrollViewDelegate>
 @property (strong , nonatomic) NSMutableArray *objectsForShow;
 @property (strong , nonatomic) NSMutableArray *oneShow;
@@ -73,6 +73,7 @@
     PFUser *currentUser = [PFUser currentUser];
     PFRelation *relationProblem = [currentUser relationForKey:@"relationProblem"];
     PFQuery *query = [relationProblem query];
+   [query includeKey:@"pointerUser"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myProblemObjects, NSError * _Nullable error) {
         UIRefreshControl *rc = (UIRefreshControl *)[_tableView viewWithTag:1001];
         [rc endRefreshing];
@@ -103,6 +104,7 @@
     PFUser *currentUser = [PFUser currentUser];
     PFRelation *relationComment = [currentUser relationForKey:@"relationComment"];
     PFQuery *query = [relationComment query];
+   [query includeKey:@"pointerUser"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myCommentObjects, NSError * _Nullable error) {
         UIRefreshControl *rc = (UIRefreshControl *)[_tableView viewWithTag:1001];
         [rc endRefreshing];
@@ -177,7 +179,8 @@
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-    detailMessageViewController *go = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"detail"];
+    detailMessageTableViewController *go = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"detail"];
+   go.proObj =  _forShow[indexPath.row];
     [self.navigationController pushViewController:go animated:YES];
     //[tableView deselectRowAtIndexPath:indexPath animated:YES];
     // [self.tableview setEditing:YES];

@@ -9,10 +9,10 @@
 #import "selfCentreViewController.h"
 
 @interface selfCentreViewController ()<UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
-@property (strong, nonatomic) NSString *Name;
 @property (weak, nonatomic) IBOutlet UIButton *imageBtn;
 
 @property (strong, nonatomic) UIImagePickerController *imagePicker;
+
 @end
 
 @implementation selfCentreViewController
@@ -20,12 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    [self uiConfigration];
-    _nicknameTF.delegate = self;
-    [NSNotificationCenter defaultCenter];
-    [_segment addTarget:self action:@selector(choice:) forControlEvents:UIControlEventValueChanged];
+    _emailTF.enabled = false;
     [_imageBtn addTarget:self action:@selector(headPhoto:forEvent:) forControlEvents:UIControlEventTouchUpInside];
+    [self uiConfigration];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,61 +37,55 @@
 -(void)uiConfigration{
     
     PFUser *currentUser = [PFUser currentUser];
-//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"myname = %@",currentUser.username];
-//    PFQuery *query = [PFQuery queryWithClassName:@"username" predicate:predicate];
-//    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-//        
-//    }];
-    NSLog(@"邮箱和用户名：%@ & %@",currentUser.email,currentUser.username);
     NSString *nickname = currentUser[@"nickname"];
-    //NSString *email = currentUser[@"email"];
-    NSLog(@"%@",nickname);
+    NSNumber *age =  currentUser [@"age"];
+    NSString *ageStr = [NSString stringWithFormat:@"%@",age];
     if (nickname == nil) {
         _nicknameTF.text = currentUser.username;
         
     }else{
         _nicknameTF.text = currentUser[@"nickname"];
+       
+    }
+     _emailTF.text = currentUser.email;
+    
+    if (age == nil) {
+        _ageTF.placeholder = @"请输入年龄";
+        
+    }else{
+        _ageTF.text = ageStr;
     }
     
-    _emailLbl.text = currentUser.email;
+    if ([currentUser[@"gender"]  isEqual: @NO]) {
+        _segment.selectedSegmentIndex = 0;
+    } else {
+        _segment.selectedSegmentIndex = 1;
+    }
+   
    
 }
--(void)choice:(UISegmentedControl *)segmentControl{
-    NSInteger segmentIndex = segmentControl.selectedSegmentIndex;
-    //NSNumber *genderNum = [NSNumber numberWithInteger:segmentIndex];
-    if (segmentIndex == 0) {
-        [self saveGender:@NO];
-    } else {
-        [self saveGender:@YES];
+
+- (IBAction)saveAction:(UIBarButtonItem *)sender {
+    NSString *age = _ageTF.text;
+    NSInteger ageInt = [age integerValue];
+    NSNumber *ageSave = @(ageInt);
+    PFUser *currentUser = [PFUser currentUser];
+    if (![_nicknameTF.text isEqualToString:currentUser.username]) {
+        currentUser[@"nickname"] = _nicknameTF.text;
     }
-}
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-    NSString *nickname = _nicknameTF.text;
-    NSLog(@"nickname = %@",nickname);
-    [self saveNickname:nickname];
-    
-    
-}
-
-- (void)saveNickname:(NSString *)nickname {
-    PFUser *currentUser = [PFUser currentUser];
-    currentUser[@"nickname"] = nickname;
+    if (_ageTF.text != nil) {
+        currentUser[@"age"] = ageSave;
+    }
+    if (_segment.selectedSegmentIndex == 0) {
+        currentUser[@"gender"] = @NO;
+    } else {
+         currentUser[@"gender"] = @YES;
+    }
     [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
-            NSLog(@"chenggong");
+            [Utilities popUpAlertViewWithMsg:@"保存成功" andTitle:nil onView:self];
         } else {
-            NSLog(@"error = %@",error.userInfo);
-        }
-    }];
-}
-
-- (void)saveGender:(NSNumber *)genderNum {
-    PFUser *currentUser = [PFUser currentUser];
-    currentUser[@"gender"] = genderNum;
-    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded) {
-            NSLog(@"chenggong");
-        } else {
+            [Utilities popUpAlertViewWithMsg:@"网络繁忙，请重新尝试" andTitle:nil onView:self];
             NSLog(@"error = %@",error.userInfo);
         }
     }];
@@ -153,6 +144,8 @@
     
     
 }
+
+
 
 
 - (IBAction)LogOutACtion:(UIButton *)sender forEvent:(UIEvent *)event {
