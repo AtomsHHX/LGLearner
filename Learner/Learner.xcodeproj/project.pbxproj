@@ -17,6 +17,7 @@
 		84D6016C1CC5D54E0014D3B5 /* detailMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6016B1CC5D54E0014D3B5 /* detailMessageViewController.m */; };
 		84DCEA881CC4863A009FE977 /* selfCentreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DCEA871CC4863A009FE977 /* selfCentreViewController.m */; };
 		84DCEA8B1CC4F89B009FE977 /* leftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DCEA8A1CC4F89B009FE977 /* leftViewController.m */; };
+		84F50C131CD356630002DFE5 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F50C121CD356630002DFE5 /* MessageTableViewCell.m */; };
 		862A644A1CCB64C900935E77 /* ProblemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 862A64491CCB64C900935E77 /* ProblemViewController.m */; };
 		862A644D1CCB660000935E77 /* ProblemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 862A644C1CCB660000935E77 /* ProblemTableViewCell.m */; };
 		862A64501CCB701200935E77 /* AskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 862A644F1CCB701200935E77 /* AskViewController.m */; };
@@ -100,6 +101,8 @@
 		84DCEA871CC4863A009FE977 /* selfCentreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = selfCentreViewController.m; sourceTree = "<group>"; };
 		84DCEA891CC4F89B009FE977 /* leftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = leftViewController.h; sourceTree = "<group>"; };
 		84DCEA8A1CC4F89B009FE977 /* leftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = leftViewController.m; sourceTree = "<group>"; };
+		84F50C111CD356630002DFE5 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
+		84F50C121CD356630002DFE5 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		862A64481CCB64C900935E77 /* ProblemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProblemViewController.h; sourceTree = "<group>"; };
 		862A64491CCB64C900935E77 /* ProblemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProblemViewController.m; sourceTree = "<group>"; };
 		862A644B1CCB660000935E77 /* ProblemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProblemTableViewCell.h; sourceTree = "<group>"; };
@@ -282,6 +285,8 @@
 				84DCEA8A1CC4F89B009FE977 /* leftViewController.m */,
 				84D601641CC5D1CB0014D3B5 /* MyMessageViewController.h */,
 				84D601651CC5D1CB0014D3B5 /* MyMessageViewController.m */,
+				84F50C111CD356630002DFE5 /* MessageTableViewCell.h */,
+				84F50C121CD356630002DFE5 /* MessageTableViewCell.m */,
 				8492D7B71CCDF0060044304A /* detailMessageTableViewController.h */,
 				8492D7B81CCDF0060044304A /* detailMessageTableViewController.m */,
 				84D6016A1CC5D54E0014D3B5 /* detailMessageViewController.h */,
@@ -641,6 +646,7 @@
 				EB5C71BA1CC6257D00F7F219 /* DCWebImageManager.m in Sources */,
 				A3BB25F71CCE2A8F0071ECDB /* BlankViewController.m in Sources */,
 				84DCEA8B1CC4F89B009FE977 /* leftViewController.m in Sources */,
+				84F50C131CD356630002DFE5 /* MessageTableViewCell.m in Sources */,
 				862A64501CCB701200935E77 /* AskViewController.m in Sources */,
 				A3BB25FA1CCE2B250071ECDB /* CalculationViewController.m in Sources */,
 				84D6016C1CC5D54E0014D3B5 /* detailMessageViewController.m in Sources */,

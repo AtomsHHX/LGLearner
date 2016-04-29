@@ -8,6 +8,8 @@
 
 #import "MyMessageViewController.h"
 #import "detailMessageTableViewController.h"
+#import "MessageTableViewCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 @interface MyMessageViewController ()<UIScrollViewDelegate>
 @property (strong , nonatomic) NSMutableArray *objectsForShow;
 @property (strong , nonatomic) NSMutableArray *oneShow;
@@ -168,14 +170,33 @@
     return _forShow.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    MessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
      PFObject *obj = _forShow[indexPath.row];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+   [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+   PFUser *userObj = obj[@"pointerUser"];
+   NSString *nickname = userObj[@"nickname"];
+   NSDate *createdAt = obj.createdAt;
+   NSString *startTime = [dateFormatter stringFromDate:createdAt];
+   
+   PFFile *photoFile = userObj[@"headPhoto"];
+   NSString *photoURLStr=photoFile.url;
+   //获取parse数据库中某个文件的网络路径
+   NSURL  *photoURL=[NSURL URLWithString:photoURLStr];
+   ////结合SDWebImage通过图片路径来实现异步加载和缓存（本案例中加载到一个图片视图中）
+   [cell.headImage sd_setImageWithURL:photoURL placeholderImage:[UIImage imageNamed:@"2"]];
+;
     if (_messageSegment.selectedSegmentIndex == 0) {
-        cell.textLabel.text = obj[@"title"];
+       cell.dateLb.text = startTime;
+       cell.nicknameLb.text = nickname;
+       cell.neirongTview.text = obj[@"title"];
+//        cell.textLabel.text = obj[@"title"];
     } else {
-        cell.textLabel.text = obj[@"content"];
+       cell.dateLb.text = startTime;
+       cell.nicknameLb.text = nickname;
+       cell.neirongTview.text = obj[@"content"];
     }
-    
+   
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
