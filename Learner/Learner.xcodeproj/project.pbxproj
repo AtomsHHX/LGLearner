@@ -31,6 +31,8 @@
 		866DE75B1CC21DB400E3A6FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866DE75A1CC21DB400E3A6FA /* CoreLocation.framework */; };
 		866DE75D1CC21DC400E3A6FA /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866DE75C1CC21DC400E3A6FA /* Accounts.framework */; };
 		866DE75F1CC21DD300E3A6FA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866DE75E1CC21DD300E3A6FA /* Social.framework */; };
+		868D31491CD2F01F005BFCBB /* ProblemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 868D31481CD2F01F005BFCBB /* ProblemDetailViewController.m */; };
+		868D314C1CD2F154005BFCBB /* ProblemDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 868D314B1CD2F154005BFCBB /* ProblemDetailTableViewCell.m */; };
 		86E1E1451CC20F6C007741EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E1441CC20F6C007741EB /* main.m */; };
 		86E1E1481CC20F6C007741EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E1471CC20F6C007741EB /* AppDelegate.m */; };
 		86E1E14B1CC20F6C007741EB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E14A1CC20F6C007741EB /* ViewController.m */; };
@@ -119,6 +121,10 @@
 		866DE75A1CC21DB400E3A6FA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		866DE75C1CC21DC400E3A6FA /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		866DE75E1CC21DD300E3A6FA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		868D31471CD2F01F005BFCBB /* ProblemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProblemDetailViewController.h; sourceTree = "<group>"; };
+		868D31481CD2F01F005BFCBB /* ProblemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProblemDetailViewController.m; sourceTree = "<group>"; };
+		868D314A1CD2F154005BFCBB /* ProblemDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProblemDetailTableViewCell.h; sourceTree = "<group>"; };
+		868D314B1CD2F154005BFCBB /* ProblemDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProblemDetailTableViewCell.m; sourceTree = "<group>"; };
 		86E1E1401CC20F6C007741EB /* Learner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Learner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86E1E1441CC20F6C007741EB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		86E1E1461CC20F6C007741EB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -288,6 +294,10 @@
 				862A644C1CCB660000935E77 /* ProblemTableViewCell.m */,
 				862A644E1CCB701200935E77 /* AskViewController.h */,
 				862A644F1CCB701200935E77 /* AskViewController.m */,
+				868D31471CD2F01F005BFCBB /* ProblemDetailViewController.h */,
+				868D31481CD2F01F005BFCBB /* ProblemDetailViewController.m */,
+				868D314A1CD2F154005BFCBB /* ProblemDetailTableViewCell.h */,
+				868D314B1CD2F154005BFCBB /* ProblemDetailTableViewCell.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -623,6 +633,7 @@
 				A3838D0A1CC6002700D5185B /* QuestionsDetailViewController.m in Sources */,
 				84D601661CC5D1CB0014D3B5 /* MyMessageViewController.m in Sources */,
 				EB54E5FE1CCB722E00CEE4D2 /* KSGuideManager.m in Sources */,
+				868D314C1CD2F154005BFCBB /* ProblemDetailTableViewCell.m in Sources */,
 				86E1E1481CC20F6C007741EB /* AppDelegate.m in Sources */,
 				86E1E1451CC20F6C007741EB /* main.m in Sources */,
 				2812704D1CC34CC600D347E4 /* HomeViewController.m in Sources */,
@@ -636,6 +647,7 @@
 				A31E1E5C1CCC59C700B9C925 /* ItemTypeViewController.m in Sources */,
 				862A644D1CCB660000935E77 /* ProblemTableViewCell.m in Sources */,
 				84DCEA881CC4863A009FE977 /* selfCentreViewController.m in Sources */,
+				868D31491CD2F01F005BFCBB /* ProblemDetailViewController.m in Sources */,
 				EB5C71931CC5E76300F7F219 /* QuestionsViewController.m in Sources */,
 				8419982B1CC3973D00CF1DCA /* SignUpViewController.m in Sources */,
 				EB5C71B91CC6257D00F7F219 /* DCPicScrollView.m in Sources */,

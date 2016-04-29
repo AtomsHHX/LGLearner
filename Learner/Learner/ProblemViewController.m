@@ -7,6 +7,7 @@
 //
 
 #import "ProblemViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "ProblemTableViewCell.h"
 @interface ProblemViewController ()
 @property (strong,nonatomic) PFObject *problem;
@@ -33,9 +34,11 @@
     
     [_objectsForShow removeAllObjects];
     PFQuery *problemQuery = [PFQuery queryWithClassName:@"Problem"];
+    [problemQuery includeKey:@"pointerUser"];
     [problemQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable problemObjects, NSError * _Nullable error) {
         if (!error) {
             _objectsForShow = [NSMutableArray arrayWithArray:problemObjects];
+            //NSLog(@"%@",_objectsForShow);
             [_problemTV reloadData];
             //查询到所有问题
             NSLog(@"%lu",problemObjects.count);
@@ -45,7 +48,7 @@
                 [commentQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable commentObjects, NSError * _Nullable error) {
                     if (!error) {
                         //这里查询每个问题所对应的评论
-                        NSLog(@"%@",commentObjects);
+                       // NSLog(@"%@",commentObjects);
                         //可拿到某条评论对应的所有追评
                         for (PFObject *myCommentObj in commentObjects) {
                             PFRelation *relationAdditionalComment = myCommentObj[@"relationAdditionalComment"];
@@ -53,7 +56,7 @@
                             [query2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myAdditionalCommentobjects, NSError * _Nullable error) {
                                 if (!error) {
                                     //此处为追评
-                                    NSLog(@"myAdditionalCommentobjects = %@",myAdditionalCommentobjects);
+                                    //NSLog(@"myAdditionalCommentobjects = %@",myAdditionalCommentobjects);
                                 } else {
                                     
                                 }
@@ -92,25 +95,45 @@
 //tableView必需方法(行里面内容)
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     ProblemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+
     PFObject *obj = _objectsForShow[indexPath.row];
-    NSString *name =obj[@"nickname"];
-    NSString *title = obj[@"title"];
+    PFUser *userObj = obj[@"pointerUser"];
+    NSString *nickname = userObj[@"nickname"];
+    NSDate *createdAt = obj.createdAt;
+    NSString *startTime = [dateFormatter stringFromDate:createdAt];
     
-    cell.nicknameLab.text = name;
-    cell.titleLab.text= title;
+    PFFile *photoFile = userObj[@"headPhoto"];
+    NSString *photoURLStr=photoFile.url;
+    //获取parse数据库中某个文件的网络路径
+    NSURL  *photoURL=[NSURL URLWithString:photoURLStr];
+    ////结合SDWebImage通过图片路径来实现异步加载和缓存（本案例中加载到一个图片视图中）
+    [cell.headPhotoIV sd_setImageWithURL:photoURL placeholderImage:[UIImage imageNamed:@"2"]];
+    cell.timeLab.text = startTime;
+    cell.nicknameLab.text = nickname;
+    cell.titleLab.text = obj[@"content"];
     
-//    UIImage *headPhoto = obj[@"headPhoto"];
-//    NSData *photoData = UIImagePNGRepresentation(headPhoto);
-//    PFFile *photoFile = [PFFile fileWithName:@"headPhoto.png" data:photoData];
-//    _problem[@"headPhoto"] = photoFile;
-//    cell.headPhotoIV.image = _problem;
+    
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
 }
 
+////ableView:heightForRowAtIndexPath: 中调用这个方法，填入需要的参数计算cell 高度。
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    PFObject * obj = [_objectsForShow objectAtIndex:indexPath.row];
+    NSString *str = obj[@"content"];
+   ProblemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    CGSize maxSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width - 30, 1000);
+    CGSize contentLabelSize = [str boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:cell.titleLab.font} context:nil].size;
+    return cell.titleLab.frame.origin.y + contentLabelSize.height+5;
+}
 
 - (IBAction)intoAction:(UIBarButtonItem *)sender {
 }
