@@ -22,8 +22,16 @@
     // Do any additional setup after loading the view.
     _objectForShow = [NSMutableArray new];
     _tableView.tableFooterView = [[UIView alloc] init];
+    self.navigationItem.title = @"题型选择";
+    
+    UIActivityIndicatorView *AIV = [Utilities getCoverOnView:self.view];
+    self.navigationController.view.userInteractionEnabled = NO;
+    
     PFQuery *query = [PFQuery queryWithClassName:@"ItemType"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        [AIV stopAnimating];
+        self.navigationController.view.userInteractionEnabled = YES;
+        
         if (!error) {
             _objectForShow = [NSMutableArray arrayWithArray:objects];
             [_tableView reloadData];
@@ -75,7 +83,7 @@
         CVC.testObj = _testObj;
         [self.navigationController pushViewController:CVC animated:YES];
     } else {
-        NSLog(@"不跳");
+        [Utilities popUpAlertViewWithMsg:@"暂无内容" andTitle:nil onView:self];
     }
     
     
