@@ -27,7 +27,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _objectForShow = [NSMutableArray new];
-    //_itemObjectForShow = [[NSMutableArray alloc] init];
     //菜单筛选
     _subjectArr = @[@"语文",@"数学(文)",@"数学(理)",@"英语",@"物理",@"化学",@"生物",@"历史",@"政治",@"地理"];
     _yearArr = @[@"年份",@"2013",@"2014",@"2015"];
@@ -37,6 +36,7 @@
     menu.delegate = self;
     _tableView.tableHeaderView = menu;
     self.menu = menu;
+    self.navigationItem.title = @"题库";
 
     // 创建menu 第一次显示 不会调用点击代理，可以用这个手动调用
     [menu selectDefalutIndexPath];
@@ -48,6 +48,9 @@
 }
 
 - (void)requestData:(NSNumber *)subject year:(NSNumber *)year region:(NSString *)region {
+    UIActivityIndicatorView *AIV = [Utilities getCoverOnView:self.view];
+    self.navigationController.view.userInteractionEnabled = NO;
+    
     PFQuery *query1 = [PFQuery queryWithClassName:@"Test"];
     [query1 whereKey:@"subject" equalTo:subject];
     if (year != nil) {
@@ -57,9 +60,11 @@
         [query1 whereKey:@"region" equalTo:region];
     }
     [query1 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        [AIV stopAnimating];
+        self.navigationController.view.userInteractionEnabled = YES;
+
         if (!error) {
             _objectForShow = [NSMutableArray arrayWithArray:objects];
-            //NSLog(@"%@",_objectForShow);
             [_tableView reloadData];
             
         } else {
@@ -67,63 +72,6 @@
         }
     }];
 }
-/*
-//查询题目
-- (void)item:(NSInteger)indexPath {
-    //[_itemObjectForShow removeAllObjects];
-    //获取前面筛选后的数据
-    PFObject *testObj = _objectForShow[indexPath];
-        PFRelation *relationItem = [testObj relationForKey:@"relationItem"];
-        PFQuery *testQuery = [relationItem query];
-        
-        [testQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable itemObjects, NSError * _Nullable error) {
-            if (!error) {
-                _itemObjectForShow = itemObjects;
-                 QuestionsDetailViewController *QDView = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"QuestionsDetail"];
-                if (_itemObjectForShow.count != 0) {
-                    QDView.itemObjects = _itemObjectForShow;
-                }
-               // NSLog(@"item  = %@",itemObjects);
-                //此处itemObjects可以拿到题目表的数据
-                for (PFObject *itemObj in itemObjects) {
-                    PFRelation *relationOptiion = [itemObj relationForKey:@"relationOption"];
-                    PFQuery *itemQuery1 = [relationOptiion query];
-                    
-                    [itemQuery1 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable optionObjects, NSError * _Nullable error) {
-                        if (!error) {
-                            _optionObjectForShow = optionObjects;
-                            if (_optionObjectForShow.count != 0) {
-                                QDView.optionObjects = _optionObjectForShow;
-                            }
-                            [self.navigationController pushViewController:QDView animated:YES];
-                            //此处optionObjects为选择题的选项
-                        } else {
-                            NSLog(@"optionError = %@",error.userInfo);
-                        }
-                        
-                    }];
-                    
-                    //这里是根据relationAnswer字段查到对应的Answer表里的内容
-                    PFRelation *relationAnswer = [itemObj relationForKey:@"relationAnswer"];
-                    PFQuery *itemQuery2 = [relationAnswer query];
-                    [itemQuery2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable answerObjects, NSError * _Nullable error) {
-                        if (!error) {
-                            //此处optionObjects为选择题的选项
-                        } else {
-                            NSLog(@"answerError = %@",error.userInfo);
-                        }
-                        
-                    }];
-                    
-                }
-            } else {
-                NSLog(@"itemError = %@",error.userInfo);
-            }
-        }];
-   
-    
-}*/
-
 
 - (NSInteger)numberOfColumnsInMenu:(DOPDropDownMenu *)menu
 {
@@ -178,16 +126,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _objectForShow.count;
 }
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    return  30;
-//}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     PFObject *obj = _objectForShow[indexPath.row];
     NSString *year = obj[@"year"];
     NSString *region = obj[@"region"];
-    NSInteger subInt = [_subject integerValue] - 1;
-    NSString *subjectStr = _subjectArr[subInt];
+    NSInteger subInt = [obj[@"subject"] integerValue];
+    NSString *subjectStr = [NSString stringWithFormat:@"%@",_subjectArr[subInt - 1]];
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@全国高考%@试题-%@卷",year,subjectStr,region];
     

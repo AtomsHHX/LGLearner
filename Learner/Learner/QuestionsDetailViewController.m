@@ -23,11 +23,18 @@
     // Do any additional setup after loading the view.
     _optionObjectForShow = [NSMutableArray new];
     _tableView.tableFooterView = [UIView new];
-    [self item];
     
-    //self.tabBarController = [UITabBarController new];;
     self.tabBarController.edgesForExtendedLayout = UIRectEdgeNone;
     
+    //tableviewcell多选
+    self.tableView.allowsMultipleSelectionDuringEditing = YES;
+    self.tableView.editing = !self.tableView.editing;
+    
+    //self.navigationController.navigationBar.backgroundColor = [UIColor blueColor];
+    
+    _tableView.backgroundColor = [UIColor whiteColor];
+    [self item];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,14 +45,18 @@
 
 //查询题目
 - (void)item {
+    UIActivityIndicatorView *AIV = [Utilities getCoverOnView:self.view];
+    self.navigationController.view.userInteractionEnabled = NO;
+    
     PFRelation *relationItem = [_testObj relationForKey:@"relationItem"];
     PFQuery *testQuery = [relationItem query];
-    //[testQuery includeKey:@"pointerItemType"];
     [testQuery whereKey:@"pointerItemType" equalTo:_itemTypeObj];
     
     [testQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable itemObjects, NSError * _Nullable error) {
+        [AIV stopAnimating];
+        self.navigationController.view.userInteractionEnabled = YES;
         if (!error) {
-            NSLog(@"ite = %lu",itemObjects.count);
+            //NSLog(@"ite = %lu",itemObjects.count);
             if (itemObjects.count == 0) {
                 _problemLb.text = @"暂无内容";
             } else {
@@ -73,6 +84,8 @@
 }
 
 - (void)showOption {
+    UIActivityIndicatorView *AIV = [Utilities getCoverOnView:self.view];
+    self.navigationController.view.userInteractionEnabled = NO;
     [_optionObjectForShow removeAllObjects];
     //此处itemObjects可以拿到题目表的数据
     PFObject *itemObj = _itemObjectForShow[count];
@@ -80,6 +93,9 @@
     PFQuery *itemQuery1 = [relationOptiion query];
     [itemQuery1 orderByAscending:@"content"];
     [itemQuery1 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable optionObjects, NSError * _Nullable error) {
+        [AIV stopAnimating];
+        self.navigationController.view.userInteractionEnabled = YES;
+
         if (!error) {
             _optionObjectForShow = [NSMutableArray arrayWithArray:optionObjects];;
             [_tableView reloadData];
@@ -121,13 +137,21 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     PFObject * obj = _optionObjectForShow[indexPath.row];
     cell.textLabel.text = obj[@"content"];
-    
+    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
+    if ([obj[@"color"] isEqualToString:@"green"]) {
+        //可自定义颜色
+        //UIColor *color = [[UIColor alloc]initWithRed:0.0 green:0.0 blue:0.0 alpha:1];
+        cell.selectedBackgroundView.backgroundColor = [UIColor greenColor];
+    } else {
+        cell.selectedBackgroundView.backgroundColor = [UIColor redColor];
+    }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     //取消选中
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+     //PFObject * obj = _optionObjectForShow[indexPath.row];
     
 }
 

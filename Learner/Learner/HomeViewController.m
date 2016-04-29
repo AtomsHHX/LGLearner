@@ -19,6 +19,7 @@
     // Do any additional setup after loading the view.
     //self.view.backgroundColor = [UIColor whiteColor];
     _tableView.tableFooterView = [UIView new];
+    
     // 情景一：采用本地图片实现
     NSArray *imageNames = @[@"1.jpg",
                             @"2.jpg",
