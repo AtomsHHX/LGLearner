@@ -7,13 +7,14 @@
 //
 
 #import "MyMessageViewController.h"
-#import "detailMessageTableViewController.h"
+
+#import "detailMessageViewController.h"
 #import "MessageTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 @interface MyMessageViewController ()<UIScrollViewDelegate>
 @property (strong , nonatomic) NSMutableArray *objectsForShow;
-@property (strong , nonatomic) NSMutableArray *oneShow;
-@property (strong, nonatomic) NSMutableArray *twoShow;
+//@property (strong , nonatomic) NSMutableArray *oneShow;
+//@property (strong, nonatomic) NSMutableArray *twoShow;
 @property (strong ,nonatomic) NSMutableArray *Logs;
 @property (strong, nonatomic) NSArray *forShow;
 
@@ -26,8 +27,7 @@
     // Do any additional setup after loading the view.
     _tableView.tableFooterView = [UIView new];
     _objectsForShow = [NSMutableArray new];
-    _oneShow = [NSMutableArray new];
-    _twoShow = [NSMutableArray new];
+   
     [self getProblem];
     [_messageSegment addTarget:self action:@selector(change:) forControlEvents:UIControlEventValueChanged];
     
@@ -76,6 +76,7 @@
     PFRelation *relationProblem = [currentUser relationForKey:@"relationProblem"];
     PFQuery *query = [relationProblem query];
    [query includeKey:@"pointerUser"];
+   
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myProblemObjects, NSError * _Nullable error) {
         UIRefreshControl *rc = (UIRefreshControl *)[_tableView viewWithTag:1001];
         [rc endRefreshing];
@@ -113,50 +114,7 @@
         if (!error) {
             _forShow = myCommentObjects;
             [_tableView reloadData];
-            //可拿到该用户所有的评论，对每条评论遍历（如果每条评论对应的relationAdditionalComment字段里面有数据，说明有人回复了）
-            for (PFObject *myCommentObj in myCommentObjects) {
-                PFRelation *relationAdditionalComment = myCommentObj[@"relationAdditionalComment"];
-                PFQuery *query2 = [relationAdditionalComment query];
-                [query2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myAdditionalCommentobjects, NSError * _Nullable error) {
-                    if (!error) {
-                        NSLog(@"myAdditionalCommentobjects = %@",myAdditionalCommentobjects);
-                    } else {
-                        
-                    }
-                }];
-            }
-        } else {
-            NSLog(@"error = %@",error.userInfo);
-        }
-    }];
-}
-//查询问题表Problem
-- (void)selectProblem {
-    [_oneShow removeAllObjects];
-    [_twoShow removeAllObjects];
-    PFQuery *problemQuery = [PFQuery queryWithClassName:@"Problem"];
-    [problemQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable problemObjects, NSError * _Nullable error) {
-        UIRefreshControl *rc = (UIRefreshControl *)[_tableView viewWithTag:1001];
-        [rc endRefreshing];
-        if (!error) {
-            //查询到所有问题
-            _oneShow = [NSMutableArray arrayWithArray:problemObjects];
-            [_tableView reloadData];
-            NSLog(@"%lu",problemObjects.count);
-            for (PFObject * problemObj in problemObjects) {
-                PFRelation *relationComment = [problemObj relationForKey:@"relationComment"];
-                PFQuery *commentQuery = [relationComment query];
-                [commentQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable commentObjects, NSError * _Nullable error) {
-                    if (!error) {
-                        _twoShow = [NSMutableArray arrayWithArray:commentObjects];
-                        [_tableView reloadData];
-                        //这里查询每个问题所对应的评论
-                        NSLog(@"%@",commentObjects);
-                    } else {
-                        NSLog(@"error = %@",error.userInfo);
-                    }
-                }];
-            }
+
         } else {
             NSLog(@"error = %@",error.userInfo);
         }
@@ -165,6 +123,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+   MessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+   PFObject *obj = _forShow[indexPath.row];
+   
+   //返回cell的高度
+   return cell.conmentLb.frame.origin.y + [Utilities getTextHeight:obj[@"content"] textFont:cell.conmentLb.font toViewRange:10] + 16;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _forShow.count;
@@ -185,25 +150,25 @@
    NSURL  *photoURL=[NSURL URLWithString:photoURLStr];
    ////结合SDWebImage通过图片路径来实现异步加载和缓存（本案例中加载到一个图片视图中）
    [cell.headImage sd_setImageWithURL:photoURL placeholderImage:[UIImage imageNamed:@"2"]];
-;
+   
     if (_messageSegment.selectedSegmentIndex == 0) {
        cell.dateLb.text = startTime;
        cell.nicknameLb.text = nickname;
-       cell.neirongTview.text = obj[@"title"];
-//        cell.textLabel.text = obj[@"title"];
+       cell.conmentLb.text = obj[@"content"];
     } else {
        cell.dateLb.text = startTime;
        cell.nicknameLb.text = nickname;
-       cell.neirongTview.text = obj[@"content"];
+       cell.conmentLb.text = obj[@"content"];
     }
    
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-    detailMessageTableViewController *go = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"detail"];
-   go.proObj =  _forShow[indexPath.row];
+   [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    detailMessageViewController *go = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"detail"];
+   go.Pr =  _forShow[indexPath.row];
     [self.navigationController pushViewController:go animated:YES];
-    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+   
     // [self.tableview setEditing:YES];
 }
 

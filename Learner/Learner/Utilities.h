@@ -29,5 +29,6 @@
 + (NSString *)notRounding:(float)price afterPoint:(int)position;
 //根据URL下载图片并缓存
 + (UIImage *)imageUrl:(NSString *)url;
-
+//根据文字内容自适应高度
++ (double)getTextHeight:(NSString *)text textFont:(UIFont *)textFont toViewRange:(int)range;
 @end

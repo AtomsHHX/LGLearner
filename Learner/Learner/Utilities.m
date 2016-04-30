@@ -103,5 +103,9 @@
     });
     return imageDownloaded;
 }
-
++ (double)getTextHeight:(NSString *)text textFont:(UIFont *)textFont toViewRange:(int)range{
+    CGSize maxSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width - range, 1000);
+    CGSize contentLabelSize = [text boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:textFont} context:nil].size;
+    return contentLabelSize.height;
+}
 @end
