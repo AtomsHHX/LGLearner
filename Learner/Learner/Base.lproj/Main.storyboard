@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DPZ-IA-Kpr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DPZ-IA-Kpr">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -1457,6 +1457,9 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyM-W8-fMO">
                                 <rect key="frame" x="40" y="343" width="74" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="e7j-Wh-uUa"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1477,10 +1480,23 @@
                                     <segue destination="K1Y-Ks-2mZ" kind="show" id="sjW-ia-Qtg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9cA-Mb-WCY">
+                                <rect key="frame" x="119" y="343" width="49" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="UlE-Oe-GW9"/>
+                                </constraints>
+                                <state key="normal" title="forget?">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="forgetAction:forEvent:" destination="zKR-7d-wao" eventType="touchUpInside" id="DP6-lt-fVO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="kBE-HU-3Yh" firstAttribute="top" secondItem="XvX-Ow-erR" secondAttribute="bottom" constant="45" id="2yE-Jf-hWc"/>
+                            <constraint firstItem="9cA-Mb-WCY" firstAttribute="top" secondItem="LyM-W8-fMO" secondAttribute="top" id="A9C-0q-fFc"/>
                             <constraint firstItem="75d-BD-Abu" firstAttribute="top" secondItem="TYl-Wj-koT" secondAttribute="bottom" constant="10" id="AKa-MQ-Zbd"/>
                             <constraint firstAttribute="trailing" secondItem="XvX-Ow-erR" secondAttribute="trailing" constant="35" id="BJT-3r-vay"/>
                             <constraint firstItem="75d-BD-Abu" firstAttribute="leading" secondItem="LVu-PF-Ixp" secondAttribute="leading" constant="35" id="Big-Hf-csN"/>
@@ -1497,6 +1513,7 @@
                             <constraint firstItem="gTp-Ib-RSx" firstAttribute="top" secondItem="LmL-gL-MUW" secondAttribute="bottom" constant="44" id="mtv-hN-mQA"/>
                             <constraint firstItem="kBE-HU-3Yh" firstAttribute="leading" secondItem="LVu-PF-Ixp" secondAttribute="leading" constant="37" id="pes-bv-xNU"/>
                             <constraint firstAttribute="trailing" secondItem="gTp-Ib-RSx" secondAttribute="trailing" constant="65" id="qJG-48-sej"/>
+                            <constraint firstItem="9cA-Mb-WCY" firstAttribute="leading" secondItem="LyM-W8-fMO" secondAttribute="trailing" constant="5" id="t0r-sC-xxL"/>
                             <constraint firstItem="XvX-Ow-erR" firstAttribute="top" secondItem="LyM-W8-fMO" secondAttribute="bottom" constant="5" id="wPW-0b-dl9"/>
                             <constraint firstItem="XvX-Ow-erR" firstAttribute="leading" secondItem="LVu-PF-Ixp" secondAttribute="leading" constant="35" id="zRR-iw-wSg"/>
                         </constraints>
@@ -1729,8 +1746,8 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v92-LX-C8f">
                                             <rect key="frame" x="15" y="5" width="290" height="34"/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                            <color key="textColor" red="0.65206121240000003" green="1" blue="0.25448115609999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>

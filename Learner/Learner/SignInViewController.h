@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernameTF;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;
 - (IBAction)SIngInAction:(UIButton *)sender forEvent:(UIEvent *)event;
+- (IBAction)forgetAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
 @end

@@ -12,7 +12,7 @@
 #import <ECSlidingViewController/ECSlidingViewController.h>
 #import "KSGuideManager.h"
 
-@interface SignInViewController ()<ECSlidingViewControllerDelegate,ECSlidingViewControllerLayout>
+@interface SignInViewController ()<ECSlidingViewControllerDelegate,ECSlidingViewControllerLayout,UITextFieldDelegate>
 @property (strong, nonatomic) ECSlidingViewController *slidingVC;
 @property (assign, nonatomic) ECSlidingViewControllerOperation operation;
 @end
@@ -164,6 +164,52 @@
         return;
     }
     [self signInWithUsername:username andPassword:password];
+}
+
+- (IBAction)forgetAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入您注册时的邮箱号码" preferredStyle:UIAlertControllerStyleAlert];
+    //创建“确认”按钮，风格为UIAlertActionStyleDefault
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UITextField *textField = alertView.textFields.firstObject;
+        //[self setPriceForCard:textField.text];
+        NSString *email = textField.text;
+        UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
+         [PFUser requestPasswordResetForEmailInBackground:email block:^(BOOL succeeded, NSError * _Nullable error) {
+             [avi stopAnimating];
+             if (succeeded) {
+                 [Utilities popUpAlertViewWithMsg:@"密码重置邮件已发送到您的邮箱" andTitle:nil onView:self];
+             }else{
+                 switch (error.code) {
+                     case 125:
+                         [Utilities popUpAlertViewWithMsg:@"邮箱格式错误，请重新输入！" andTitle:nil onView:self];
+                         break;
+                     case 205:
+                         [Utilities popUpAlertViewWithMsg:@"您输入的邮箱与注册时的不匹配，请重新输入！" andTitle:nil onView:self];
+                         break;
+                     default:
+                         [Utilities popUpAlertViewWithMsg:@"网络请求失败，请稍后重试" andTitle:nil onView:self];
+                         break;
+                 }
+             }
+         }];
+    }];
+    //创建“取消”按钮，风格为UIAlertActionStyleCancel
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    //将以上两个按钮添加进弹出窗（按钮添加的顺序决定按钮的排版：从左到右；从上到下。如果是取消风格UIAlertActionStyleCancel的按钮会放在最左边）
+    [alertView addAction:confirmAction];
+    [alertView addAction:cancelAction];
+    
+    //添加一个文本输入框
+    [alertView addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.delegate = self;
+        textField.keyboardType = UIKeyboardTypeEmailAddress;
+        
+    }];
+
+    [self presentViewController:alertView animated:YES completion:nil];
+   
+    
+    
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
