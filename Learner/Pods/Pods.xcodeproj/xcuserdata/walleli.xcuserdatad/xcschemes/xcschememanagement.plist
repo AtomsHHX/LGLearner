@@ -32,6 +32,11 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>SDAutoLayout.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>SDCycleScrollView.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -48,6 +53,16 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>22B2D116147242D13C24219BA0969708</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>26EE48CF9922AFB9D59517BFFAB74924</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>466BA480EA32D362CABE24497BB36858</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,7 +92,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>E5CC8E63F91F60E113149A84BE357FA2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>F56BD389AECEDE0FD45C082899168145</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F591E49990459862894A2D3D27E61D1C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
