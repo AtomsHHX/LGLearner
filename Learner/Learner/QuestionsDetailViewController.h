@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *upBarBI;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *downBarBI;
+@property (weak, nonatomic) IBOutlet UIImageView *problemIV;
 
 - (IBAction)upAction:(UIBarButtonItem *)sender;
 - (IBAction)downAction:(UIBarButtonItem *)sender;

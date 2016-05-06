@@ -8,9 +8,11 @@
 
 #import "QuestionsDetailViewController.h"
 #import "UIView+SDAutoLayout.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface QuestionsDetailViewController ()<UITabBarControllerDelegate> {
     int count;
+    UIImage *image;
 }
 //@property (strong , nonatomic) UILabel *problemLb;
 //@property (strong , nonatomic) UIView *headerView;
@@ -33,6 +35,12 @@
     //self.navigationController.navigationBar.backgroundColor = [UIColor blueColor];
     
     _tableView.backgroundColor = [UIColor whiteColor];
+    
+    //初始化一个UIImageView对象，并将它添加到tableheaderView上
+//    IV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+//    IV.contentMode = UIViewContentModeScaleAspectFit;
+//    [_headerView addSubview:IV];
+    
     [self item];
 
 }
@@ -72,15 +80,38 @@
 
 - (void)showItem {
     [self showOption];
+    //[IV removeFromSuperview];
     self.navigationItem.title =  [NSString stringWithFormat:@"%d/%lu",count+1,(unsigned long)_itemObjectForShow.count];
     PFObject *itemObj = _itemObjectForShow[count];
     NSString *itemStr = itemObj[@"problem"];
-   // NSLog(@"%@",itemStr);
-    CGSize maxSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width - 30, 1000);
-    CGSize contentLabelSize = [itemStr boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:_problemLb.font} context:nil].size;
-    _headerView.height = contentLabelSize.height + 11;
-    _tableView.tableHeaderView = _headerView;
     _problemLb.text = itemStr;
+    _problemLb.height = [Utilities getTextHeight:itemStr textFont:_problemLb.font toViewRange:30];
+    _problemLb.backgroundColor = [UIColor blueColor];
+    if (itemObj[@"problemImage"] != nil) {
+        NSLog(@"有图");
+        PFFile *problemImageFile = itemObj[@"problemImage"];
+        [problemImageFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+            if (!error) {
+                image = [UIImage imageWithData:data];
+                _problemIV.size = image.size;
+                //_headerView.height = _problemIV.origin.y + _problemIV.size.height;
+                _problemIV.image = image;
+                _headerView.height = _problemIV.origin.y + _problemIV.size.height;
+                _tableView.tableHeaderView = _headerView;
+
+            }
+        }];
+        //_problemIV.size = image.size;
+        NSString *problemImageURLStr = problemImageFile.url;
+        NSURL *problemImageURL = [NSURL URLWithString:problemImageURLStr];
+       // [_problemIV sd_setImageWithURL:problemImageURL placeholderImage:[UIImage imageNamed:@"Default"]];
+        
+        _headerView.height = _problemIV.origin.y + _problemIV.size.height;
+        
+    } else {
+    _headerView.height = _problemLb.height + 11;
+    }
+    _tableView.tableHeaderView = _headerView;
 }
 
 - (void)showOption {
