@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *upBarBI;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *downBarBI;
 @property (weak, nonatomic) IBOutlet UIImageView *problemIV;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *ivHeight;
 
 - (IBAction)upAction:(UIBarButtonItem *)sender;
 - (IBAction)downAction:(UIBarButtonItem *)sender;

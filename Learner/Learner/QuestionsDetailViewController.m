@@ -25,6 +25,7 @@
     // Do any additional setup after loading the view.
     _optionObjectForShow = [NSMutableArray new];
     _tableView.tableFooterView = [UIView new];
+    _upBarBI.enabled = NO;
     
     self.tabBarController.edgesForExtendedLayout = UIRectEdgeNone;
     
@@ -32,15 +33,8 @@
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
     self.tableView.editing = !self.tableView.editing;
     
-    //self.navigationController.navigationBar.backgroundColor = [UIColor blueColor];
-    
     _tableView.backgroundColor = [UIColor whiteColor];
-    
-    //初始化一个UIImageView对象，并将它添加到tableheaderView上
-//    IV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-//    IV.contentMode = UIViewContentModeScaleAspectFit;
-//    [_headerView addSubview:IV];
-    
+
     [self item];
 
 }
@@ -68,8 +62,8 @@
             if (itemObjects.count == 0) {
                 _problemLb.text = @"暂无内容";
             } else {
-                 _itemObjectForShow = itemObjects;
                 count = 0;
+                _itemObjectForShow = itemObjects;
                 [self showItem];
             }
         } else {
@@ -80,7 +74,6 @@
 
 - (void)showItem {
     [self showOption];
-    //[IV removeFromSuperview];
     self.navigationItem.title =  [NSString stringWithFormat:@"%d/%lu",count+1,(unsigned long)_itemObjectForShow.count];
     PFObject *itemObj = _itemObjectForShow[count];
     NSString *itemStr = itemObj[@"problem"];
@@ -88,36 +81,28 @@
     _problemLb.height = [Utilities getTextHeight:itemStr textFont:_problemLb.font toViewRange:30];
     _problemLb.backgroundColor = [UIColor blueColor];
     if (itemObj[@"problemImage"] != nil) {
-        NSLog(@"有图");
         PFFile *problemImageFile = itemObj[@"problemImage"];
         [problemImageFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
             if (!error) {
                 image = [UIImage imageWithData:data];
-                _problemIV.size = image.size;
-                //_headerView.height = _problemIV.origin.y + _problemIV.size.height;
+                _ivHeight.constant = (UI_SCREEN_W - 30) / image.size.width * image.size.height;
                 _problemIV.image = image;
-                _headerView.height = _problemIV.origin.y + _problemIV.size.height;
-                _tableView.tableHeaderView = _headerView;
-
+                _headerView.height = _problemIV.origin.y + _ivHeight.constant;
+            } else {
+                _headerView.height = CGRectGetMaxY(_problemLb.frame) + 11;
             }
+            _tableView.tableHeaderView = _headerView;
         }];
-        //_problemIV.size = image.size;
-        NSString *problemImageURLStr = problemImageFile.url;
-        NSURL *problemImageURL = [NSURL URLWithString:problemImageURLStr];
-       // [_problemIV sd_setImageWithURL:problemImageURL placeholderImage:[UIImage imageNamed:@"Default"]];
-        
-        _headerView.height = _problemIV.origin.y + _problemIV.size.height;
-        
     } else {
-    _headerView.height = _problemLb.height + 11;
+        _problemIV.image = nil;
+        _headerView.height = CGRectGetMaxY(_problemLb.frame) + 11;
+        _tableView.tableHeaderView = _headerView;
     }
-    _tableView.tableHeaderView = _headerView;
 }
 
 - (void)showOption {
     UIActivityIndicatorView *AIV = [Utilities getCoverOnView:self.view];
     self.navigationController.view.userInteractionEnabled = NO;
-    [_optionObjectForShow removeAllObjects];
     //此处itemObjects可以拿到题目表的数据
     PFObject *itemObj = _itemObjectForShow[count];
     PFRelation *relationOptiion = [itemObj relationForKey:@"relationOption"];
@@ -128,6 +113,7 @@
         self.navigationController.view.userInteractionEnabled = YES;
 
         if (!error) {
+            [_optionObjectForShow removeAllObjects];
             _optionObjectForShow = [NSMutableArray arrayWithArray:optionObjects];;
             [_tableView reloadData];
                 //此处optionObjects为选择题的选项
@@ -183,32 +169,25 @@
     //取消选中
     //[tableView deselectRowAtIndexPath:indexPath animated:YES];
      //PFObject * obj = _optionObjectForShow[indexPath.row];
-    
 }
 
 
 - (IBAction)upAction:(UIBarButtonItem *)sender {
     _downBarBI.enabled = YES;
-    if (count <= 0) {
+    if (count -1 == 0) {
         _upBarBI.enabled = NO;
-        [Utilities popUpAlertViewWithMsg:@"已到第一页,不能再往前了！" andTitle:nil onView:self];
-        
-    } else {
-        count --;
-        [self showItem];
-}
-
+    }
+    count --;
+    [self showItem];
 }
 
 - (IBAction)downAction:(UIBarButtonItem *)sender {
     _upBarBI.enabled = YES;
-    if (count >= _itemObjectForShow.count -1 ) {
+    if (count + 1 == _itemObjectForShow.count - 1) {
         _downBarBI.enabled = NO;
-        [Utilities popUpAlertViewWithMsg:@"已到最后一页，不能再往后了！" andTitle:nil onView:self];
-    } else {
-        count ++;
-        [self showItem];
     }
+    count ++;
+    [self showItem];
 }
 
 
