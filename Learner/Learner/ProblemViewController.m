@@ -7,8 +7,10 @@
 //
 
 #import "ProblemViewController.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 #import "ProblemTableViewCell.h"
+#import "ProblemDetailViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+
 @interface ProblemViewController ()
 @property (strong,nonatomic) PFObject *problem;
 @property (strong,nonatomic)NSMutableArray *objectsForShow;
@@ -120,19 +122,21 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    ProblemDetailViewController *PDVC = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"PDVC"];
+    PDVC.probelemVCObject = _objectsForShow[indexPath.row];
     
+    [self.navigationController pushViewController:PDVC animated:YES];
 }
 
 ////ableView:heightForRowAtIndexPath: 中调用这个方法，填入需要的参数计算cell 高度。
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     PFObject * obj = [_objectsForShow objectAtIndex:indexPath.row];
     NSString *str = obj[@"content"];
    ProblemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    CGSize maxSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width - 30, 1000);
-    CGSize contentLabelSize = [str boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:cell.titleLab.font} context:nil].size;
-    return cell.titleLab.frame.origin.y + contentLabelSize.height+5;
+    CGFloat contentLabelHeight = [Utilities getTextHeight:str textFont:cell.titleLab.font toViewRange:30];
+    
+    return cell.titleLab.frame.origin.y + contentLabelHeight + 5;
 }
 
 - (IBAction)intoAction:(UIBarButtonItem *)sender {

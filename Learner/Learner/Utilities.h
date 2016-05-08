@@ -31,4 +31,6 @@
 + (UIImage *)imageUrl:(NSString *)url;
 //根据文字内容自适应高度
 + (double)getTextHeight:(NSString *)text textFont:(UIFont *)textFont toViewRange:(int)range;
+//根据文字内容自适应宽度
++ (double)getTextWidth:(NSString *)text textFont:(UIFont *)textFont toViewRange:(int)range;
 @end

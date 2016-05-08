@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface ProblemDetailViewController : UIViewController
-
-@property (weak, nonatomic) IBOutlet UIImageView *headphotoIV;
-@property (weak, nonatomic) IBOutlet UILabel *nicknameLab;
-@property (weak, nonatomic) IBOutlet UILabel *timeLab;
-@property (weak, nonatomic) IBOutlet UILabel *contentsLab;
-@property (weak, nonatomic) IBOutlet UIImageView *contentsIV;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIImageView *headPhotoIV;
+@property (weak, nonatomic) IBOutlet UILabel *nicknameLb;
+@property (weak, nonatomic) IBOutlet UILabel *contentLb;
+@property (weak, nonatomic) IBOutlet UILabel *creatAtLb;
+
+@property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (strong, nonatomic) PFObject *probelemVCObject;
 
 @end
