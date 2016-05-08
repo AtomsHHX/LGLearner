@@ -7,8 +7,18 @@
 //
 
 #import "ABCIntroView.h"
+#import "KSGuideManager.h"
+#define kScreenBounds [UIScreen mainScreen].bounds
+static NSString *identifier = @"Cell";
 
-@interface ABCIntroView () <UIScrollViewDelegate>
+@interface ABCIntroView () <UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource, UIScrollViewDelegate>
+@property (nonatomic, strong) UIWindow *window;
+@property (nonatomic, strong) UICollectionView *view;
+@property (nonatomic, strong) NSArray *images;
+
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UIButton *button;
+
 @property (strong, nonatomic)  UIScrollView *scrollView;
 @property (strong, nonatomic)  UIPageControl *pageControl;
 @property UIView *holeView;
@@ -235,6 +245,71 @@
     
 }
 
-@end// 版权属于原作者
-// http://code4app.com (cn) http://code4app.net (en)
-// 发布代码于最专业的源码分享网站: Code4App.com
+
+
+
++ (instancetype)shared {
+    static id __staticObject = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        __staticObject = [KSGuideManager new];
+    });
+    return __staticObject;
+}
+
+- (UICollectionView *)view {
+    if (_view == nil) {
+        
+        CGRect screen = [UIScreen mainScreen].bounds;
+        
+        UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+        
+        layout.minimumInteritemSpacing = 0;
+        layout.minimumLineSpacing = 0;
+        layout.itemSize = screen.size;
+        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        
+        _view = [[UICollectionView alloc] initWithFrame:screen collectionViewLayout:layout];
+        _view.bounces = NO;
+        _view.backgroundColor = [UIColor whiteColor];
+        _view.showsHorizontalScrollIndicator = NO;
+        _view.showsVerticalScrollIndicator = NO;
+        _view.pagingEnabled = YES;
+        _view.dataSource = self;
+        _view.delegate = self;
+        
+        [_view registerClass:[ABCIntroView class] forCellWithReuseIdentifier:identifier];
+    }
+    return _view;
+}
+
+- (UIPageControl *)pageControl {
+    if (_pageControl == nil) {
+        _pageControl = [[UIPageControl alloc] init];
+        _pageControl.frame = CGRectMake(0, 0, kScreenBounds.size.width, 44.0f);
+        _pageControl.center = CGPointMake(kScreenBounds.size.width / 2, kScreenBounds.size.height - 60);
+    }
+    return _pageControl;
+}
+- (void)showGuideViewWithImages:(NSArray *)images {
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *version = [[NSBundle mainBundle].infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    //根据版本号来区分是否要显示引导图
+    BOOL show = [ud boolForKey:[NSString stringWithFormat:@"ABCIntroView_%@", version]];
+    
+    if (!show && self.window == nil) {
+        
+        self.images = images;
+        self.pageControl.numberOfPages = images.count;
+        self.window = [UIApplication sharedApplication].keyWindow;
+        
+        [self.window addSubview:self.view];
+        [self.window addSubview:self.pageControl];
+        
+        [ud setBool:YES forKey:[NSString stringWithFormat:@"ABCIntroView_%@", version]];
+        [ud synchronize];
+    
+}
+}
+@end
