@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DPZ-IA-Kpr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DPZ-IA-Kpr">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -1495,7 +1495,7 @@
             </objects>
             <point key="canvasLocation" x="1839" y="-451"/>
         </scene>
-        <!--登录-->
+        <!--学吧-->
         <scene sceneID="zP0-2t-8RK">
             <objects>
                 <viewController id="zKR-7d-wao" customClass="SignInViewController" sceneMemberID="viewController">
@@ -1613,7 +1613,7 @@
                             <constraint firstItem="XvX-Ow-erR" firstAttribute="leading" secondItem="LVu-PF-Ixp" secondAttribute="leading" constant="35" id="zRR-iw-wSg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="登录" id="3mg-Tg-yoT"/>
+                    <navigationItem key="navigationItem" title="学吧" id="3mg-Tg-yoT"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="passwordTF" destination="XvX-Ow-erR" id="tf9-SZ-PyQ"/>
