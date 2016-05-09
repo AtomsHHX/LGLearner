@@ -43,7 +43,7 @@
             //NSLog(@"%@",_objectsForShow);
             [_problemTV reloadData];
             //查询到所有问题
-            NSLog(@"%lu",problemObjects.count);
+            //NSLog(@"%lu",problemObjects.count);
             for (PFObject * problemObj in problemObjects) {
                 PFRelation *relationComment = [problemObj relationForKey:@"relationComment"];
                 PFQuery *commentQuery = [relationComment query];

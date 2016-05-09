@@ -13,8 +13,8 @@
 @interface ProblemDetailViewController () {
     int count;
     BOOL flag;
-    NSInteger *i;
-    NSInteger *j;
+    int i;
+    int j;
 }
 @property (strong,nonatomic)NSMutableArray *objectsForShow;
 @property (strong,nonatomic)NSMutableArray *myAdditionalCommentobjectsForShow;
@@ -25,13 +25,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    flag = YES;
+    flag = NO;
+    count = 0;
     i = 0;
     j = 0;
     // Do any additional setup after loading the view.
     _tableView.tableFooterView = [[UIView alloc] init];
     _objectsForShow = [NSMutableArray new];
-    count = 0;
     _myAdditionalCommentobjectsForShow = [NSMutableArray new];
     PFObject *problemObj = _probelemVCObject;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -62,7 +62,7 @@
 
 - (void)showComment {
     [_objectsForShow removeAllObjects];
-    [_myAdditionalCommentobjectsForShow removeAllObjects];
+   // [_myAdditionalCommentobjectsForShow removeAllObjects];
     PFObject *problemObj = _probelemVCObject;
     PFRelation *relationComment = [problemObj relationForKey:@"relationComment"];
     PFQuery *commentQuery = [relationComment query];
@@ -76,19 +76,23 @@
             
             //可拿到某条评论对应的所有追评
             for (PFObject *myCommentObj in commentObjects) {
-                PFRelation *relationAdditionalComment = myCommentObj[@"relationAdditionalComment"];
+                PFRelation *relationAdditionalComment = [myCommentObj relationForKey:@"relationAdditionalComment"];
                 PFQuery *query2 = [relationAdditionalComment query];
+                [query2 includeKey:@"pointerUser"];
                 [query2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myAdditionalCommentobjects, NSError * _Nullable error) {
                     if (!error) {
+                        NSLog(@"我在呢");
+                        count = (int)myAdditionalCommentobjects.count + count;
                         //此处为追评
-                        //NSLog(@"myAdditionalCommentobjects = %@",myAdditionalCommentobjects);
+                        //NSLog(@"myAdditionalCommentobjects = %lu",myAdditionalCommentobjects.count);
                         _myAdditionalCommentobjectsForShow = [NSMutableArray arrayWithArray:myAdditionalCommentobjects];
                         [_tableView reloadData];
                     } else {
-                            
+                            NSLog(@"error = %@",error.userInfo);
                     }
                 }];
             }
+           // [_tableView reloadData];
         } else {
                 NSLog(@"error = %@",error.userInfo);
         }
@@ -107,36 +111,48 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     //return _objectsForShow.count;
-    return _objectsForShow.count + _myAdditionalCommentobjectsForShow.count;
+    //NSLog(@"%d",(int)_objectsForShow.count + count);
+    return _objectsForShow.count + count;
 }
 
 
 //tableView必需方法(行里面内容)
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     ProblemDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
-    PFObject *commentObj = _objectsForShow[(long)i];
+    PFObject *commentObj = _objectsForShow[i];
     PFUser *userObj = commentObj[@"pointerUser"];
     NSString *nickname = userObj[@"nickname"];
     cell.commenterNickname = nickname;
-
-    if (flag) {
         if (_myAdditionalCommentobjectsForShow.count == 0) {
-            j = 0;
+            i ++;
             cell.flag = NO;
             cell.commentContent = commentObj[@"content"];
-            i++;
-        }else{
-            flag = NO;
-        }
         
-    }else {
-        PFObject *additionalCommentObj = _myAdditionalCommentobjectsForShow[(long)j];
-        PFUser *userObj2 = additionalCommentObj[@"pointerUser"];
-        cell.flag = YES;
-        cell.byCommenterNickname = userObj2[@"nickname"];
-        cell.commentContent = additionalCommentObj[@"content"];
-    }
+        }else if (flag){
+            PFObject *additionalCommentObj = _myAdditionalCommentobjectsForShow[j];
+            PFUser *userObj2 = additionalCommentObj[@"pointerUser"];
+            cell.flag = YES;
+            cell.byCommenterNickname = userObj2[@"nickname"];
+            cell.commentContent = additionalCommentObj[@"content"];
+            j ++;
+            if (j >= _myAdditionalCommentobjectsForShow.count) {
+                flag = NO;
+                i ++;
+            }
+        } else {
+            j = 0;
+            i ++;
+            flag = YES;
+            cell.flag = NO;
+            cell.commentContent = commentObj[@"content"];
+        }
+    NSLog(@"%@",cell.commentContent);
+    
+   
+    
+   
+    
+    
     
 //    PFObject *commentObj = _objectsForShow[];
 //    PFUser *userObj = commentObj[@"pointerUser"];
