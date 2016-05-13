@@ -8,8 +8,11 @@
 
 #import "HomeViewController.h"
 #import "SDCycleScrollView.h"
-
+#import "HomeTableViewCell.h"
+#import "InformationDetailViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 @interface HomeViewController ()<SDCycleScrollViewDelegate>
+@property (strong,nonatomic) NSMutableArray *showArray;
 
 @end
 @implementation HomeViewController
@@ -19,7 +22,7 @@
     // Do any additional setup after loading the view.
     //self.view.backgroundColor = [UIColor whiteColor];
     _tableView.tableFooterView = [UIView new];
-    
+    _showArray = [NSMutableArray new];
     // 情景一：采用本地图片实现
     NSArray *imageNames = @[@"1.jpg",
                             @"2.jpg",
@@ -40,16 +43,26 @@
     rc.tag = 1001;
     rc.attributedTitle = [[NSAttributedString alloc] initWithString:@"⬇️下拉刷新"];
    // [rc addTarget:self action:@selector(refresh) forControlEvents:UIControlEventEditingChanged];
+    [self showInformation];
     
-}
-- (void)refresh{
-    NSLog(@"下拉了");
-   
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (void)showInformation {
+    [_showArray removeAllObjects];
+    PFQuery *query = [PFQuery queryWithClassName:@"Information"];
+    [query orderByDescending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (!error) {
+            _showArray = [NSMutableArray arrayWithArray:objects];
+            [_tableView reloadData];
+        } else {
+            NSLog(@"error = %@",error.userInfo);
+        }
+    }];
 }
 
 /*
@@ -63,22 +76,30 @@
 */
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 8;
+    return _showArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.textLabel.text = @"这里有很多新的消息，快点来看看吧😊…^_^";
-    
+    HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    PFObject *obj = _showArray[indexPath.row];
+    PFFile *photoFile = obj[@"photo"];
+    NSString *URLStr = photoFile.url;
+    NSURL *photoURL = [NSURL URLWithString:URLStr];
+    [cell.photoIV sd_setImageWithURL:photoURL placeholderImage:[UIImage imageNamed:@"2"]];
+    cell.contentLb.text = obj[@"content"];
+
+
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     [tableView  deselectRowAtIndexPath:indexPath animated:YES];
+    InformationDetailViewController *informationDetail = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"informationDetail"];
+    informationDetail.informationObj = _showArray[indexPath.row];
+    [self.navigationController pushViewController:informationDetail animated:YES];
 }
--(void)MJBannnerPlayer:(UIView *)bannerPlayer didSelectedIndex:(NSInteger)index{
-    
-    NSLog(@"%ld",index);
-    
-}
+
+//-(void)MJBannnerPlayer:(UIView *)bannerPlayer didSelectedIndex:(NSInteger)index{
+//
+//}
 
 @end

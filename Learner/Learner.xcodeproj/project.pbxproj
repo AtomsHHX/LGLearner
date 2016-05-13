@@ -40,6 +40,8 @@
 		86E1E16C1CC20F6C007741EB /* LearnerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E1E16B1CC20F6C007741EB /* LearnerUITests.m */; };
 		A31E1E5C1CCC59C700B9C925 /* ItemTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A31E1E5B1CCC59C700B9C925 /* ItemTypeViewController.m */; };
 		A37CB7EC1CE56AA800BEEF39 /* TabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A37CB7EB1CE56AA800BEEF39 /* TabViewController.m */; };
+		A37CB7EF1CE57C2200BEEF39 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A37CB7EE1CE57C2200BEEF39 /* HomeTableViewCell.m */; };
+		A37CB7F21CE585FC00BEEF39 /* InformationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A37CB7F11CE585FC00BEEF39 /* InformationDetailViewController.m */; };
 		A3838D0A1CC6002700D5185B /* QuestionsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3838D091CC6002700D5185B /* QuestionsDetailViewController.m */; };
 		A3BB25FA1CCE2B250071ECDB /* CalculationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BB25F91CCE2B250071ECDB /* CalculationViewController.m */; };
 		DA061FFF8E562637A5662AE7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF382AC1A64A93EDC5B27703 /* libPods.a */; };
@@ -135,6 +137,10 @@
 		A31E1E5B1CCC59C700B9C925 /* ItemTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTypeViewController.m; sourceTree = "<group>"; };
 		A37CB7EA1CE56AA800BEEF39 /* TabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabViewController.h; sourceTree = "<group>"; };
 		A37CB7EB1CE56AA800BEEF39 /* TabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabViewController.m; sourceTree = "<group>"; };
+		A37CB7ED1CE57C2200BEEF39 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
+		A37CB7EE1CE57C2200BEEF39 /* HomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
+		A37CB7F01CE585FC00BEEF39 /* InformationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationDetailViewController.h; sourceTree = "<group>"; };
+		A37CB7F11CE585FC00BEEF39 /* InformationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationDetailViewController.m; sourceTree = "<group>"; };
 		A3838D081CC6002700D5185B /* QuestionsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsDetailViewController.h; sourceTree = "<group>"; };
 		A3838D091CC6002700D5185B /* QuestionsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionsDetailViewController.m; sourceTree = "<group>"; };
 		A3BB25F81CCE2B250071ECDB /* CalculationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculationViewController.h; sourceTree = "<group>"; };
@@ -254,6 +260,10 @@
 				8419982A1CC3973D00CF1DCA /* SignUpViewController.m */,
 				2812704B1CC34CC600D347E4 /* HomeViewController.h */,
 				2812704C1CC34CC600D347E4 /* HomeViewController.m */,
+				A37CB7ED1CE57C2200BEEF39 /* HomeTableViewCell.h */,
+				A37CB7EE1CE57C2200BEEF39 /* HomeTableViewCell.m */,
+				A37CB7F01CE585FC00BEEF39 /* InformationDetailViewController.h */,
+				A37CB7F11CE585FC00BEEF39 /* InformationDetailViewController.m */,
 				EB5C71911CC5E76300F7F219 /* QuestionsViewController.h */,
 				EB5C71921CC5E76300F7F219 /* QuestionsViewController.m */,
 				A31E1E5A1CCC59C700B9C925 /* ItemTypeViewController.h */,
@@ -632,6 +642,8 @@
 				84DCEA8B1CC4F89B009FE977 /* leftViewController.m in Sources */,
 				84F50C131CD356630002DFE5 /* MessageTableViewCell.m in Sources */,
 				862A64501CCB701200935E77 /* AskViewController.m in Sources */,
+				A37CB7F21CE585FC00BEEF39 /* InformationDetailViewController.m in Sources */,
+				A37CB7EF1CE57C2200BEEF39 /* HomeTableViewCell.m in Sources */,
 				EB7380621CDC43D500666FAC /* ABCIntroView.m in Sources */,
 				A3BB25FA1CCE2B250071ECDB /* CalculationViewController.m in Sources */,
 				A31E1E5C1CCC59C700B9C925 /* ItemTypeViewController.m in Sources */,
