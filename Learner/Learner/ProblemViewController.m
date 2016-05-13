@@ -23,6 +23,7 @@
     // Do any additional setup after loading the view.
     _objectsForShow = [NSMutableArray new];
    _problemTV.tableFooterView = [[UIView alloc]init];
+     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(selectProblem) name:@"Success" object:nil];
     [self selectProblem];
 }
 
@@ -37,6 +38,7 @@
     [_objectsForShow removeAllObjects];
     PFQuery *problemQuery = [PFQuery queryWithClassName:@"Problem"];
     [problemQuery includeKey:@"pointerUser"];
+    [problemQuery orderByDescending:@"createdAt"];
     [problemQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable problemObjects, NSError * _Nullable error) {
         if (!error) {
             _objectsForShow = [NSMutableArray arrayWithArray:problemObjects];
@@ -44,32 +46,32 @@
             [_problemTV reloadData];
             //查询到所有问题
             //NSLog(@"%lu",problemObjects.count);
-            for (PFObject * problemObj in problemObjects) {
-                PFRelation *relationComment = [problemObj relationForKey:@"relationComment"];
-                PFQuery *commentQuery = [relationComment query];
-                [commentQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable commentObjects, NSError * _Nullable error) {
-                    if (!error) {
-                        //这里查询每个问题所对应的评论
-                       // NSLog(@"%@",commentObjects);
-                        //可拿到某条评论对应的所有追评
-                        for (PFObject *myCommentObj in commentObjects) {
-                            PFRelation *relationAdditionalComment = myCommentObj[@"relationAdditionalComment"];
-                            PFQuery *query2 = [relationAdditionalComment query];
-                            [query2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myAdditionalCommentobjects, NSError * _Nullable error) {
-                                if (!error) {
-                                    //此处为追评
-                                    //NSLog(@"myAdditionalCommentobjects = %@",myAdditionalCommentobjects);
-                                } else {
-                                    
-                                }
-                            }];
-                        }
-                        
-                    } else {
-                        NSLog(@"error = %@",error.userInfo);
-                    }
-                }];
-            }
+//            for (PFObject * problemObj in problemObjects) {
+//                PFRelation *relationComment = [problemObj relationForKey:@"relationComment"];
+//                PFQuery *commentQuery = [relationComment query];
+//                [commentQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable commentObjects, NSError * _Nullable error) {
+//                    if (!error) {
+//                        //这里查询每个问题所对应的评论
+//                       // NSLog(@"%@",commentObjects);
+//                        //可拿到某条评论对应的所有追评
+//                        for (PFObject *myCommentObj in commentObjects) {
+//                            PFRelation *relationAdditionalComment = myCommentObj[@"relationAdditionalComment"];
+//                            PFQuery *query2 = [relationAdditionalComment query];
+//                            [query2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myAdditionalCommentobjects, NSError * _Nullable error) {
+//                                if (!error) {
+//                                    //此处为追评
+//                                    //NSLog(@"myAdditionalCommentobjects = %@",myAdditionalCommentobjects);
+//                                } else {
+//                                    
+//                                }
+//                            }];
+//                        }
+//                        
+//                    } else {
+//                        NSLog(@"error = %@",error.userInfo);
+//                    }
+//                }];
+//            }
         } else {
             NSLog(@"error = %@",error.userInfo);
         }
@@ -113,7 +115,11 @@
     ////结合SDWebImage通过图片路径来实现异步加载和缓存（本案例中加载到一个图片视图中）
     [cell.headPhotoIV sd_setImageWithURL:photoURL placeholderImage:[UIImage imageNamed:@"2"]];
     cell.timeLab.text = startTime;
-    cell.nicknameLab.text = nickname;
+    if (nickname == nil) {
+        cell.nicknameLab.text = userObj.username;
+    }else{
+        cell.nicknameLab.text = nickname;
+    }
     cell.titleLab.text = obj[@"content"];
     
     
@@ -139,6 +145,4 @@
     return cell.titleLab.frame.origin.y + contentLabelHeight + 5;
 }
 
-- (IBAction)intoAction:(UIBarButtonItem *)sender {
-}
 @end

@@ -6,8 +6,7 @@
 //  Copyright © 2016年 LikeGod. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>#12	0x000000010b94e03f in main at /Users/walleli/Desktop/learn/Learner/Learner/main.m:14
-
+#import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
 int main(int argc, char * argv[]) {

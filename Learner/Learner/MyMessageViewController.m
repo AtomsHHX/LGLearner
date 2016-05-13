@@ -7,9 +7,8 @@
 //
 
 #import "MyMessageViewController.h"
-
-#import "detailMessageViewController.h"
 #import "MessageTableViewCell.h"
+#import "ProblemDetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 @interface MyMessageViewController ()<UIScrollViewDelegate>
 @property (strong , nonatomic) NSMutableArray *objectsForShow;
@@ -76,7 +75,7 @@
     PFRelation *relationProblem = [currentUser relationForKey:@"relationProblem"];
     PFQuery *query = [relationProblem query];
    [query includeKey:@"pointerUser"];
-   
+   [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myProblemObjects, NSError * _Nullable error) {
         UIRefreshControl *rc = (UIRefreshControl *)[_tableView viewWithTag:1001];
         [rc endRefreshing];
@@ -108,6 +107,7 @@
     PFRelation *relationComment = [currentUser relationForKey:@"relationComment"];
     PFQuery *query = [relationComment query];
    [query includeKey:@"pointerUser"];
+   [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myCommentObjects, NSError * _Nullable error) {
         UIRefreshControl *rc = (UIRefreshControl *)[_tableView viewWithTag:1001];
         [rc endRefreshing];
@@ -165,8 +165,8 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    detailMessageViewController *go = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"detail"];
-   go.Pr =  _forShow[indexPath.row];
+    ProblemDetailViewController *go = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"PDVC"];
+   go.probelemVCObject =  _forShow[indexPath.row];
     [self.navigationController pushViewController:go animated:YES];
    
     // [self.tableview setEditing:YES];

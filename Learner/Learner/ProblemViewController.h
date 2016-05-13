@@ -10,6 +10,4 @@
 
 @interface ProblemViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *problemTV;
-- (IBAction)intoAction:(UIBarButtonItem *)sender;
-
 @end

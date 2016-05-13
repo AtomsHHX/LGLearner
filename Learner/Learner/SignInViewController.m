@@ -100,7 +100,7 @@
     
     _slidingVC = [ECSlidingViewController slidingWithTopViewController:tab];
     _slidingVC.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
-    [tab.view addGestureRecognizer:_slidingVC.panGesture];
+    //[tab.view addGestureRecognizer:_slidingVC.panGesture];
     leftViewController *leftVC = [Utilities getStoryboardInstanceByIdentity:@"Main" byIdentity:@"left"];
     _slidingVC.underLeftViewController = leftVC;
     //设置侧滑的范围（长度）anchorRightPeekAmount：表示中间的宽度 anchorRightRevealAmount:表示   (设置左侧页面当呗显示时，宽度能够显示1/4)

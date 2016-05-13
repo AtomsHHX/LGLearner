@@ -14,8 +14,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *nicknameLb;
 @property (weak, nonatomic) IBOutlet UILabel *contentLb;
 @property (weak, nonatomic) IBOutlet UILabel *creatAtLb;
+@property (weak, nonatomic) IBOutlet UITextField *textFd;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeight;
+@property (weak, nonatomic) IBOutlet UIImageView *imageIV;
 
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (strong, nonatomic) PFObject *probelemVCObject;
+- (IBAction)pushActin:(UIButton *)sender forEvent:(UIEvent *)event;
 
 @end

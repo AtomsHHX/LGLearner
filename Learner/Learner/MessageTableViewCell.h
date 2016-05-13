@@ -13,6 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLb;
 @property (weak, nonatomic) IBOutlet UILabel *conmentLb;
 @property (weak, nonatomic) IBOutlet UIImageView *headImage;
-@property (weak, nonatomic) IBOutlet UITextView *neirongTview;
+//@property (weak, nonatomic) IBOutlet UITextView *neirongTview;
 
 @end

@@ -10,8 +10,9 @@
 
 @interface AskViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UILabel *plocaderLb;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+- (IBAction)downAction:(UITapGestureRecognizer *)sender;
 - (IBAction)saveAction:(UIBarButtonItem *)sender;
-- (IBAction)pickAction:(UITapGestureRecognizer *)sender;
-@property (strong, nonatomic) PFObject *problem;
+
 @end

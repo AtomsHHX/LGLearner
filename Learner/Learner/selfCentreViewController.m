@@ -7,8 +7,10 @@
 //
 
 #import "selfCentreViewController.h"
-
-@interface selfCentreViewController ()<UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+#import <SDWebImage/UIButton+WebCache.h>
+@interface selfCentreViewController ()<UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate> {
+    BOOL flag;
+}
 @property (weak, nonatomic) IBOutlet UIButton *imageBtn;
 
 @property (strong, nonatomic) UIImagePickerController *imagePicker;
@@ -21,6 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _emailTF.enabled = false;
+    flag = NO;
     [_imageBtn addTarget:self action:@selector(headPhoto:forEvent:) forControlEvents:UIControlEventTouchUpInside];
     [self uiConfigration];
 }
@@ -40,6 +43,12 @@
     NSString *nickname = currentUser[@"nickname"];
     NSNumber *age =  currentUser [@"age"];
     NSString *ageStr = [NSString stringWithFormat:@"%@",age];
+    PFFile *photoFile = currentUser[@"headPhoto"];
+    NSString *photoURLStr = photoFile.url;
+    //获取parse数据库中某个文件的网络路径
+    NSURL  *photoURL = [NSURL URLWithString:photoURLStr];
+    ////结合SDWebImage通过图片路径来实现异步加载和缓存（本案例中加载到一个图片视图中）
+    [_headPhotoBu sd_setBackgroundImageWithURL:photoURL forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"lunbo1"]];
     if (nickname == nil) {
         _nicknameTF.text = currentUser.username;
         
@@ -70,6 +79,12 @@
     NSInteger ageInt = [age integerValue];
     NSNumber *ageSave = @(ageInt);
     PFUser *currentUser = [PFUser currentUser];
+    if (flag) {
+            UIImage *image1 = _headPhotoBu.imageView.image;
+            NSData  *photoData = UIImagePNGRepresentation(image1);
+            PFFile  *photoFile=[PFFile fileWithName:@"photo.png" data:photoData];
+            currentUser[@"headPhoto"] = photoFile;
+    }
     if (![_nicknameTF.text isEqualToString:currentUser.username]) {
         currentUser[@"nickname"] = _nicknameTF.text;
     }
@@ -81,8 +96,15 @@
     } else {
          currentUser[@"gender"] = @YES;
     }
+    self.navigationController.view.userInteractionEnabled = NO;
+    self.tabBarController.view.userInteractionEnabled = NO;
+    UIActivityIndicatorView *AIV = [Utilities getCoverOnView:self.view];
     [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        self.navigationController.view.userInteractionEnabled = YES;
+        self.tabBarController.view.userInteractionEnabled = YES;
+        [AIV stopAnimating];
         if (succeeded) {
+            flag = NO;
             [Utilities popUpAlertViewWithMsg:@"保存成功" andTitle:nil onView:self];
         } else {
             [Utilities popUpAlertViewWithMsg:@"网络繁忙，请重新尝试" andTitle:nil onView:self];
@@ -101,13 +123,14 @@
 */
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(nonnull NSDictionary<NSString *,id> *)info{
     UIImage *image = info[UIImagePickerControllerEditedImage];
+    flag = YES;
     //设置前景图和背景图
     //[_imageButton setBackgroundImage:image forState:UIControlStateNormal];
     [_imageBtn setImage:image forState:UIControlStateNormal];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)pickImage:(UIImagePickerControllerSourceType)sourceType{
-    NSLog(@"拿到了");
+   // NSLog(@"拿到了");
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
         _imagePicker = nil;
         _imagePicker = [UIImagePickerController new];
@@ -126,7 +149,7 @@
     
 }
 - (IBAction)headPhoto:(UIButton *)sender forEvent:(UIEvent *)event {
-    NSLog(@"选到图片了");
+    //NSLog(@"选到图片了");
     
     UIAlertController *actionsheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *takephoto = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -141,12 +164,7 @@
     [actionsheet addAction:choosePhoto];
     [actionsheet addAction:cancelAction];
     [self presentViewController:actionsheet animated:YES completion:nil];
-    
-    
 }
-
-
-
 
 - (IBAction)LogOutACtion:(UIButton *)sender forEvent:(UIEvent *)event {
     //退出登录
@@ -167,7 +185,9 @@
     [textField resignFirstResponder];
     return YES;
 }
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];
 }
+
 @end
