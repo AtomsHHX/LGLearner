@@ -56,6 +56,7 @@
 		EB5C719D1CC5E7FA00F7F219 /* icon_chose_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5C71991CC5E7FA00F7F219 /* icon_chose_bottom@2x.png */; };
 		EB5C71B91CC6257D00F7F219 /* DCPicScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5C71B61CC6257D00F7F219 /* DCPicScrollView.m */; };
 		EB5C71BA1CC6257D00F7F219 /* DCWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5C71B81CC6257D00F7F219 /* DCWebImageManager.m */; };
+		EB5D56FB1CE5757C0062698D /* jitang.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB5D56FA1CE5757C0062698D /* jitang.jpg */; };
 		EB7380621CDC43D500666FAC /* ABCIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7380611CDC43D500666FAC /* ABCIntroView.m */; };
 		EB7380681CDC478D00666FAC /* 0002.png in Resources */ = {isa = PBXBuildFile; fileRef = EB7380651CDC478D00666FAC /* 0002.png */; };
 		EB7380691CDC478D00666FAC /* 0001.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EB7380661CDC478D00666FAC /* 0001.jpeg */; };
@@ -169,6 +170,7 @@
 		EB5C71B61CC6257D00F7F219 /* DCPicScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCPicScrollView.m; sourceTree = "<group>"; };
 		EB5C71B71CC6257D00F7F219 /* DCWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCWebImageManager.h; sourceTree = "<group>"; };
 		EB5C71B81CC6257D00F7F219 /* DCWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCWebImageManager.m; sourceTree = "<group>"; };
+		EB5D56FA1CE5757C0062698D /* jitang.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jitang.jpg; sourceTree = "<group>"; };
 		EB7380601CDC43D500666FAC /* ABCIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABCIntroView.h; sourceTree = "<group>"; };
 		EB7380611CDC43D500666FAC /* ABCIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABCIntroView.m; sourceTree = "<group>"; };
 		EB7380651CDC478D00666FAC /* 0002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0002.png; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				86E1E1541CC20F6C007741EB /* LaunchScreen.storyboard */,
 				86E1E14C1CC20F6C007741EB /* Main.storyboard */,
 				86E1E1521CC20F6C007741EB /* Assets.xcassets */,
+				EB5D56FA1CE5757C0062698D /* jitang.jpg */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				EB7380681CDC478D00666FAC /* 0002.png in Resources */,
 				EB5C719B1CC5E7FA00F7F219 /* icon_chose_arrow_nor@2x.png in Resources */,
 				EB7380691CDC478D00666FAC /* 0001.jpeg in Resources */,
+				EB5D56FB1CE5757C0062698D /* jitang.jpg in Resources */,
 				EB73806C1CDC48C800666FAC /* 0003.png in Resources */,
 				EB73806A1CDC478D00666FAC /* 0004.jpg in Resources */,
 				86E1E14E1CC20F6C007741EB /* Main.storyboard in Resources */,

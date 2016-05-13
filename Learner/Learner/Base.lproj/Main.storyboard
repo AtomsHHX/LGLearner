@@ -20,8 +20,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iSU-qU-0xJ">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iSU-qU-0xJ">
+                                <rect key="frame" x="0.0" y="20" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="4eQ-Te-HbB">
                                     <rect key="frame" x="0.0" y="64" width="320" height="220"/>
@@ -63,6 +63,17 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R4H-ZM-qMr" id="1ar-bR-3bE">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="心灵鸡汤" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzp-zb-pm1">
+                                                    <rect key="frame" x="76" y="14" width="244" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="jitang.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="wTf-QW-1VU">
+                                                    <rect key="frame" x="8" y="-17" width="60" height="60"/>
+                                                </imageView>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -1138,7 +1149,7 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.89748971098488861" blue="0.12747105725230268" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.95389598608016968" blue="0.99815744161605835" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7Qk-VY-dep" firstAttribute="leading" secondItem="OKy-ve-69l" secondAttribute="trailing" id="Cbv-Hg-1br"/>
                             <constraint firstItem="OKy-ve-69l" firstAttribute="leading" secondItem="WVZ-36-Ign" secondAttribute="leading" id="CmZ-wx-bKp"/>
@@ -1567,7 +1578,7 @@
         <scene sceneID="NNQ-eb-Hw4">
             <objects>
                 <navigationController id="umP-b5-BKt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="消息" id="bCY-zj-Up0"/>
+                    <tabBarItem key="tabBarItem" title="消息" image="esm1" id="bCY-zj-Up0"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3ag-AP-n34">
@@ -1586,7 +1597,7 @@
         <scene sceneID="6DX-mh-O3Y">
             <objects>
                 <navigationController id="qoQ-3i-WUH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="首页" id="m1h-0r-Ee2"/>
+                    <tabBarItem key="tabBarItem" title="首页" image="image1" selectedImage="image1" id="m1h-0r-Ee2"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="of0-wa-KUX">
@@ -1847,13 +1858,13 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8bP-W9-Kc9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2242" y="470"/>
+            <point key="canvasLocation" x="2195" y="517"/>
         </scene>
         <!--个人中心-->
         <scene sceneID="rFH-fj-Jf9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bgn-g3-tVs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="个人中心" id="TbD-uz-9EQ"/>
+                    <tabBarItem key="tabBarItem" title="个人中心" image="image2" selectedImage="image2" id="TbD-uz-9EQ"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cEz-RX-YV5">
@@ -1873,7 +1884,7 @@
         <scene sceneID="poD-bz-lZ2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IA9-M8-7rb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="答题广场" id="9Ti-J7-l9v"/>
+                    <tabBarItem key="tabBarItem" title="答题广场" image="esm" selectedImage="esm" id="9Ti-J7-l9v"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="L2T-Tg-n0c">
@@ -2070,6 +2081,11 @@
         <image name="2" width="352" height="220"/>
         <image name="Cema" width="31" height="23"/>
         <image name="add" width="25" height="25"/>
+        <image name="esm" width="48" height="48"/>
+        <image name="esm1" width="56" height="47"/>
+        <image name="image1" width="44" height="44"/>
+        <image name="image2" width="44" height="44"/>
+        <image name="jitang.jpg" width="1080" height="960"/>
         <image name="login1" width="512" height="512"/>
         <image name="lunbo1" width="460" height="272"/>
     </resources>
