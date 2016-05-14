@@ -19,4 +19,5 @@
 @property (strong,nonatomic) NSString *commentContent;
 @property (nonatomic) BOOL flag;
 
+
 @end

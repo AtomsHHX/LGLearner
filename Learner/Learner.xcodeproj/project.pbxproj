@@ -54,10 +54,10 @@
 		EB5C71B91CC6257D00F7F219 /* DCPicScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5C71B61CC6257D00F7F219 /* DCPicScrollView.m */; };
 		EB5C71BA1CC6257D00F7F219 /* DCWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5C71B81CC6257D00F7F219 /* DCWebImageManager.m */; };
 		EB7380621CDC43D500666FAC /* ABCIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7380611CDC43D500666FAC /* ABCIntroView.m */; };
-		EB7380681CDC478D00666FAC /* 0004.png in Resources */ = {isa = PBXBuildFile; fileRef = EB7380651CDC478D00666FAC /* 0004.png */; };
-		EB7380691CDC478D00666FAC /* 0001.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EB7380661CDC478D00666FAC /* 0001.jpeg */; };
-		EB73806A1CDC478D00666FAC /* 0003.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB7380671CDC478D00666FAC /* 0003.jpg */; };
-		EB73806C1CDC48C800666FAC /* 0002.png in Resources */ = {isa = PBXBuildFile; fileRef = EB73806B1CDC48C800666FAC /* 0002.png */; };
+		EB7380681CDC478D00666FAC /* yindaoye4.png in Resources */ = {isa = PBXBuildFile; fileRef = EB7380651CDC478D00666FAC /* yindaoye4.png */; };
+		EB7380691CDC478D00666FAC /* yindaoye1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EB7380661CDC478D00666FAC /* yindaoye1.jpeg */; };
+		EB73806A1CDC478D00666FAC /* yindaoye3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB7380671CDC478D00666FAC /* yindaoye3.jpg */; };
+		EB73806C1CDC48C800666FAC /* yindaoye2.png in Resources */ = {isa = PBXBuildFile; fileRef = EB73806B1CDC48C800666FAC /* yindaoye2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,10 +162,10 @@
 		EB5C71B81CC6257D00F7F219 /* DCWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCWebImageManager.m; sourceTree = "<group>"; };
 		EB7380601CDC43D500666FAC /* ABCIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABCIntroView.h; sourceTree = "<group>"; };
 		EB7380611CDC43D500666FAC /* ABCIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABCIntroView.m; sourceTree = "<group>"; };
-		EB7380651CDC478D00666FAC /* 0004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0004.png; sourceTree = "<group>"; };
-		EB7380661CDC478D00666FAC /* 0001.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0001.jpeg; sourceTree = "<group>"; };
-		EB7380671CDC478D00666FAC /* 0003.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0003.jpg; sourceTree = "<group>"; };
-		EB73806B1CDC48C800666FAC /* 0002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0002.png; sourceTree = "<group>"; };
+		EB7380651CDC478D00666FAC /* yindaoye4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yindaoye4.png; sourceTree = "<group>"; };
+		EB7380661CDC478D00666FAC /* yindaoye1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yindaoye1.jpeg; sourceTree = "<group>"; };
+		EB7380671CDC478D00666FAC /* yindaoye3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yindaoye3.jpg; sourceTree = "<group>"; };
+		EB73806B1CDC48C800666FAC /* yindaoye2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yindaoye2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,6 +391,10 @@
 		EB54E5FB1CCB71FD00CEE4D2 /* KSGuide */ = {
 			isa = PBXGroup;
 			children = (
+				EB7380651CDC478D00666FAC /* yindaoye4.png */,
+				EB7380661CDC478D00666FAC /* yindaoye1.jpeg */,
+				EB7380671CDC478D00666FAC /* yindaoye3.jpg */,
+				EB73806B1CDC48C800666FAC /* yindaoye2.png */,
 				EB54E5FC1CCB722E00CEE4D2 /* KSGuideManager.h */,
 				EB54E5FD1CCB722E00CEE4D2 /* KSGuideManager.m */,
 			);
@@ -425,10 +429,6 @@
 			children = (
 				EB7380601CDC43D500666FAC /* ABCIntroView.h */,
 				EB7380611CDC43D500666FAC /* ABCIntroView.m */,
-				EB7380651CDC478D00666FAC /* 0004.png */,
-				EB7380661CDC478D00666FAC /* 0001.jpeg */,
-				EB7380671CDC478D00666FAC /* 0003.jpg */,
-				EB73806B1CDC48C800666FAC /* 0002.png */,
 			);
 			name = ABCIntroView;
 			sourceTree = "<group>";
@@ -503,7 +503,7 @@
 				TargetAttributes = {
 					86E1E13F1CC20F6B007741EB = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 48UDJR63WD;
+						DevelopmentTeam = WT35BM4UVL;
 					};
 					86E1E15B1CC20F6C007741EB = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -546,11 +546,11 @@
 				EB5C719C1CC5E7FA00F7F219 /* icon_chose_arrow_sel@2x.png in Resources */,
 				86E1E1531CC20F6C007741EB /* Assets.xcassets in Resources */,
 				EB5C719D1CC5E7FA00F7F219 /* icon_chose_bottom@2x.png in Resources */,
-				EB7380681CDC478D00666FAC /* 0004.png in Resources */,
+				EB7380681CDC478D00666FAC /* yindaoye4.png in Resources */,
 				EB5C719B1CC5E7FA00F7F219 /* icon_chose_arrow_nor@2x.png in Resources */,
-				EB7380691CDC478D00666FAC /* 0001.jpeg in Resources */,
-				EB73806C1CDC48C800666FAC /* 0002.png in Resources */,
-				EB73806A1CDC478D00666FAC /* 0003.jpg in Resources */,
+				EB7380691CDC478D00666FAC /* yindaoye1.jpeg in Resources */,
+				EB73806C1CDC48C800666FAC /* yindaoye2.png in Resources */,
+				EB73806A1CDC478D00666FAC /* yindaoye3.jpg in Resources */,
 				86E1E14E1CC20F6C007741EB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -793,6 +793,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Learner",
@@ -800,7 +802,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Learner/PrefixHeader.pch;
 				INFOPLIST_FILE = Learner/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lg.Learner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -813,6 +815,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Learner",
@@ -820,7 +824,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Learner/PrefixHeader.pch;
 				INFOPLIST_FILE = Learner/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lg.Learner;
 				PRODUCT_NAME = "$(TARGET_NAME)";

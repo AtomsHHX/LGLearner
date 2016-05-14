@@ -35,6 +35,8 @@
     _tableView.tableFooterView = [[UIView alloc] init];
     _objectsForShow = [NSMutableArray new];
     _myAdditionalCommentobjectsForShow = [NSMutableArray new];
+   _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     //[[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(showComment) name:@"Success2" object:nil];
     PFObject *problemObj = _probelemVCObject;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -94,6 +96,7 @@
     PFRelation *relationComment = [problemObj relationForKey:@"relationComment"];
     PFQuery *commentQuery = [relationComment query];
     [commentQuery includeKey:@"pointerUser"];
+    //[commentQuery orderByAscending:@"createdAt"];
     UIActivityIndicatorView *AIV = [Utilities getCoverOnView:self.view];
     [commentQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable commentObjects, NSError * _Nullable error) {
         [AIV stopAnimating];
@@ -101,6 +104,8 @@
             //这里查询每个问题所对应的评论
             // NSLog(@"%@",commentObjects);
             _objectsForShow = [NSMutableArray arrayWithArray:commentObjects];
+            NSLog(@"%lu",(unsigned long)_objectsForShow.count);
+            //_objectsForShow = commentObjects;
             [_tableView reloadData];
             
             //可拿到某条评论对应的所有追评
@@ -141,8 +146,6 @@
     UIActivityIndicatorView *AIV = [Utilities getCoverOnView:self.view];
     [commentObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         _textFd.text = nil;
-        self.navigationController.view.userInteractionEnabled = YES;
-        [AIV stopAnimating];
         if (!error) {
             //发表的评论要跟当前登录的用户关联
             PFRelation *relationComment = [currentUser relationForKey:@"relationComment"];
@@ -160,6 +163,8 @@
             PFRelation *proRelationCom = [problemObject relationForKey:@"relationComment"];
             [proRelationCom addObject:commentObject];
             [problemObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                self.navigationController.view.userInteractionEnabled = YES;
+                [AIV stopAnimating];
                 if (!error) {
                     NSLog(@"2成功");
                     [self showComment];
@@ -243,13 +248,22 @@
 //        cell.commentContent = additionalCommentObj[@"content"];
 //        count ++;
 //    }
-    
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    ProblemDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+//    PFObject *commentObj = _objectsForShow[indexPath.row];
+//    NSString *str = commentObj[@"content"];
+//    CGFloat contentLabelHeight = [Utilities getTextHeight:str textFont:cell.commentContentLb.font toViewRange:0];
+//    
+//    return cell.commentContentLb.frame.origin.y + contentLabelHeight + 1;
+//}
 
 - (IBAction)pushActin:(UIButton *)sender forEvent:(UIEvent *)event {
     if (_textFd.text.length == 0) {
@@ -260,7 +274,7 @@
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    CGFloat offest = self.view.frame.size.height - (textField.frame.origin.y + textField.frame.size.height + 216 + 60);
+    CGFloat offest = self.view.frame.size.height - (textField.frame.origin.y + textField.frame.size.height + 216 + 45);
     if (offest <= 0) {
         [UIView animateWithDuration:0.3 animations:^{
             CGRect frame = self.view.frame;
@@ -272,7 +286,7 @@
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         CGRect frame = self.view.frame;
         frame.origin.y = 0.0;
         self.view.frame = frame;

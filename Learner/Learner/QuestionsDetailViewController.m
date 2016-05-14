@@ -61,6 +61,7 @@
             //NSLog(@"ite = %lu",itemObjects.count);
             if (itemObjects.count == 0) {
                 _problemLb.text = @"暂无内容";
+                _downBarBI.enabled = NO;
             } else {
                 count = 0;
                 _itemObjectForShow = itemObjects;

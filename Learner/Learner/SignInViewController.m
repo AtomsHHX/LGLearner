@@ -10,56 +10,56 @@
 #import "TabViewController.h"
 #import "leftViewController.h"
 #import <ECSlidingViewController/ECSlidingViewController.h>
-//#import "KSGuideManager.h"
-#import "ABCIntroView.h"
+#import "KSGuideManager.h"
+//#import "ABCIntroView.h"
 
 @interface SignInViewController ()<ECSlidingViewControllerDelegate,ECSlidingViewControllerLayout,UITextFieldDelegate>
 @property (strong, nonatomic) ECSlidingViewController *slidingVC;
 @property (assign, nonatomic) ECSlidingViewControllerOperation operation;
-@property ABCIntroView *introView;
+//@property ABCIntroView *introView;
 @end
 
 @implementation SignInViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //KSGuide的实现方法
+   // KSGuide的实现方法
     // Do any additional setup after loading the view.
     //[self toHome];
-//    NSMutableArray *paths = [NSMutableArray new];
-//    
-//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"001" ofType:@"jpg"]];
-//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"002" ofType:@"jpg"]];
-//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"003" ofType:@"jpg"]];
-//    [paths addObject:[[NSBundle mainBundle] pathForResource:@"004" ofType:@"jpg"]];
-//    
-//    [[KSGuideManager shared] showGuideViewWithImages:paths];
-//    
-//    [[StorageMgr singletonStorageMgr] addKey:@"SignUpSuccessfully" andValue:@NO];
+    NSMutableArray *paths = [NSMutableArray new];
     
-    //引导页实现
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![defaults objectForKey:@"intro_screen_viewed"]) {
-        self.introView = [[ABCIntroView alloc] initWithFrame:self.view.frame];
-        self.introView.delegate = self;
-        self.introView.backgroundColor = [UIColor whiteColor];
-        [self.view addSubview:self.introView];
-    }
+    [paths addObject:[[NSBundle mainBundle] pathForResource:@"yindaoye1" ofType:@"jpeg"]];
+    [paths addObject:[[NSBundle mainBundle] pathForResource:@"yindaoye2" ofType:@"png"]];
+    [paths addObject:[[NSBundle mainBundle] pathForResource:@"yindaoye3" ofType:@"jpg"]];
+    [paths addObject:[[NSBundle mainBundle] pathForResource:@"yindaoye4" ofType:@"png"]];
+    
+    [[KSGuideManager shared] showGuideViewWithImages:paths];
+    
+    [[StorageMgr singletonStorageMgr] addKey:@"SignUpSuccessfully" andValue:@NO];
+}
+//    //引导页实现
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    if (![defaults objectForKey:@"intro_screen_viewed"]) {
+//        self.introView = [[ABCIntroView alloc] initWithFrame:self.view.frame];
+//        self.introView.delegate = self;
+//        self.introView.backgroundColor = [UIColor whiteColor];
+//        [self.view addSubview:self.introView];
 
-}
--(void)onDoneButtonPressed{
-    
-    //    Uncomment so that the IntroView does not show after the user clicks "DONE"
-    //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    //    [defaults setObject:@"YES"forKey:@"intro_screen_viewed"];
-    //    [defaults synchronize];
-    
-    [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.introView.alpha = 0;
-    } completion:^(BOOL finished) {
-        [self.introView removeFromSuperview];
-    }];
-}
+
+
+//-(void)onDoneButtonPressed{
+//    
+//    //    Uncomment so that the IntroView does not show after the user clicks "DONE"
+//    //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    //    [defaults setObject:@"YES"forKey:@"intro_screen_viewed"];
+//    //    [defaults synchronize];
+//    
+//    [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//        self.introView.alpha = 0;
+//    } completion:^(BOOL finished) {
+//        [self.introView removeFromSuperview];
+//    }];
+//}
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
