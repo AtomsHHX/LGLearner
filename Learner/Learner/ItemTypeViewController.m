@@ -63,7 +63,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     PFObject *obj = _objectForShow[indexPath.row];
     cell.textLabel.text = obj[@"type"];
-    
+    cell.textLabel.textColor = [UIColor darkGrayColor];
+    cell.textLabel.font = [UIFont systemFontOfSize:15];
     
     return cell;
 }

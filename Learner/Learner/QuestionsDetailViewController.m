@@ -79,13 +79,13 @@
     NSString *itemStr = itemObj[@"problem"];
     _problemLb.text = itemStr;
     _problemLb.height = [Utilities getTextHeight:itemStr textFont:_problemLb.font toViewRange:30];
-    _problemLb.backgroundColor = [UIColor blueColor];
+    //_problemLb.backgroundColor = [UIColor blueColor];
     if (itemObj[@"problemImage"] != nil) {
         PFFile *problemImageFile = itemObj[@"problemImage"];
         [problemImageFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
             if (!error) {
                 image = [UIImage imageWithData:data];
-                _ivHeight.constant = (UI_SCREEN_W - 30) / image.size.width * image.size.height;
+                _ivHeight.constant = UI_SCREEN_W / image.size.width * image.size.height;
                 _problemIV.image = image;
                 _headerView.height = _problemIV.origin.y + _ivHeight.constant;
             } else {
@@ -154,6 +154,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     PFObject * obj = _optionObjectForShow[indexPath.row];
     cell.textLabel.text = obj[@"content"];
+    cell.textLabel.textColor = [UIColor darkGrayColor];
+    cell.textLabel.font = [UIFont systemFontOfSize:15];
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
     if ([obj[@"color"] isEqualToString:@"green"]) {
         //可自定义颜色

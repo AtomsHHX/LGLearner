@@ -182,7 +182,7 @@ static NSString *identifier = @"Cell";
     imageview.image = [UIImage imageNamed:@"0002.png"];
     [view addSubview:imageview];
     imageview.contentMode = UIViewContentModeScaleAspectFit;
-    imageview.image = [UIImage imageNamed:@"0003.png"];
+    imageview.image = [UIImage imageNamed:@"0003.jpg"];
     [view addSubview:imageview];
     
     
@@ -225,7 +225,7 @@ static NSString *identifier = @"Cell";
     imageview.image = [UIImage imageNamed:@"0002.png"];
     [view addSubview:imageview];
     imageview.contentMode = UIViewContentModeScaleAspectFit;
-    imageview.image = [UIImage imageNamed:@"0004.jpg"];
+    imageview.image = [UIImage imageNamed:@"0004.png"];
     [view addSubview:imageview];
     
     UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width*.1, self.frame.size.height*.7, self.frame.size.width*.8, 60)];

@@ -54,10 +54,10 @@
 		EB5C71B91CC6257D00F7F219 /* DCPicScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5C71B61CC6257D00F7F219 /* DCPicScrollView.m */; };
 		EB5C71BA1CC6257D00F7F219 /* DCWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5C71B81CC6257D00F7F219 /* DCWebImageManager.m */; };
 		EB7380621CDC43D500666FAC /* ABCIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7380611CDC43D500666FAC /* ABCIntroView.m */; };
-		EB7380681CDC478D00666FAC /* 0002.png in Resources */ = {isa = PBXBuildFile; fileRef = EB7380651CDC478D00666FAC /* 0002.png */; };
+		EB7380681CDC478D00666FAC /* 0004.png in Resources */ = {isa = PBXBuildFile; fileRef = EB7380651CDC478D00666FAC /* 0004.png */; };
 		EB7380691CDC478D00666FAC /* 0001.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EB7380661CDC478D00666FAC /* 0001.jpeg */; };
-		EB73806A1CDC478D00666FAC /* 0004.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB7380671CDC478D00666FAC /* 0004.jpg */; };
-		EB73806C1CDC48C800666FAC /* 0003.png in Resources */ = {isa = PBXBuildFile; fileRef = EB73806B1CDC48C800666FAC /* 0003.png */; };
+		EB73806A1CDC478D00666FAC /* 0003.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB7380671CDC478D00666FAC /* 0003.jpg */; };
+		EB73806C1CDC48C800666FAC /* 0002.png in Resources */ = {isa = PBXBuildFile; fileRef = EB73806B1CDC48C800666FAC /* 0002.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,10 +162,10 @@
 		EB5C71B81CC6257D00F7F219 /* DCWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCWebImageManager.m; sourceTree = "<group>"; };
 		EB7380601CDC43D500666FAC /* ABCIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABCIntroView.h; sourceTree = "<group>"; };
 		EB7380611CDC43D500666FAC /* ABCIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABCIntroView.m; sourceTree = "<group>"; };
-		EB7380651CDC478D00666FAC /* 0002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0002.png; sourceTree = "<group>"; };
+		EB7380651CDC478D00666FAC /* 0004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0004.png; sourceTree = "<group>"; };
 		EB7380661CDC478D00666FAC /* 0001.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0001.jpeg; sourceTree = "<group>"; };
-		EB7380671CDC478D00666FAC /* 0004.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0004.jpg; sourceTree = "<group>"; };
-		EB73806B1CDC48C800666FAC /* 0003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0003.png; sourceTree = "<group>"; };
+		EB7380671CDC478D00666FAC /* 0003.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0003.jpg; sourceTree = "<group>"; };
+		EB73806B1CDC48C800666FAC /* 0002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0002.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,8 +272,6 @@
 				A3838D091CC6002700D5185B /* QuestionsDetailViewController.m */,
 				A3BB25F81CCE2B250071ECDB /* CalculationViewController.h */,
 				A3BB25F91CCE2B250071ECDB /* CalculationViewController.m */,
-				84DCEA861CC4863A009FE977 /* selfCentreViewController.h */,
-				84DCEA871CC4863A009FE977 /* selfCentreViewController.m */,
 				A37CB7EA1CE56AA800BEEF39 /* TabViewController.h */,
 				A37CB7EB1CE56AA800BEEF39 /* TabViewController.m */,
 				84DCEA891CC4F89B009FE977 /* leftViewController.h */,
@@ -292,6 +290,8 @@
 				868D31481CD2F01F005BFCBB /* ProblemDetailViewController.m */,
 				868D314A1CD2F154005BFCBB /* ProblemDetailTableViewCell.h */,
 				868D314B1CD2F154005BFCBB /* ProblemDetailTableViewCell.m */,
+				84DCEA861CC4863A009FE977 /* selfCentreViewController.h */,
+				84DCEA871CC4863A009FE977 /* selfCentreViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -425,10 +425,10 @@
 			children = (
 				EB7380601CDC43D500666FAC /* ABCIntroView.h */,
 				EB7380611CDC43D500666FAC /* ABCIntroView.m */,
-				EB7380651CDC478D00666FAC /* 0002.png */,
+				EB7380651CDC478D00666FAC /* 0004.png */,
 				EB7380661CDC478D00666FAC /* 0001.jpeg */,
-				EB7380671CDC478D00666FAC /* 0004.jpg */,
-				EB73806B1CDC48C800666FAC /* 0003.png */,
+				EB7380671CDC478D00666FAC /* 0003.jpg */,
+				EB73806B1CDC48C800666FAC /* 0002.png */,
 			);
 			name = ABCIntroView;
 			sourceTree = "<group>";
@@ -546,11 +546,11 @@
 				EB5C719C1CC5E7FA00F7F219 /* icon_chose_arrow_sel@2x.png in Resources */,
 				86E1E1531CC20F6C007741EB /* Assets.xcassets in Resources */,
 				EB5C719D1CC5E7FA00F7F219 /* icon_chose_bottom@2x.png in Resources */,
-				EB7380681CDC478D00666FAC /* 0002.png in Resources */,
+				EB7380681CDC478D00666FAC /* 0004.png in Resources */,
 				EB5C719B1CC5E7FA00F7F219 /* icon_chose_arrow_nor@2x.png in Resources */,
 				EB7380691CDC478D00666FAC /* 0001.jpeg in Resources */,
-				EB73806C1CDC48C800666FAC /* 0003.png in Resources */,
-				EB73806A1CDC478D00666FAC /* 0004.jpg in Resources */,
+				EB73806C1CDC48C800666FAC /* 0002.png in Resources */,
+				EB73806A1CDC478D00666FAC /* 0003.jpg in Resources */,
 				86E1E14E1CC20F6C007741EB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

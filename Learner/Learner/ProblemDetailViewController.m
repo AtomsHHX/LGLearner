@@ -94,7 +94,9 @@
     PFRelation *relationComment = [problemObj relationForKey:@"relationComment"];
     PFQuery *commentQuery = [relationComment query];
     [commentQuery includeKey:@"pointerUser"];
+    UIActivityIndicatorView *AIV = [Utilities getCoverOnView:self.view];
     [commentQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable commentObjects, NSError * _Nullable error) {
+        [AIV stopAnimating];
         if (!error) {
             //这里查询每个问题所对应的评论
             // NSLog(@"%@",commentObjects);

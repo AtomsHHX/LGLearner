@@ -76,29 +76,31 @@
     PFQuery *query = [relationProblem query];
    [query includeKey:@"pointerUser"];
    [query orderByDescending:@"createdAt"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myProblemObjects, NSError * _Nullable error) {
-        UIRefreshControl *rc = (UIRefreshControl *)[_tableView viewWithTag:1001];
-        [rc endRefreshing];
-        if (!error) {
-            _forShow = myProblemObjects;
-           // NSLog(@"%@",_forShow);
-            [_tableView reloadData];
-            //可拿到该用户所有的问题，对每条问题遍历（如果每条问题对应的relationComment字段里面有数据(或者数据更新了)，说明有人回复了）
-            for (PFObject *myProblemObj in myProblemObjects) {
-                PFRelation *relationComment = myProblemObj[@"relationComment"];
-                PFQuery *query2 = [relationComment query];
-                [query2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myCommentobjects, NSError * _Nullable error) {
-                    if (!error) {
+   UIActivityIndicatorView *AIV = [Utilities getCoverOnView:self.view];
+   [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myProblemObjects, NSError * _Nullable error) {
+      [AIV stopAnimating];
+      UIRefreshControl *rc = (UIRefreshControl *)[_tableView viewWithTag:1001];
+      [rc endRefreshing];
+      if (!error) {
+         _forShow = myProblemObjects;
+         // NSLog(@"%@",_forShow);
+         [_tableView reloadData];
+         //可拿到该用户所有的问题，对每条问题遍历（如果每条问题对应的relationComment字段里面有数据(或者数据更新了)，说明有人回复了）
+         for (PFObject *myProblemObj in myProblemObjects) {
+               PFRelation *relationComment = myProblemObj[@"relationComment"];
+               PFQuery *query2 = [relationComment query];
+               [query2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myCommentobjects, NSError * _Nullable error) {
+                  if (!error) {
                        // NSLog(@"myCommentobjects = %@",myCommentobjects);
-                    } else {
+                  } else {
                         
-                    }
-                }];
-            }
-        } else {
-            NSLog(@"error = %@",error.userInfo);
-        }
-    }];
+                  }
+               }];
+         }
+      } else {
+         NSLog(@"error = %@",error.userInfo);
+      }
+   }];
 }
 - (void)getAnwser{
     //[_twoShow removeAllObjects];
@@ -108,7 +110,9 @@
     PFQuery *query = [relationComment query];
    [query includeKey:@"pointerUser"];
    [query orderByDescending:@"createdAt"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myCommentObjects, NSError * _Nullable error) {
+   UIActivityIndicatorView *AIV = [Utilities getCoverOnView:self.view];
+   [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable myCommentObjects, NSError * _Nullable error) {
+       [AIV stopAnimating];
         UIRefreshControl *rc = (UIRefreshControl *)[_tableView viewWithTag:1001];
         [rc endRefreshing];
         if (!error) {
@@ -129,7 +133,7 @@
    PFObject *obj = _forShow[indexPath.row];
    
    //返回cell的高度
-   return cell.conmentLb.frame.origin.y + [Utilities getTextHeight:obj[@"content"] textFont:cell.conmentLb.font toViewRange:10] + 16;
+   return cell.conmentLb.frame.origin.y + [Utilities getTextHeight:obj[@"content"] textFont:cell.conmentLb.font toViewRange:10] + 6;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _forShow.count;

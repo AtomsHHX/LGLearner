@@ -39,7 +39,9 @@
     PFQuery *problemQuery = [PFQuery queryWithClassName:@"Problem"];
     [problemQuery includeKey:@"pointerUser"];
     [problemQuery orderByDescending:@"createdAt"];
+    UIActivityIndicatorView *AIV = [Utilities getCoverOnView:self.view];
     [problemQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable problemObjects, NSError * _Nullable error) {
+        [AIV stopAnimating];
         if (!error) {
             _objectsForShow = [NSMutableArray arrayWithArray:problemObjects];
             //NSLog(@"%@",_objectsForShow);

@@ -24,10 +24,10 @@
     _tableView.tableFooterView = [UIView new];
     _showArray = [NSMutableArray new];
     // 情景一：采用本地图片实现
-    NSArray *imageNames = @[@"1.jpg",
-                            @"2.jpg",
-                            @"3.jpg",
-                            @"4.jpg",
+    NSArray *imageNames = @[@"lunbo1.jpg",
+                            @"lunbo2.jpg",
+                            @"lunbo3.jpg",
+                            @"lunbo4.jpg",
                             ];
    // CGFloat w = self.view.bounds.size.width;
     // 本地加载 --- 创建不带标题的图片轮播器
@@ -55,7 +55,9 @@
     [_showArray removeAllObjects];
     PFQuery *query = [PFQuery queryWithClassName:@"Information"];
     [query orderByDescending:@"createdAt"];
+    UIActivityIndicatorView *AIV = [Utilities getCoverOnView:self.view];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        [AIV stopAnimating];
         if (!error) {
             _showArray = [NSMutableArray arrayWithArray:objects];
             [_tableView reloadData];

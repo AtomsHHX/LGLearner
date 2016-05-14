@@ -34,12 +34,15 @@
     DOPDropDownMenu *menu = [[DOPDropDownMenu alloc] initWithOrigin:CGPointMake(0, 64) andHeight:40];
     menu.dataSource = self;
     menu.delegate = self;
+    menu.backgroundColor = [UIColor colorWithRed:88/255.f green:214/255.f blue:255/255.f alpha:1.f];
     _tableView.tableHeaderView = menu;
     self.menu = menu;
     self.navigationItem.title = @"题库";
 
     // 创建menu 第一次显示 不会调用点击代理，可以用这个手动调用
     [menu selectDefalutIndexPath];
+    
+    self.tableView.tableFooterView = [UIView new];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -136,7 +139,8 @@
     NSString *subjectStr = [NSString stringWithFormat:@"%@",_subjectArr[subInt - 1]];
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@全国高考%@试题-%@卷",year,subjectStr,region];
-    
+    cell.textLabel.textColor = [UIColor darkGrayColor];
+    cell.textLabel.font = [UIFont systemFontOfSize:15];
     
     return cell;
 }
