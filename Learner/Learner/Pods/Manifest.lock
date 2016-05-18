@@ -1,0 +1,28 @@
+PODS:
+  - EAIntroView (2.8.3):
+    - EARestrictedScrollView (~> 1.1.0)
+  - EARestrictedScrollView (1.1.0)
+  - ECSlidingViewController (2.0.3)
+  - SDAutoLayout (1.52)
+  - SDCycleScrollView (1.64):
+    - SDWebImage (~> 3.7)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
+
+DEPENDENCIES:
+  - EAIntroView (~> 2.8.0)
+  - ECSlidingViewController (~> 2.0.3)
+  - SDAutoLayout (~> 1.52)
+  - SDCycleScrollView (~> 1.64)
+  - SDWebImage (~> 3.7)
+
+SPEC CHECKSUMS:
+  EAIntroView: e948c83e642f30010d427e643c18a6f2b529afed
+  EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
+  ECSlidingViewController: 6485c14f23b4487e9946535421ca8f111f86cc53
+  SDAutoLayout: 7c92e8f149059e80010507e471e1b4b6c85a62bb
+  SDCycleScrollView: 806fedb9342ab03b58b84442f985517b42c7cbb7
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+
+COCOAPODS: 0.39.0
