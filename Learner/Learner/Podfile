@@ -1,7 +1,0 @@
-platform :ios, '6.1'
-pod 'SDWebImage', '~>3.7'
-platform :ios, '7.0'
-pod 'ECSlidingViewController', '~> 2.0.3'
-pod 'EAIntroView', '~> 2.8.0'
-pod 'SDCycleScrollView','~> 1.64'
-pod 'SDAutoLayout', '~> 1.52'
